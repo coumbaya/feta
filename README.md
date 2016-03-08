@@ -26,7 +26,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
         http://couchdb.apache.org/
 
       Apache CouchDB is a document-oriented NoSQL database, which is implemented in the concurrency-oriented language 
-      Erlang database and uses JSON to store data, JavaScript as its query language using MapReduce indexes, and 
+      Erlang and uses JSON to store data, JavaScript as its query language using MapReduce indexes, and 
       regular HTTP 7 for an API. 
       
       This DB system is used to store FETA's federated log.
