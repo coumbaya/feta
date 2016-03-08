@@ -6,9 +6,9 @@ A FEderated TrAcking System for the Linked Data
 
 # Install FETA's dependencies
 
-FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to FETA you need to execute installFETAdepend.sh. This script will install:
+FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to FETA, you need to execute installDependLinux.sh and installDependMac.sh, respectively. This script will install:
 
-   1. justniffer:Network TCP Packet Sniffer
+   1. justniffer :Network TCP Packet Sniffer
    
         http://justniffer.sourceforge.net/
 
@@ -17,7 +17,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       traffic.
       
       We use this tool, in order to capture both queries and their answers. You may create your own captures, when   
-      at the same time running queries with FedX or ANAPSID query engines. In order to capture TCP packets, you need        to run the command:
+      at the same time running queries with FedX or ANAPSID query engines. In order to capture TCP packets, you need         to run the command:
       
       $ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp"
    
@@ -25,7 +25,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
    
         http://couchdb.apache.org/
 
-      Apache CouchDB is a database that uses JSON for documents, JavaScript for MapReduce indexes, and regular HTTP 7       for its API. 
+      Apache CouchDB is a database that uses JSON for documents, JavaScript for MapReduce indexes, and regular HTTP 7        for its API. 
       
       This DB system is used to store FETA's federated log.
    
@@ -33,7 +33,8 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       
         https://www.monetdb.org/Home
 
-      MonetDB is an open source column-oriented database management system. 
+      MonetDB is a full-fledged relational column-oriented DBMS database management system, that supports the SQL:2003       standard, provide client interfaces (e.g. ODBC and JDBC), as well as application programming interfaces for  
+      various languages (C, Python, Java, Ruby, Perl, and PHP)
    
       This is an alternative DB system used to store FETA's federated log.
 
@@ -61,7 +62,10 @@ Then, you can launch FETA's deduction algorithm:
 
 # Testing FETA with FedBench queries' traces
 
-In order to test FETA's fonctionality you may use as input traces of FedBench's Cross Domaian and Life Science collections, captured by using either FedX or ANAPSID. In the directory <name> you can find traces of queries executed in isolation while in the directory <name> traces of queries of the same collection executed concurrently.
+In order to test FETA's fonctionality you may use as input traces of FedBench's Cross Domaian and Life Science collections, captured by using either FedX or ANAPSID. 
+
+1. In directory <name> you may find traces of queries executed in isolation.
+2. In directory <name> you may traces of queries of the same collection executed concurrently.
 
 # About and Contact
 
