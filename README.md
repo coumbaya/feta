@@ -10,7 +10,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
    1. justniffer:Network TCP Packet Sniffer
    
-       http://justniffer.sourceforge.net/
+        http://justniffer.sourceforge.net/
 
       Justniffer is a network protocol analyzer that captures network traffic and produces logs in a customized way, 
       can emulate Apache web server log files, track response times and extract all "intercepted" files from the HTTP 
@@ -50,15 +50,15 @@ The first step, is to load the capture trace into a database, of your storage DB
 
 --nameDB or -n: for setting the DB name
 
-Then, you can init FETA deduction algorithm:
+Then, you can init FETA's deduction algorithm:
 
---inverseMapping or -i: for enabling inverse mapping in "NestedLoopDetection", necessary for FedX
+--inverseMap or -i: for enabling inverse mapping in "NestedLoopDetection", necessary for FedX
 
 --sameConcept or -c: enabling "SameConcept/SameAs" and passing endpoints IP Addresses as argument
 
---setWindowSlice or -ws for setting the maximum temporal distance between first and last subquery, defining DB slice, , by default 1000000 seconds
+--setWinSlice or -ws for setting the maximum temporal distance between first and last subquery, defining DB slice, , by default 1000000 seconds
 
---setWindowJoin or -wj for setting the maximum joinable window interval gap (Tjoin), by default 1000000 seconds
+--setWinJoin or -wj for setting the maximum joinable window interval gap (Tjoin), by default 1000000 seconds
 
 # Testing FETA with FedBench query collection traces
 
