@@ -56,9 +56,9 @@ Then, you can launch FETA's deduction algorithm:
 
 --sameConcept or -c: enabling "SameConcept/SameAs" heuristic and passing endpoints IP Addresses as argument
 
---setWinSlice or -ws for setting the maximum temporal distance between first and last subquery, defining the input DB slice, by default 1000000 seconds
+--setWinSlice or -ws for setting the maximum temporal distance between first and last subquery, defining the input DB slice (by default 1000000 seconds)
 
---setWinJoin or -wj for setting the maximum joinable window interval gap (Tjoin), by default 1000000 seconds
+--setWinJoin or -wj for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 1000000 seconds)
 
 # Testing FETA with FedBench queries' traces
 
