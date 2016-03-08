@@ -25,7 +25,9 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
    
         http://couchdb.apache.org/
 
-      Apache CouchDB is a database that uses JSON for documents, JavaScript for MapReduce indexes, and regular HTTP 7        for its API. 
+      Apache CouchDB is a document-oriented NoSQL database, which is implemented in the concurrency-oriented language 
+      Erlang database and uses JSON to store data, JavaScript as its query language using MapReduce indexes, and 
+      regular HTTP 7 for an API. 
       
       This DB system is used to store FETA's federated log.
    
@@ -33,8 +35,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       
         https://www.monetdb.org/Home
 
-      MonetDB is a full-fledged relational column-oriented DBMS database management system, that supports the SQL:2003       standard, provide client interfaces (e.g. ODBC and JDBC), as well as application programming interfaces for  
-      various languages (C, Python, Java, Ruby, Perl, and PHP)
+      MonetDB is a full-fledged relational column-oriented DBMS database management system, that supports the SQL:2003       standard, provide client interfaces (e.g. ODBC and JDBC), as well as application programming interfaces for            various languages (C, Python, Java, Ruby, Perl, and PHP)
    
       This is an alternative DB system used to store FETA's federated log.
 
