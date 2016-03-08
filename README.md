@@ -4,7 +4,7 @@ A FEderated TrAcking System for the Linked Data
 
 [1] Tracking Federated Queries in the Linked Data, Georges Nassopoulos, Patricia Serrano-Alvarado, Pascal Molli, Emmanuel Desmontils. Tracking Federated Queries in the Linked Data. [Research Report] LINA-University of Nantes. 2015. <hal-01187519>
 
-# Install FETA dependencies
+# Install FETA's dependencies
 
 FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to FETA you need to execute installFETAdepend.sh. This script will install:
 
@@ -16,7 +16,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       can emulate Apache web server log files, track response times and extract all "intercepted" files from the HTTP 
       traffic.
       
-      We use this tool, in order to capture both queries and their answers. You may create your own captures, while   
+      We use this tool, in order to capture both queries and their answers. You may create your own captures, when   
       at the same time running queries with FedX or ANAPSID query engines. In order to capture HTTP packets, you need        to run the command:
       
       $ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp"
@@ -39,7 +39,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
 # Run FETA
 
-The first step, is to load the capture trace into a database, of your storage DB's choice:
+The first step, is to load the captured trace into a database, of your storage DB's choice:
 
 --load or -l: for loading a new DB
 
@@ -49,7 +49,7 @@ The first step, is to load the capture trace into a database, of your storage DB
 
 --nameDB or -n: for setting the DB name
 
-Then, you can init FETA's deduction algorithm:
+Then, you can launch FETA's deduction algorithm:
 
 --inverseMap or -i: for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX
 
@@ -61,8 +61,8 @@ Then, you can init FETA's deduction algorithm:
 
 # Testing FETA with FedBench queries' traces
 
-In order to test FETA's fonctionality you may use as input traces of FedBench queries of Cross Domaian and Life Science collections, captured by using either FedX or ANAPSID. In the directory <name> you can find traces of queries executed in isolation while in the directory <name> traces of queries executed in concurrency.
+In order to test FETA's fonctionality you may use as input traces of FedBench's Cross Domaian and Life Science collections, captured by using either FedX or ANAPSID. In the directory <name> you can find traces of queries executed in isolation while in the directory <name> traces of queries executed in concurrency.
 
 # About and Contact
 
-ANAPSID was developed at University of Nantes as an ongoing academic effort. You can contact the current maintainers by email at georges.nassopoulos[at]etu[dot]univ-nantes[dot]fr.
+FETA was developed at University of Nantes as an ongoing academic effort. You can contact the current maintainers by email at georges.nassopoulos[at]etu[dot]univ-nantes[dot]fr.
