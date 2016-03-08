@@ -17,8 +17,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       traffic.
       
       We use this tool, in order to capture both queries and their answers. You may create your own captures, while   
-      at the same time running queries with FedX or ANAPSID query engines. In order to capture files, you need to run 
-      the command:
+      at the same time running queries with FedX or ANAPSID query engines. In order to capture HTTP packets, you need        to run the command:
       
       $ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp"
    
@@ -42,7 +41,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
 The first step, is to load the capture trace into a database, of your storage DB's choice:
 
--load or -l: for loading a new DB
+--load or -l: for loading a new DB
 
 --resetDB or -r: for reseting an existing DB
 
@@ -52,15 +51,15 @@ The first step, is to load the capture trace into a database, of your storage DB
 
 Then, you can init FETA's deduction algorithm:
 
---inverseMap or -i: for enabling inverse mapping in "NestedLoopDetection", necessary for FedX
+--inverseMap or -i: for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX
 
---sameConcept or -c: enabling "SameConcept/SameAs" and passing endpoints IP Addresses as argument
+--sameConcept or -c: enabling "SameConcept/SameAs" heuristic and passing endpoints IP Addresses as argument
 
---setWinSlice or -ws for setting the maximum temporal distance between first and last subquery, defining DB slice, , by default 1000000 seconds
+--setWinSlice or -ws for setting the maximum temporal distance between first and last subquery, defining the input DB slice, by default 1000000 seconds
 
 --setWinJoin or -wj for setting the maximum joinable window interval gap (Tjoin), by default 1000000 seconds
 
-# Testing FETA with FedBench query collection traces
+# Testing FETA with FedBench queries' traces
 
 In order to test FETA's fonctionality you may use as input traces of FedBench queries of Cross Domaian and Life Science collections, captured by using either FedX or ANAPSID. In the directory <name> you can find traces of queries executed in isolation while in the directory <name> traces of queries executed in concurrency.
 
