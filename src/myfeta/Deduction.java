@@ -167,53 +167,7 @@ public class Deduction {
         mapGroundTruthHashMaps = new HashMap<>();
     }
 
-    public Deduction(List<Document> listDocument, MonetDBManag db) throws ParserConfigurationException {
 
-        myMDB = db;
-        docAnswers = null;
-        mapAnsIDToLogClQuery = new HashMap<>();
-        myDedCLean = new DeductionLogClean(listDocument, db);
-        myDedGonstruct = new DeductionGraphConstruction(listDocument, db);
-        myDedInverseMap = new DeductionNestedLoop();
-        myDedNotNull = new DeductionNotNullJoin();
-        myDedSameConcp = new DeductionSameConceptOrAs();
-
-        listAnswerEntriesTotimestamp = new LinkedList<>();
-        dedGraphSelect = new LinkedList<>();
-
-        mapAnsIDtoEntry = new TreeMap<>();
-        mapAnsIDToTimeSecs = new HashMap<>();
-        mapAnsIDToQueryEnts = new TreeMap<>();
-        mapAnsIDToPredicates = new TreeMap<>();
-        mapAnsEntryToListValues = new HashMap<>();
-        mapLogClQueryToAnsEntry = new HashMap<>();
-        mapLogClQueryToDedGraph = new HashMap<>();
-        mapLogClQueryToTimeSecs = new HashMap<>();
-        mapLogClQueryToAllTPEnts = new HashMap<>();
-        mapLogClQueryToTimestamp = new HashMap<>();
-        mapLogClQueryToProjVars = new HashMap<>();
-        mapAnsIDToTimestamp = new HashMap<>();
-        mapTPtoAnswersSourcesInverse = new HashMap<>();
-        mapAnsIDToQueryProjVars = new HashMap<>();
-
-        mapGroundTruthPairs = new HashMap<>();
-        mapGroundTruthTPs = new HashMap<>();
-        mapTruePositivePairs = new HashMap<>();
-        mapObservedTPs = new HashMap<>();
-
-        truePositivesPairs = 0;
-        groundTruthPairs = 0;
-        truePositivesTPs = 0;
-        groundTruthTPs = 0;
-        totalPairs = 0;
-        totalTPs = 0;
-
-        mapEndpointToName = new HashMap<>();
-        mapAnsEntryToAllSignatures = new HashMap<>();
-        mapAnsSingatureToAllValues = new HashMap<>();
-        mapDTPtoCANCELofEG = new HashMap<>();
-        mapGroundTruthHashMaps = new HashMap<>();
-    }
 
     public Deduction() {
 
@@ -261,6 +215,54 @@ public class Deduction {
 
         mapAnsEntryToAllSignatures = new HashMap<>();
         mapAnsSingatureToAllValues = new HashMap<>();
+        mapGroundTruthHashMaps = new HashMap<>();
+    }
+    
+        public Deduction(List<Document> listDocument, MonetDBManag db) throws ParserConfigurationException {
+
+        myMDB = db;
+        docAnswers = null;
+        mapAnsIDToLogClQuery = new HashMap<>();
+        myDedCLean = new DeductionLogClean(listDocument, db);
+        myDedGonstruct = new DeductionGraphConstruction(listDocument, db);
+        myDedInverseMap = new DeductionNestedLoop();
+        myDedNotNull = new DeductionNotNullJoin();
+        myDedSameConcp = new DeductionSameConceptOrAs();
+
+        listAnswerEntriesTotimestamp = new LinkedList<>();
+        dedGraphSelect = new LinkedList<>();
+
+        mapAnsIDtoEntry = new TreeMap<>();
+        mapAnsIDToTimeSecs = new HashMap<>();
+        mapAnsIDToQueryEnts = new TreeMap<>();
+        mapAnsIDToPredicates = new TreeMap<>();
+        mapAnsEntryToListValues = new HashMap<>();
+        mapLogClQueryToAnsEntry = new HashMap<>();
+        mapLogClQueryToDedGraph = new HashMap<>();
+        mapLogClQueryToTimeSecs = new HashMap<>();
+        mapLogClQueryToAllTPEnts = new HashMap<>();
+        mapLogClQueryToTimestamp = new HashMap<>();
+        mapLogClQueryToProjVars = new HashMap<>();
+        mapAnsIDToTimestamp = new HashMap<>();
+        mapTPtoAnswersSourcesInverse = new HashMap<>();
+        mapAnsIDToQueryProjVars = new HashMap<>();
+
+        mapGroundTruthPairs = new HashMap<>();
+        mapGroundTruthTPs = new HashMap<>();
+        mapTruePositivePairs = new HashMap<>();
+        mapObservedTPs = new HashMap<>();
+
+        truePositivesPairs = 0;
+        groundTruthPairs = 0;
+        truePositivesTPs = 0;
+        groundTruthTPs = 0;
+        totalPairs = 0;
+        totalTPs = 0;
+
+        mapEndpointToName = new HashMap<>();
+        mapAnsEntryToAllSignatures = new HashMap<>();
+        mapAnsSingatureToAllValues = new HashMap<>();
+        mapDTPtoCANCELofEG = new HashMap<>();
         mapGroundTruthHashMaps = new HashMap<>();
     }
 

@@ -82,23 +82,23 @@ public class Main {
         loadDB = false;
         resetDB = false;
         setCouchDB = false;
-        setMonetDB = false;
+        setMonetDB = true;
         cntSELECTS = 0;
         cntall = 0;
         single = true;
 
-        logPath = "/home/nassopoulos-g/CD6.txt";
+        logPath = "/home/nassopoulos-g/capture.log";
 
         nameDB = "mydatabasefedxcd1";
-        engineName = "FedX";
+        engineName = "ANAPSID";
         collectionName = "CD";
         collectionName = collectionName + engineName;
 
-        inverseMapping = true;
+        inverseMapping = false;
         simpleExecution = false;
         help = false;
         windowSlice = 1000000000;
-        windowJoin = 10;
+        windowJoin = 1000000;
         inverseThresh = 0.01;
         traceGen=true;
     }
@@ -286,6 +286,16 @@ public class Main {
 
         initVariables();
         getParameteres(args);
+        
+        if(setMonetDB){
+            try {
+                 
+                  String command = "monetdbd start myMONETDB/";
+                  Process perkele = Runtime.getRuntime().exec(command);
+            } catch (IOException e) {
+                
+            }
+        }
 
         if (help) {
 

@@ -996,7 +996,6 @@ public class DeductionNestedLoop {
             valuesCandVarAns = mapCandVarToAllAnsMaps.get(keyOuter);
             valuesCandVar = mapCandVarToMatchedVals.get(keyOuter);
             double percentageMatchec = (double)valuesCandVar.size() / valuesCandVarAns.size();
-            
 
             if(indxCTP==8){
                 int ar=0;

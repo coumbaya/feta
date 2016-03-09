@@ -1,6 +1,8 @@
 package myfeta;
 
+import java.io.FileWriter;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -11,8 +13,10 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import static myfeta.Deduction.docAnswers;
 import static myfeta.Deduction.mapAnsIDtoEntry;
 import static myfeta.Main.nameDB;
+import static myfeta.Main.traceGen;
 import static myfeta.Main.verbose;
 
 /**
@@ -144,7 +148,7 @@ public class MonetDBManag {
      * @throws SQLException
      */
     public void saveEntryAnswers(String table, String clientIpAddress, String clientTCPport,
-            String endpointPort, String answer, String time, String query, int indexEntry) throws SQLException {
+            String endpointPort, String answer, String time, String query, int indexEntry) throws SQLException, IOException {
 
         String none = "";
         List<String> ansToVarList = null;
@@ -160,9 +164,21 @@ public class MonetDBManag {
 
             query = query.replace("\'", "\"");
         }
+        
+            if (answer.contains("\'")) {
+
+            answer = answer.replace("\'", "\"");
+        }
+        
+        String ansCopy=answer;
+         /* try (
+                    FileWriter writer = new FileWriter("000.txt")) {
+                writer.write(answer);
+            }*/
+
 
         //st.executeUpdate("INSERT INTO tableQrsAndAns" + " VALUES ('" + IDAns + "','" + clientIpAddress + "', '" + clientTCPport + "', '" + endpointPort + "', '" + answer + "', '" + time + "', '" + query + "');");
-        st.executeUpdate("INSERT INTO tableQrsAndAns" + nameDB + "" + " VALUES ('" + IDAns + "','" + clientIpAddress + "', '" + clientTCPport + "', '" + endpointPort + "', '" + none + "', '" + time + "', '" + query + "');");
+        st.executeUpdate("INSERT INTO tableQrsAndAns" + nameDB + "" + " VALUES ('" + IDAns + "','" + clientIpAddress + "', '" + clientTCPport + "', '" + endpointPort + "', '" + answer + "', '" + time + "', '" + query + "');");
         IDAns++;
 
     }
@@ -346,38 +362,39 @@ public class MonetDBManag {
         return entryInformation;
     }
 
-    /**
+        /**
      * Parse every answer string, and match all answer entities (IRIs/Literals)
      * to the corresponding hashMaps
-     *
-     * @throws SQLException
+     * @throws java.io.IOException
+     * @throws java.net.URISyntaxException
+     * @throws java.sql.SQLException
      */
-    public void setAnswerStringToMaps() throws SQLException {
-
+    public void setAnswerStringToMaps() throws IOException, URISyntaxException, SQLException {
+        
+       
         List<String> entryInformation = null;
-        List<String> tmpListValues = null;
-        String Answer = "", ClientIpAddress = "", requestQuery = "", receptTime = "", endpoint = "";
+        String Answer = "", ClientIpAddress = "", requestQuery = "", receptTime = "", endpoint = "";      
         int monetSIze = getTableSize("tableQrsAndAns" + nameDB);
 
         for (int i = 1; i < monetSIze; i++) {
-
-            entryInformation = getEntryAnswers(i);
-            mapAnsIDtoEntry.put(i, entryInformation);
-
-            if (!entryInformation.isEmpty()) {
-
-                mapAnswerEntryToAnswerEntities.put(i, tmpListValues);
+       
+                entryInformation  = getEntryAnswers(i);         
+                mapAnsIDtoEntry.put(i, entryInformation);
 
                 if (!entryInformation.isEmpty()) {
 
-                    Answer = entryInformation.get(0);
-                    endpoint = entryInformation.get(1);
-                    ClientIpAddress = entryInformation.get(2);
-                    receptTime = entryInformation.get(3);
-                    requestQuery = entryInformation.get(4);
-                    myBasUtils.setVarsToAnswEntities(i, requestQuery, Answer);
+                    entryInformation = mapAnsIDtoEntry.get(i);
+                    if (!entryInformation.isEmpty()) {
+
+                        Answer = entryInformation.get(0);
+                        endpoint = entryInformation.get(1);
+                        ClientIpAddress = entryInformation.get(2);
+                        receptTime = entryInformation.get(3);
+                        requestQuery = entryInformation.get(4);
+                        myBasUtils.setVarsToAnswEntities(i, requestQuery, Answer);
+                    }
+
                 }
-            }
 
         }
     }
