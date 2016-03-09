@@ -41,6 +41,10 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
 # Run FETA
 
+In order to execute FETA, you must run the command:
+
+$ java -jar "myFETA.jar" -[option]
+
 The first step, is to load the captured trace into a database, of your DBMS choice
 
 --load or -l "path_to_capture": for loading a capture into the DB
