@@ -53,7 +53,7 @@ The first step, is to load the captured trace into a database, of your DBMS choi
 
 Then, you can launch FETA's deduction algorithm:
 
---inverseMap or -i "inverse_mapping_threshold": for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX, and setting the threshold to validate a matching
+--inverseMap or -i "inverse_mapping_threshold": for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX, and setting the minimum threshold to validate a matching
 
 --sameConcept or -c "path_to_endpoints_addresses": enabling "SameConcept/SameAs" heuristic and passing endpoints IP Addresses as argument
 
@@ -63,7 +63,7 @@ Then, you can launch FETA's deduction algorithm:
 
 # Testing FETA with FedBench queries' traces
 
-In order to test FETA's fonctionality, you can use traces of FedBench's Cross Domaian (CD) and Life Science (LS) collections, captured by using either FedX or ANAPSID. 
+In order to test FETA's functionality, you can use traces of FedBench's Cross Domain (CD) and Life Science (LS) collections, captured by using either FedX or ANAPSID. 
 
 1. In directory "query_traces_isolated" you find traces of queries executed in isolation.
 2. In directory "query_traces_concurrency" you find traces of queries of the same collection executed concurrently.
