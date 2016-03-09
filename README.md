@@ -45,7 +45,7 @@ In order to execute FETA, you must run the command:
 
 $ java -jar "myFETA.jar" -[option]
 
-The first step, is to load the captured trace into a database, of your DBMS choice
+The first step, is to load the captured trace into a database, of your DBMS choice:
 
 --load or -l "path_to_capture": for loading a capture into the DB
 
