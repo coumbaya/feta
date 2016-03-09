@@ -307,16 +307,19 @@ public class DeductionNotNullJoin {
                                 + mapLogClQueryToAllTPEnts.get(currSrcQuers.get(k)).get(l + 1) + " " + mapLogClQueryToAllTPEnts.get(currSrcQuers.get(k)).get(l + 2) + " ");
 
                         allEndpointsPorts = mapDTPToEndpsSrc.get(currTP);
-                        allEndpointsPorts = myBasUtils.sortAndRemoveRedundancy(allEndpointsPorts);
-                        allEndpointsNames = new LinkedList<>();
+                        if (allEndpointsPorts != null) {
 
-                        for (int t = 0; t < allEndpointsPorts.size(); t++) {
+                            allEndpointsPorts = myBasUtils.sortAndRemoveRedundancy(allEndpointsPorts);
+                            allEndpointsNames = new LinkedList<>();
 
-                            allEndpointsNames.add(mapEndpointToName.get(allEndpointsPorts.get(t)));
+                            for (int t = 0; t < allEndpointsPorts.size(); t++) {
 
+                                allEndpointsNames.add(mapEndpointToName.get(allEndpointsPorts.get(t)));
+
+                            }
+
+                            System.out.println("\t\t\t\t\t received at: " + allEndpointsNames);
                         }
-
-                        System.out.println("\t\t\t\t\t received at: " + allEndpointsNames);
                     }
                 } else {
                     System.out.println("\t\t\t Graph no [" + count2 + "] " + "size : " + 1 + " because of DTP out of timestamp Tjoin of LogClean query no"
@@ -334,16 +337,20 @@ public class DeductionNotNullJoin {
 
                         cleanTP = myDedUtils.getCleanTP(currTP);
                         allEndpointsPorts = mapDTPToEndpsSrc.get(cleanTP);
-                        allEndpointsPorts = myBasUtils.sortAndRemoveRedundancy(allEndpointsPorts);
-                        allEndpointsNames = new LinkedList<>();
 
-                        for (int t = 0; t < allEndpointsPorts.size(); t++) {
+                        if (allEndpointsPorts != null) {
 
-                            allEndpointsNames.add(mapEndpointToName.get(allEndpointsPorts.get(t)));
+                            allEndpointsPorts = myBasUtils.sortAndRemoveRedundancy(allEndpointsPorts);
+                            allEndpointsNames = new LinkedList<>();
 
+                            for (int t = 0; t < allEndpointsPorts.size(); t++) {
+
+                                allEndpointsNames.add(mapEndpointToName.get(allEndpointsPorts.get(t)));
+
+                            }
+
+                            System.out.println("\t\t\t\t\t received at: " + allEndpointsNames);
                         }
-
-                        System.out.println("\t\t\t\t\t received at: " + allEndpointsNames);
                     }
 
                     currSrcJoin = new LinkedList<>();
