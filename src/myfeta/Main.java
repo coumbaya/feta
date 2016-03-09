@@ -85,7 +85,7 @@ public class Main {
         setMonetDB = false;
         cntSELECTS = 0;
         cntall = 0;
-        single = false;
+        single = true;
 
         logPath = "/home/nassopoulos-g/CD6.txt";
 
@@ -98,7 +98,7 @@ public class Main {
         simpleExecution = false;
         help = false;
         windowSlice = 1000000000;
-        windowJoin = 1000000;
+        windowJoin = 10;
         inverseThresh = 0.01;
         traceGen=true;
     }

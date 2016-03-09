@@ -300,7 +300,7 @@ public class DeductionNotNullJoin {
                                 + currSrcQuers + " corresponding to LogAnswer entries: " + mapLogClQueryToAnsEntry.get(currSrcQuers.get(k)));
 
                         count++;
-                        currTP = new LinkedList<>(currSrcEntities.subList(l, 3));
+                        currTP = new LinkedList<>(currSrcEntities.subList(l, l+3));
                         myDedUtils.updatePrecisionRecalTPinfo(currTP);
 
                         System.out.println("\t\t\t\t TP no [1" + "] " + mapLogClQueryToAllTPEnts.get(currSrcQuers.get(k)).get(l + 0) + " "
@@ -329,7 +329,7 @@ public class DeductionNotNullJoin {
                     for (int l = 0; l < currSrcEntities.size(); l += 3) {
 
                         count++;
-                        currTP = new LinkedList<>(currSrcEntities.subList(l, 3));
+                        currTP = new LinkedList<>(currSrcEntities.subList(l, l+3));
                         myDedUtils.updatePrecisionRecalTPinfo(currTP);
                         allTPsInQuery.add(currTP);
                         System.out.println("\t\t\t\t TP no [" + count + "] " + currSrcEntities.get(l + 0) + " "
@@ -407,9 +407,7 @@ public class DeductionNotNullJoin {
      *
      */
     public void notNullJoinComparison() {
-
-        System.out.println();
-
+        
         List<String> valueskeyInner = null;
         List<String> valueskeyOuter = null;
         List<String> valuesNestedLoopOuter = null;
@@ -420,7 +418,6 @@ public class DeductionNotNullJoin {
         List<String> tmpOuterShort = new LinkedList<>();
         String outerVarClean = "";
         String innerVarClean = "";
-
         HashMap<List<List<String>>, Integer> alreadySeen = new HashMap<>();
 
         for (List<String> keyOuter : mapDTPtoAnswTotal.keySet()) {
