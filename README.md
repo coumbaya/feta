@@ -63,7 +63,7 @@ Then, you can launch FETA's deduction algorithm:
 
 # Testing FETA with FedBench queries' traces
 
-In order to test FETA's fonctionality, you can use traces of FedBench's Cross Domaian and Life Science collections, captured by using either FedX or ANAPSID. 
+In order to test FETA's fonctionality, you can use traces of FedBench's Cross Domaian (CD) and Life Science (LS) collections, captured by using either FedX or ANAPSID. 
 
 1. In directory "query_traces_isolated" you find traces of queries executed in isolation.
 2. In directory "query_traces_concurrency" you find traces of queries of the same collection executed concurrently.

@@ -1,0 +1,1208 @@
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8715
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8715/dbpediaImages
+Content-Type: application/sparql-results+json
+Content-Length: 376
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Albedo" }	, "p": { "type": "uri", "value": "http://xmlns.com/foaf/0.1/depiction" }	, "o": { "type": "uri", "value": "http://upload.wikimedia.org/wikipedia/commons/1/18/Albedo-e_hg.svg" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8714
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:04 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8714/dbpediaGeoCordinates
+Content-Type: application/sparql-results+json
+Content-Length: 359
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Magnesia" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://www.opengis.net/gml/_Feature" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8712
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:04 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8712/dbpediaArticles
+Content-Type: application/sparql-results+json
+Content-Length: 379
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Cetuximab" }	, "p": { "type": "uri", "value": "http://www.w3.org/2004/02/skos/core#subject" }	, "o": { "type": "uri", "value": "http://dbpedia.org/resource/Category:Monoclonal_antibodies" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8711
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8711/dbpediaLabels
+Content-Type: application/sparql-results+json
+Content-Length: 391
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Sant_Juli%C3%A0_de_L%C3%B2ria" }	, "p": { "type": "uri", "value": "http://www.w3.org/2000/01/rdf-schema#label" }	, "o": { "type": "literal", "xml:lang": "en", "value": "Sant Juli\u00E0 de L\u00F2ria" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8710
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8710/dbpediaInfoBox
+Content-Type: application/sparql-results+json
+Content-Length: 355
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Goni" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://www.opengis.net/gml/_Feature" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8718
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8718/dbpediaNytimes
+Content-Type: application/sparql-results+json
+Content-Length: 369
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Cortina_d%27Ampezzo" }	, "p": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#sameAs" }	, "o": { "type": "uri", "value": "http://data.nytimes.com/N28765254384949632881" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8705
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8705/jamendo
+Content-Type: application/sparql-results+json
+Content-Length: 374
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://creativecommons.org/licenses/by-nc-nd/2.0/be/" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://xmlns.com/foaf/0.1/Document" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8713
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:04 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8713/dbpediaCategoryLabels
+Content-Type: application/sparql-results+json
+Content-Length: 360
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Category:Anarchism" }	, "p": { "type": "uri", "value": "http://www.w3.org/2000/01/rdf-schema#label" }	, "o": { "type": "literal", "xml:lang": "en", "value": "Anarchism" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8717
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8717/dbpediaPerson
+Content-Type: application/sparql-results+json
+Content-Length: 352
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Nero" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://xmlns.com/foaf/0.1/Person" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8716
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8716/dbpediaSkos
+Content-Type: application/sparql-results+json
+Content-Length: 377
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Category:Anarchism" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://www.w3.org/2004/02/skos/core#Concept" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8703
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8703/geonames
+Content-Type: application/sparql-results+json
+Content-Length: 360
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://sws.geonames.org/6537820/" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://www.geonames.org/ontology#Feature" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8708
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8708/dbpediaOwl
+Content-Type: application/sparql-results+json
+Content-Length: 355
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/ontology/Drug" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#Class" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8719
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8719/dbpediaLGD
+Content-Type: application/sparql-results+json
+Content-Length: 359
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Goni" }	, "p": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#sameAs" }	, "o": { "type": "uri", "value": "http://linkedgeodata.org/triplify/node/72990875#id" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8709
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8709/dbpediaInstancesTypes
+Content-Type: application/sparql-results+json
+Content-Length: 360
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://dbpedia.org/resource/Cetuximab" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://www.w3.org/2002/07/owl#Thing" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8707
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8707/linkedmdb
+Content-Type: application/sparql-results+json
+Content-Length: 364
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://data.linkedmdb.org/resource/actor/947" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://xmlns.com/foaf/0.1/Person" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8704
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8704/nytimesNews
+Content-Type: application/sparql-results+json
+Content-Length: 360
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://sws.geonames.org/3041565/" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://www.geonames.org/ontology#Feature" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8706
+Content-Length: 78
+
+queryLn=SPARQL&query=SELECT+*+WHERE+%7B+%3Fs+%3Fp+%3Fo+%7D+LIMIT+1&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:09 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8706/semanticWebDogFood
+Content-Type: application/sparql-results+json
+Content-Length: 398
+
+
+{ "head": { "link": [], "vars": ["s", "p", "o"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "s": { "type": "uri", "value": "http://data.semanticweb.org/organization/humboldt-universitaet-zu-berlin" }	, "p": { "type": "uri", "value": "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" }	, "o": { "type": "uri", "value": "http://xmlns.com/foaf/0.1/Organization" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8705
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8705/jamendo
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8704
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8704/nytimesNews
+Content-Type: application/sparql-results+json
+Content-Length: 43
+
+{  "head": { "link": [] }, "boolean": true}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8710
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8710/dbpediaInfoBox
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8712
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8712/dbpediaArticles
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8712
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8712/dbpediaArticles
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8713
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8713/dbpediaCategoryLabels
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8713
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8713/dbpediaCategoryLabels
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8714
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8714/dbpediaGeoCordinates
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8714
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8714/dbpediaGeoCordinates
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8715
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8715/dbpediaImages
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8715
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8715/dbpediaImages
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8710
+Content-Length: 182
+
+queryLn=SPARQL&query=SELECT++%3Fparty+WHERE+%7B+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8710/dbpediaInfoBox
+Content-Type: application/sparql-results+json
+Content-Length: 227
+
+
+{ "head": { "link": [], "vars": ["party"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "party": { "type": "uri", "value": "http://dbpedia.org/resource/Democratic_Party_%28United_States%29" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8710
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8710/dbpediaInfoBox
+Content-Type: application/sparql-results+json
+Content-Length: 43
+
+{  "head": { "link": [] }, "boolean": true}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8709
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8709/dbpediaInstancesTypes
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8709
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8709/dbpediaInstancesTypes
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8719
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8719/dbpediaLGD
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8719
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8719/dbpediaLGD
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8711
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8711/dbpediaLabels
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8711
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8711/dbpediaLabels
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8718
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8718/dbpediaNytimes
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8718
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8718/dbpediaNytimes
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8708
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8708/dbpediaOwl
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8708
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8708/dbpediaOwl
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8717
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8717/dbpediaPerson
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8717
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8717/dbpediaPerson
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8716
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8716/dbpediaSkos
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8716
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8716/dbpediaSkos
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8703
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8703/geonames
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8703
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8703/geonames
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8705
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8705/jamendo
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8707
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8707/linkedmdb
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8707
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8707/linkedmdb
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8704
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8704/nytimesNews
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: application/x-binary-rdf-results-table;q=0.8
+Accept: application/sparql-results+xml
+Accept: application/xml
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+Accept: text/tab-separated-values;q=0.8
+Accept: text/csv;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8704
+Content-Length: 259
+
+queryLn=SPARQL&query=SELECT+++%3Fpage+WHERE+%7B+%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.+%3Fx+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23sameAs%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8704/nytimesNews
+Content-Type: application/sparql-results+json
+Content-Length: 245
+
+
+{ "head": { "link": [], "vars": ["page"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "page": { "type": "uri", "value": "http://topics.nytimes.com/top/reference/timestopics/people/o/barack_obama/index.html" }} ] } }
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8706
+Content-Length: 118
+
+queryLn=SPARQL&query=ASK+%7B%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8706/semanticWebDogFood
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
+POST /sparql/ HTTP/1.1
+Content-Type: application/x-www-form-urlencoded; charset=utf-8
+Accept: text/boolean
+Accept: application/sparql-results+xml;q=0.8
+Accept: application/xml;q=0.8
+Accept: application/sparql-results+json;q=0.8
+Accept: application/json;q=0.8
+User-Agent: Jakarta Commons-HttpClient/3.1
+Host: 172.16.9.15:8706
+Content-Length: 162
+
+queryLn=SPARQL&query=ASK+%7B%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty+.++%7D&infer=falseHTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Wed, 02 Dec 2015 13:16:10 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8706/semanticWebDogFood
+Content-Type: application/sparql-results+json
+Content-Length: 44
+
+{  "head": { "link": [] }, "boolean": false}
