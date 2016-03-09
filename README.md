@@ -35,19 +35,19 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       
         https://www.monetdb.org/Home
 
-      MonetDB is a full-fledged relational column-oriented DBMS database management system, that supports the SQL:2003       standard, provide client interfaces (e.g. ODBC and JDBC), as well as application programming interfaces for            various languages (C, Python, Java, Ruby, Perl, and PHP).
+      MonetDB is a full-fledged relational column-oriented DBMS, that supports the SQL:2003       standard, provide client interfaces (e.g. ODBC and JDBC), as well as application programming interfaces for            various languages (C, Python, Java, Ruby, Perl, and PHP).
    
       This is an alternative DB system used to store FETA's federated log.
 
 # Run FETA
 
-The first step, is to load the captured trace into a database, of your storage DB's choice:
+The first step, is to load the captured trace into a database, of your DBMS choice
 
 --load or -l "path_to_capture": for loading a capture into the DB
 
 --resetDB or -r: for reseting an existing DB
 
---systemDB or -s "systemDB_to_use": for setting "couchDB" or "monetDB" system (by default "couchDB")
+--systemDB or -s "dbms_to_use": for setting "couchDB" or "monetDB" system (by default "couchDB")
 
 --nameDB or -n "db_name": for setting the DB name
 
