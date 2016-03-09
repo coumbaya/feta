@@ -6,7 +6,7 @@ A FEderated TrAcking System for the Linked Data
 
 # Install FETA's dependencies
 
-FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to FETA, you need to execute installDependLinux.sh and installDependMac.sh, respectively. This script will install:
+FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to FETA, you need to execute installDepends.sh. This script will install:
 
    1. justniffer :Network TCP Packet Sniffer
    
@@ -35,7 +35,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       
         https://www.monetdb.org/Home
 
-      MonetDB is a full-fledged relational column-oriented DBMS database management system, that supports the SQL:2003       standard, provide client interfaces (e.g. ODBC and JDBC), as well as application programming interfaces for            various languages (C, Python, Java, Ruby, Perl, and PHP)
+      MonetDB is a full-fledged relational column-oriented DBMS database management system, that supports the SQL:2003       standard, provide client interfaces (e.g. ODBC and JDBC), as well as application programming interfaces for            various languages (C, Python, Java, Ruby, Perl, and PHP).
    
       This is an alternative DB system used to store FETA's federated log.
 
@@ -43,30 +43,30 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
 The first step, is to load the captured trace into a database, of your storage DB's choice:
 
---load or -l: for loading a new DB
+--load or -l <path_to_capture>: for loading a capture into the DB
 
 --resetDB or -r: for reseting an existing DB
 
---systemDB or -s: for setting "couchDB" or "monetDB" system (by default "couchDB")
+--systemDB or -s <systemDB_to_use>: for setting "couchDB" or "monetDB" system (by default "couchDB")
 
---nameDB or -n: for setting the DB name
+--nameDB or -n <db_name>: for setting the DB name
 
 Then, you can launch FETA's deduction algorithm:
 
---inverseMap or -i: for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX
+--inverseMap or -i <inverse_mapping_threshold>: for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX, and setting the threshold to validate a matching
 
---sameConcept or -c: enabling "SameConcept/SameAs" heuristic and passing endpoints IP Addresses as argument
+--sameConcept or -c <path_to_endpoints_addresses>: enabling "SameConcept/SameAs" heuristic and passing endpoints IP Addresses as argument
 
---setWinSlice or -ws for setting the maximum temporal distance between first and last subquery, defining the input DB slice (by default 1000000 seconds)
+--setWinSlice or -ws <window_in_seconds>: for setting the maximum temporal distance between first and last subquery, defining the input DB slice (by default 1000000 seconds)
 
---setWinJoin or -wj for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 1000000 seconds)
+--setWinJoin or -wj <window_in_seconds>: for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 1000000 seconds)
 
 # Testing FETA with FedBench queries' traces
 
 In order to test FETA's fonctionality, you can use traces of FedBench's Cross Domaian and Life Science collections, captured by using either FedX or ANAPSID. 
 
-1. In directory <name> you may find traces of queries executed in isolation.
-2. In directory <name> you may traces of queries of the same collection executed concurrently.
+1. In directory "query_traces_isolated" you find traces of queries executed in isolation.
+2. In directory "query_traces_concurrency" you find traces of queries of the same collection executed concurrently.
 
 # About and Contact
 
