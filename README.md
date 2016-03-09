@@ -71,7 +71,4 @@ In order to test FETA's fonctionality, you can use traces of FedBench's Cross Do
 # About and Contact
 
 FETA was developed at University of Nantes as an ongoing academic effort. You can contact the current maintainers by email at georges.nassopoulos[at]etu[dot]univ-nantes[dot]fr.
-<<<<<<< HEAD
 
-=======
->>>>>>> 15d87a002b160ed14c18a29536fdfa06df791a56
