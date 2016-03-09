@@ -251,6 +251,8 @@ public class DeductionNestedLoop {
 
             if (!inverseMapping) {
 
+               // System.out.println(tmpCTP);
+                 //System.out.println(i);
                 myDedUtils.setDTPHashInfo(tmpCTP, i);
                 allCTPconsts = myDedUtils.getValuesFromCTP(i);
                 myBasUtils.insertToMap1(mapCTPtoAllDTPs, tmpCTP, tmpCTP);

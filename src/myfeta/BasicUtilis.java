@@ -1311,6 +1311,25 @@ public class BasicUtilis {
             Collections.sort(inputList);
         return inputList;
     }
+    
+        /**
+     * 
+     * @param inputList
+     * @return 
+     */
+    public List<Integer> sortAndRemoveRedundancy2(List<Integer> inputList){
+        
+        //BUUUUUUUUUG create clone
+     //   List<String> sortedList= new LinkedList<>();
+        
+          HashSet hs = new HashSet();
+            hs.addAll(inputList);
+            inputList.clear();
+            inputList.addAll(hs);
+            Collections.sort(inputList);
+        return inputList;
+    }
+
 
     /**
      * Get all distinct IRIs or Literals, contained in answer of json format

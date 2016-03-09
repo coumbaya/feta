@@ -20,10 +20,10 @@ import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 import static myfeta.Main.collectionName;
-import static myfeta.Main.nameDB;
 import static myfeta.Main.setMonetDB;
 import static myfeta.Main.simpleExecution;
 import static myfeta.Main.single;
+import static myfeta.Main.traceGen;
 import static myfeta.Main.windowJoin;
 import org.jdom2.JDOMException;
 
@@ -351,6 +351,7 @@ public class Deduction {
             getGroundTruthHashMaps();
         }
 
+      
         //Apply "LogClean" heuristic
         myDedCLean.LogClean(deductionWindow);
 
@@ -381,6 +382,8 @@ public class Deduction {
         }
 
     }
+    
+   
 
     public void matchEndpointToName() {
 
@@ -410,7 +413,7 @@ public class Deduction {
      *
      * @throws java.sql.SQLException
      */
-    public void loadAnsInRAM() throws SQLException {
+    public void loadAnsInRAM() throws SQLException, IOException, URISyntaxException {
 
         if (setMonetDB) {
 
@@ -419,6 +422,7 @@ public class Deduction {
 
             myDB.addDocument("endpointsAnswers" + collectionName);
             docAnswers = myDB.getDocument("endpointsAnswers" + collectionName);
+           
             myDB.setAnswerStringToMaps();
         }
     }

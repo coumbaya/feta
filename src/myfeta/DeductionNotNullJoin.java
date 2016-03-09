@@ -2,9 +2,7 @@ package myfeta;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -39,7 +37,6 @@ import static myfeta.DeductionNestedLoop.mapDTPtoJoinBGP;
 import static myfeta.DeductionNestedLoop.mapPairExclGroup;
 import static myfeta.DeductionNestedLoop.notnullJoinBGPs;
 import static myfeta.DeductionUtils.listBGPsremoveAnswer;
-import static myfeta.Main.collectionName;
 import static myfeta.Main.engineName;
 import static myfeta.Main.single;
 import static myfeta.Main.windowJoin;
@@ -63,17 +60,9 @@ public class DeductionNotNullJoin {
 
     public static List<List<List<String>>> setDTPbasedAnswersLatest;
     public static List<List<List<String>>> notnullJoinBGPsFinal;
-    // map each pair of deduced triple patterns to their associated relation: Alternative inverese mapping vars, exclusive groups, nested loop or symmetric hash
-    public static HashMap<Integer, List<Integer>> mapNodeToMergeTPs;
-    public static HashMap<Integer, String> mapNodeToNewString;
-    public static HashMap<List<Integer>, String> mapPairNodesJoinRel;
-    public static HashMap<Integer, Integer> mapOldIDToNew;
     public static HashMap<Integer, List<String>> mapBGPtoPredicates;
     public static HashMap<List<List<String>>, Integer> mapAlreadySeenJoin;
-    public static HashMap<List<Integer>, String> mapPairNodesConnection;
     List<Integer> alreadySeenTPs;
-    List<Integer> alreadySeenConnectedNestedTPs;
-    List<Integer> alreadySeenConnectedSymhashTPs;
     List<String> allEndpoints;
 
     public DeductionNotNullJoin() throws ParserConfigurationException {
@@ -87,8 +76,6 @@ public class DeductionNotNullJoin {
         notnullJoinBGPsFinal = new LinkedList<>();
         alreadySeenTPs = new LinkedList<>();
         allEndpoints = new LinkedList<>();
-        alreadySeenConnectedNestedTPs = new LinkedList<>();
-        alreadySeenConnectedSymhashTPs = new LinkedList<>();
         setDTPbasedAnswersLatest = new LinkedList<>();
         mapBGPtoPredicates = new HashMap<>();
         mapAlreadySeenJoin = new HashMap<>();
@@ -111,9 +98,8 @@ public class DeductionNotNullJoin {
         notNullJoinComparison();
 
         //find which deduced triple paterns do not belong to any FETA BGP graph
-        //and get the total number of BGPs (i.e., deduced by FETA + subqueries not combined)
-        // totalBGPs = triplePatternsNotInDeducedBGP();
-        showMissingPairs();
+        //and show the totality of deduced BGPs (i.e., deduced by FETA + subqueries not combined)
+        showTotalBGPs();
 
         // set ground truth structures, for isolated query execution
         if (single) {
@@ -134,6 +120,8 @@ public class DeductionNotNullJoin {
         int idBGP = 0;
 
         List<String> currTP = new LinkedList<>();
+        List<String> allEndpointsPorts = null;
+        List<String> allEndpointsNames = null;
 
         System.out.println("\t*********Query Engine IP Address: " + engineIPAddress);
         System.out.println("\t*********Time interval of captured queries ["
@@ -161,20 +149,13 @@ public class DeductionNotNullJoin {
 
             for (int j = 0; j < notnullJoinBGPsFinal.get(i).size(); j++) {
 
-                currTP = new LinkedList<>();
-                currTP.add(notnullJoinBGPsFinal.get(i).get(j).get(0));
-                currTP.add(notnullJoinBGPsFinal.get(i).get(j).get(1));
-                currTP.add(notnullJoinBGPsFinal.get(i).get(j).get(2));
-
-                List<String> allEndpointsPorts = mapDTPToEndpsSrc.get(currTP);
-                List<String> allEndpointsNames = new LinkedList<>();
+                currTP = new LinkedList<>(notnullJoinBGPsFinal.get(i).get(j).subList(0, 3));
+                allEndpointsPorts = mapDTPToEndpsSrc.get(currTP);
+                allEndpointsNames = new LinkedList<>();
 
                 if (allEndpointsPorts != null) {
-                    HashSet hs = new HashSet();
-                    hs.addAll(allEndpointsPorts);
-                    allEndpointsPorts.clear();
-                    allEndpointsPorts.addAll(hs);
-                    Collections.sort(allEndpointsPorts);
+
+                    allEndpointsPorts = myBasUtils.sortAndRemoveRedundancy(allEndpointsPorts);
 
                     for (int t = 0; t < allEndpointsPorts.size(); t++) {
 
@@ -182,7 +163,7 @@ public class DeductionNotNullJoin {
 
                     }
                 } else {
-                  //  System.out.println("BUUUG no endpoints matched for: " + currTP);
+                    //  System.out.println("BUUUG no endpoints matched for: " + currTP);
                     continue;
                 }
 
@@ -255,19 +236,23 @@ public class DeductionNotNullJoin {
         List<Integer> sourceQueries = null;
         List<Integer> alreadySeen = new LinkedList<>();
         List<String> currTP = new LinkedList<>();
-        HashMap<Integer, List<Integer>> mapQueriesToDeducedTPs = new HashMap<>();
-        HashMap<List<List<String>>, Integer> alreadySeenPair = new HashMap<>();
-        HashMap<List<String>, Integer> alreadySeenTP = new HashMap<>();
-        List<List<String>> allTPsInQuery = new LinkedList<>();
+        List<String> cleanTP = new LinkedList<>();
         List<String> outerTP = new LinkedList<>();
         List<String> innerTP = new LinkedList<>();
+        List<Integer> currSrcQuers = new LinkedList<>();
+        List<String> currSrcEntities = new LinkedList<>();
+        List<List<String>> allTPsInQuery = new LinkedList<>();
+        List<String> allEndpointsPorts = new LinkedList<>();
+        List<String> allEndpointsNames = new LinkedList<>();
+        List<List<String>> currSrcJoin = new LinkedList<>();
+        List<List<String>> currSrcJoin2 = new LinkedList<>();
+        HashMap<Integer, List<Integer>> mapQueriesToDeducedTPs = new HashMap<>();
+        HashMap<List<List<String>>, Integer> alreadySeenPair = new HashMap<>();
 
+        //Cacth all source queries of DTPs that did not participated in any join
         for (List<String> key : mapDTPToDeducedID.keySet()) {
 
-            List<String> keyShort = new LinkedList<>();
-            keyShort.add(key.get(0));
-            keyShort.add(key.get(1));
-            keyShort.add(key.get(2));
+            List<String> keyShort = new LinkedList<>(key.subList(0, 3));
 
             if (mapDTPToDeducedID.get(key) != null) {
 
@@ -294,49 +279,36 @@ public class DeductionNotNullJoin {
             }
         }
 
+        //Identify, if there exists, joins of these source queries
         for (Integer key : mapQueriesToDeducedTPs.keySet()) {
 
             count = 0;
             count2++;
-            List<Integer> tmpList = mapQueriesToDeducedTPs.get(key);
-            HashSet hs = new HashSet();
-            hs.addAll(tmpList);
-            tmpList.clear();
-            tmpList.addAll(hs);
-            Collections.sort(tmpList);
+            currSrcQuers = myBasUtils.sortAndRemoveRedundancy2(mapQueriesToDeducedTPs.get(key));
 
-            for (int k = 0; k < tmpList.size(); k++) {
-                List<String> tmpentites = mapLogClQueryToAllTPEnts.get(tmpList.get(k));
+            for (int k = 0; k < currSrcQuers.size(); k++) {
 
-                if (queries.get(tmpList.get(k)).contains("UNION") || queries.get(tmpList.get(k)).contains("UNION")) {
+                currSrcEntities = mapLogClQueryToAllTPEnts.get(currSrcQuers.get(k));
 
-                    for (int l = 0; l < tmpentites.size(); l += 3) {
+                if (queries.get(currSrcQuers.get(k)).contains("UNION") || queries.get(currSrcQuers.get(k)).contains("union")) {
+
+                    for (int l = 0; l < currSrcEntities.size(); l += 3) {
 
                         count2++;
 
                         System.out.println("\t\t\t Graph no [" + count2 + "] " + "size : " + 1 + " because of DTP out of timestamp Tjoin of LogClean query no"
-                                + tmpList + " corresponding to LogAnswer entries: " + mapLogClQueryToAnsEntry.get(tmpList.get(k)));
+                                + currSrcQuers + " corresponding to LogAnswer entries: " + mapLogClQueryToAnsEntry.get(currSrcQuers.get(k)));
 
                         count++;
-                        currTP = new LinkedList<>();
-                        currTP.add(tmpentites.get(l + 0));
-                        currTP.add(tmpentites.get(l + 1));
-                        currTP.add(tmpentites.get(l + 2));
-
+                        currTP = new LinkedList<>(currSrcEntities.subList(l, 3));
                         myDedUtils.updatePrecisionRecalTPinfo(currTP);
 
-                        System.out.println("\t\t\t\t TP no [1" + "] " + mapLogClQueryToAllTPEnts.get(tmpList.get(k)).get(l + 0) + " "
-                                + mapLogClQueryToAllTPEnts.get(tmpList.get(k)).get(l + 1) + " " + mapLogClQueryToAllTPEnts.get(tmpList.get(k)).get(l + 2) + " ");
+                        System.out.println("\t\t\t\t TP no [1" + "] " + mapLogClQueryToAllTPEnts.get(currSrcQuers.get(k)).get(l + 0) + " "
+                                + mapLogClQueryToAllTPEnts.get(currSrcQuers.get(k)).get(l + 1) + " " + mapLogClQueryToAllTPEnts.get(currSrcQuers.get(k)).get(l + 2) + " ");
 
-                        List<String> allEndpointsPorts = mapDTPToEndpsSrc.get(currTP);
-
-                        hs = new HashSet();
-                        hs.addAll(allEndpointsPorts);
-                        allEndpointsPorts.clear();
-                        allEndpointsPorts.addAll(hs);
-                        Collections.sort(allEndpointsPorts);
-
-                        List<String> allEndpointsNames = new LinkedList<>();
+                        allEndpointsPorts = mapDTPToEndpsSrc.get(currTP);
+                        allEndpointsPorts = myBasUtils.sortAndRemoveRedundancy(allEndpointsPorts);
+                        allEndpointsNames = new LinkedList<>();
 
                         for (int t = 0; t < allEndpointsPorts.size(); t++) {
 
@@ -348,33 +320,22 @@ public class DeductionNotNullJoin {
                     }
                 } else {
                     System.out.println("\t\t\t Graph no [" + count2 + "] " + "size : " + 1 + " because of DTP out of timestamp Tjoin of LogClean query no"
-                            + tmpList + " corresponding to LogAnswer entries: " + mapLogClQueryToAnsEntry.get(tmpList.get(k)));
+                            + currSrcQuers + " corresponding to LogAnswer entries: " + mapLogClQueryToAnsEntry.get(currSrcQuers.get(k)));
 
                     allTPsInQuery = new LinkedList<>();
-                    for (int l = 0; l < tmpentites.size(); l += 3) {
+                    for (int l = 0; l < currSrcEntities.size(); l += 3) {
 
                         count++;
-                        currTP = new LinkedList<>();
-                        currTP.add(tmpentites.get(l + 0));
-                        currTP.add(tmpentites.get(l + 1));
-                        currTP.add(tmpentites.get(l + 2));
-
+                        currTP = new LinkedList<>(currSrcEntities.subList(l, 3));
                         myDedUtils.updatePrecisionRecalTPinfo(currTP);
-
                         allTPsInQuery.add(currTP);
-                        System.out.println("\t\t\t\t TP no [" + count + "] " + tmpentites.get(l + 0) + " "
-                                + tmpentites.get(l + 1) + " " + tmpentites.get(l + 2) + " ");
+                        System.out.println("\t\t\t\t TP no [" + count + "] " + currSrcEntities.get(l + 0) + " "
+                                + currSrcEntities.get(l + 1) + " " + currSrcEntities.get(l + 2) + " ");
 
-                        List<String> cleanTP = myDedUtils.getCleanTP(currTP);
-                        List<String> allEndpointsPorts = mapDTPToEndpsSrc.get(cleanTP);
-
-                        hs = new HashSet();
-                        hs.addAll(allEndpointsPorts);
-                        allEndpointsPorts.clear();
-                        allEndpointsPorts.addAll(hs);
-                        Collections.sort(allEndpointsPorts);
-
-                        List<String> allEndpointsNames = new LinkedList<>();
+                        cleanTP = myDedUtils.getCleanTP(currTP);
+                        allEndpointsPorts = mapDTPToEndpsSrc.get(cleanTP);
+                        allEndpointsPorts = myBasUtils.sortAndRemoveRedundancy(allEndpointsPorts);
+                        allEndpointsNames = new LinkedList<>();
 
                         for (int t = 0; t < allEndpointsPorts.size(); t++) {
 
@@ -385,41 +346,37 @@ public class DeductionNotNullJoin {
                         System.out.println("\t\t\t\t\t received at: " + allEndpointsNames);
                     }
 
-                    List<List<String>> tmpPairHello = new LinkedList<>();
-                    List<List<String>> tmpPairHello2 = new LinkedList<>();
+                    currSrcJoin = new LinkedList<>();
+                    currSrcJoin2 = new LinkedList<>();
 
                     for (int i = 0; i < allTPsInQuery.size(); i += 3) {
-                        outerTP = new LinkedList<>();
-                        outerTP.add(allTPsInQuery.get(i).get(0));
-                        outerTP.add(allTPsInQuery.get(i).get(1));
-                        outerTP.add(allTPsInQuery.get(i).get(2));
+
+                        outerTP = new LinkedList<>(allTPsInQuery.get(i).subList(0, 3));
 
                         for (int j = i; j < allTPsInQuery.size(); j += 3) {
-                            innerTP = new LinkedList<>();
-                            innerTP.add(allTPsInQuery.get(i).get(0));
-                            innerTP.add(allTPsInQuery.get(i).get(1));
-                            innerTP.add(allTPsInQuery.get(i).get(2));
 
-                            tmpPairHello.add(innerTP);
-                            tmpPairHello.add(outerTP);
-                            tmpPairHello2.add(outerTP);
-                            tmpPairHello2.add(innerTP);
+                            innerTP = new LinkedList<>(allTPsInQuery.get(j).subList(0, 3));
 
-                            if (alreadySeenPair.get(tmpPairHello) == null) {
+                            currSrcJoin.add(innerTP);
+                            currSrcJoin.add(outerTP);
+                            currSrcJoin2.add(outerTP);
+                            currSrcJoin2.add(innerTP);
 
-                                if (mapTruePositivePairs.get(tmpPairHello) != null) {
+                            if (alreadySeenPair.get(currSrcJoin) == null) {
+
+                                if (mapTruePositivePairs.get(currSrcJoin) != null) {
                                     truePositivesPairs++;
                                     cntEGTrPo++;
                                 }
 
-                                alreadySeenPair.put(tmpPairHello, 1);
-                                alreadySeenPair.put(tmpPairHello2, 1);
+                                alreadySeenPair.put(currSrcJoin, 1);
+                                alreadySeenPair.put(currSrcJoin2, 1);
                             } else {
 
-                                alreadySeenPair.put(tmpPairHello, alreadySeenPair.get(tmpPairHello) + 1);
-                                alreadySeenPair.put(tmpPairHello2, alreadySeenPair.get(tmpPairHello2) + 1);
+                                alreadySeenPair.put(currSrcJoin, alreadySeenPair.get(currSrcJoin) + 1);
+                                alreadySeenPair.put(currSrcJoin2, alreadySeenPair.get(currSrcJoin2) + 1);
 
-                                if (alreadySeenPair.get(tmpPairHello) == 2) {
+                                if (alreadySeenPair.get(currSrcJoin) == 2) {
 
                                     truePositivesPairs--;
                                 }
@@ -460,30 +417,19 @@ public class DeductionNotNullJoin {
         HashMap<List<List<String>>, Integer> alreadySeen = new HashMap<>();
 
         for (List<String> keyOuter : mapDTPtoAnswTotal.keySet()) {
-            if ((keyOuter.get(0).contains("?chebiDrug")
-                    && keyOuter.get(1).contains("<http://purl.org/dc/elements/1.1/title>")
-                    && keyOuter.get(2).contains("?drugBankName"))) {
-                int azeeaz = 0;
 
+            valueskeyOuter = mapDTPtoAnswTotal.get(keyOuter);
+            if (valueskeyOuter != null) {
+                myBasUtils.sortAndRemoveRedundancy(valueskeyOuter);
             }
-            
-            valueskeyOuter=mapDTPtoAnswTotal.get(keyOuter);
-            if(valueskeyOuter!=null)
-            myBasUtils.sortAndRemoveRedundancy(valueskeyOuter);
         }
 
         for (List<String> keyOuter : mapTPtoAnswersSourcesInverse.keySet()) {
 
-            if ((keyOuter.get(0).contains("?chebiDrug")
-                    && keyOuter.get(1).contains("<http://purl.org/dc/elements/1.1/title>")
-                    && keyOuter.get(2).contains("?drugBankName"))) {
-                int azeeaz = 0;
-
+            valueskeyOuter = mapTPtoAnswersSourcesInverse.get(keyOuter);
+            if (valueskeyOuter != null) {
+                myBasUtils.sortAndRemoveRedundancy(valueskeyOuter);
             }
-
-             valueskeyOuter=mapTPtoAnswersSourcesInverse.get(keyOuter);
-            if(valueskeyOuter!=null)
-            myBasUtils.sortAndRemoveRedundancy(valueskeyOuter);
         }
 
         for (List<String> keyOuter : mapDTPtoAnswTotal.keySet()) {
@@ -497,27 +443,14 @@ public class DeductionNotNullJoin {
             valueskeyOuter = mapDTPtoAnswTotal.get(keyOuter);
             tmpOuterShort = myDedUtils.getCleanTP(keyOuter);
 
-            if (mapDTPofEGNested.get(tmpOuterShort) != null) {
+            if (mapDTPofEGNested.get(tmpOuterShort) != null || mapDTPtoCANCELofEG.get(tmpOuterShort) != null) {
                 continue;
             }
 
-            if (mapDTPtoCANCELofEG.get(tmpOuterShort) != null) {
-                continue;
-            }
-
+            //BUUUUUUUUUG
             if (mapDTPtoJoinBGP.get(tmpOuterShort) == null) {
 
                 mapDTPtoJoinBGP.put(tmpOuterShort, -1);
-            }
-
-            if ((keyOuter.get(0).contains("?Int")
-                    && keyOuter.get(1).contains("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug1>")
-                    && keyOuter.get(2).contains("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00863>"))) {
-                int azeeaz = 0;
-
-                if (keyOuter.get(3).contains("Int")) {
-                    int ara = 0;
-                }
             }
 
             for (List<String> keyInner : mapDTPtoAnswTotal.keySet()) {
@@ -540,17 +473,11 @@ public class DeductionNotNullJoin {
 
                 valuesNestedLoopInner = mapTPtoAnswersSourcesInverse.get(keyInner);
 
+                //Better
                 if (keyOuter.get(0).equalsIgnoreCase(keyInner.get(0))
                         && keyOuter.get(1).equalsIgnoreCase(keyInner.get(1))
                         && keyOuter.get(2).equalsIgnoreCase(keyInner.get(2))) {
                     continue;
-                }
-
-                if ((keyInner.get(0).contains("?Int")
-                        && keyInner.get(1).contains("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug2>")
-                        && keyInner.get(2).contains("?IntDrug"))) {
-                    int azeeaz = 0;
-
                 }
 
                 if (keyOuter.size() == 4) {
@@ -566,6 +493,7 @@ public class DeductionNotNullJoin {
                 } else {
                     innerVarClean = "noth2";
                 }
+
                 if (mapDTPofEGNested.get(tmpInnerShort) != null) {
                     continue;
                 }
@@ -612,82 +540,72 @@ public class DeductionNotNullJoin {
                     if (mapDTPtoJoinBGP.get(tmpInnerShort) != null && mapDTPtoJoinBGP.get(tmpOuterShort) != null) {
                         valueskeyInner = mapDTPtoAnswTotal.get(keyInner);
 
-                        //  if (!(mapDTPtoJoinBGP.get(tmpInnerShort) != -1
-                        //             && Objects.equals(mapDTPtoJoinBGP.get(tmpOuterShort), mapDTPtoJoinBGP.get(tmpInnerShort)))) 
-                        {
+                        if ((valuesNestedLoopOuter != null && mapDTPToStartTime.get(tmpInnerShort) <= mapDTPToStartTime.get(tmpOuterShort))) {
 
-                            if ((valuesNestedLoopOuter != null && mapDTPToStartTime.get(tmpInnerShort) <= mapDTPToStartTime.get(tmpOuterShort))) {
+                            if (myDedUtils.compareListsForIntersection(valuesNestedLoopOuter, valueskeyInner).size() > 0) {
+                                List<List<String>> tmp1 = new LinkedList<>();
+                                tmp1.add(tmpOuterShort);
+                                tmp1.add(tmpInnerShort);
+                                List<List<String>> tmp2 = new LinkedList<>();
+                                tmp2.add(tmpInnerShort);
+                                tmp2.add(tmpOuterShort);
+                                if (alreadySeen.get(tmp1) == null && alreadySeen.get(tmp2) == null) {
 
-                                if (myDedUtils.compareListsForIntersection(valuesNestedLoopOuter, valueskeyInner).size() > 0) //  if ((valuesNestedLoopOuter.size() >= valueskeyInner.size() && !Collections.disjoint(valuesNestedLoopOuter, valueskeyInner)
-                                //     || (valueskeyInner.size() >= valuesNestedLoopOuter.size() && !Collections.disjoint(valueskeyInner, valuesNestedLoopOuter))))   
-                                {
-                                    List<List<String>> tmp1 = new LinkedList<>();
-                                    tmp1.add(tmpOuterShort);
-                                    tmp1.add(tmpInnerShort);
-                                    List<List<String>> tmp2 = new LinkedList<>();
-                                    tmp2.add(tmpInnerShort);
-                                    tmp2.add(tmpOuterShort);
-                                    if (alreadySeen.get(tmp1) == null && alreadySeen.get(tmp2) == null) {
+                                    if (mapDTPToFinishTime.get(tmpInnerShort) <= mapDTPToStartTime.get(tmpOuterShort)) {
 
-                                        if (mapDTPToFinishTime.get(tmpInnerShort) <= mapDTPToStartTime.get(tmpOuterShort)) {
+                                        myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 0.65, "nestedLoop", false);
 
-                                            myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 0.65, "nestedLoop", false);
+                                    } else {
 
-                                        } else {
+                                        myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 1, "nestedLoop", false);
 
-                                            myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 1, "nestedLoop", false);
-
-                                        }
-                                        alreadySeen.put(tmp1, -1);
-                                        alreadySeen.put(tmp2, -1);
                                     }
-                                }
-
-                            } else if ((valuesNestedLoopInner != null && mapDTPToStartTime.get(tmpOuterShort) <= mapDTPToStartTime.get(tmpOuterShort))) {
-
-                                //  if ((valueskeyOuter.size() >= valuesNestedLoopInner.size() && !Collections.disjoint(valueskeyOuter, valuesNestedLoopInner))
-                                //        || (valuesNestedLoopInner.size() >= valueskeyOuter.size() && !Collections.disjoint(valuesNestedLoopInner, valueskeyOuter)))
-                                if (myDedUtils.compareListsForIntersection(valueskeyOuter, valuesNestedLoopInner).size() > 0) {
-                                    List<List<String>> tmp1 = new LinkedList<>();
-                                    tmp1.add(tmpOuterShort);
-                                    tmp1.add(tmpInnerShort);
-                                    List<List<String>> tmp2 = new LinkedList<>();
-                                    tmp2.add(tmpInnerShort);
-                                    tmp2.add(tmpOuterShort);
-                                    if (alreadySeen.get(tmp1) == null && alreadySeen.get(tmp2) == null) {
-
-                                        if (mapDTPToFinishTime.get(tmpOuterShort) <= mapDTPToStartTime.get(tmpInnerShort)) {
-                                            myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 0.65, "nestedLoop", false);
-
-                                        } else {
-
-                                            myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 1, "nestedLoop", false);
-
-                                        }
-
-                                        alreadySeen.put(tmp1, -1);
-                                        alreadySeen.put(tmp2, -1);
-                                    }
-                                }
-
-                            } else {
-                                // if (!Collections.disjoint(valueskeyOuter, valueskeyInner)) 
-                                if (myDedUtils.compareListsForIntersection(valueskeyOuter, valueskeyInner).size() > 0) {
-                                    List<List<String>> tmp1 = new LinkedList<>();
-                                    tmp1.add(tmpOuterShort);
-                                    tmp1.add(tmpInnerShort);
-                                    List<List<String>> tmp2 = new LinkedList<>();
-                                    tmp2.add(tmpInnerShort);
-                                    tmp2.add(tmpOuterShort);
-                                    if (alreadySeen.get(tmp1) == null && alreadySeen.get(tmp2) == null) {
-
-                                        myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 0.6, "symhash", false);
-                                        alreadySeen.put(tmp1, -1);
-                                        alreadySeen.put(tmp2, -1);
-                                    }
+                                    alreadySeen.put(tmp1, -1);
+                                    alreadySeen.put(tmp2, -1);
                                 }
                             }
 
+                        } else if ((valuesNestedLoopInner != null && mapDTPToStartTime.get(tmpOuterShort) <= mapDTPToStartTime.get(tmpOuterShort))) {
+
+                            if (myDedUtils.compareListsForIntersection(valueskeyOuter, valuesNestedLoopInner).size() > 0) {
+                                List<List<String>> tmp1 = new LinkedList<>();
+                                tmp1.add(tmpOuterShort);
+                                tmp1.add(tmpInnerShort);
+                                List<List<String>> tmp2 = new LinkedList<>();
+                                tmp2.add(tmpInnerShort);
+                                tmp2.add(tmpOuterShort);
+                                if (alreadySeen.get(tmp1) == null && alreadySeen.get(tmp2) == null) {
+
+                                    if (mapDTPToFinishTime.get(tmpOuterShort) <= mapDTPToStartTime.get(tmpInnerShort)) {
+                                        myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 0.65, "nestedLoop", false);
+
+                                    } else {
+
+                                        myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 1, "nestedLoop", false);
+
+                                    }
+
+                                    alreadySeen.put(tmp1, -1);
+                                    alreadySeen.put(tmp2, -1);
+                                }
+                            }
+
+                        } else {
+
+                            if (myDedUtils.compareListsForIntersection(valueskeyOuter, valueskeyInner).size() > 0) {
+                                List<List<String>> tmp1 = new LinkedList<>();
+                                tmp1.add(tmpOuterShort);
+                                tmp1.add(tmpInnerShort);
+                                List<List<String>> tmp2 = new LinkedList<>();
+                                tmp2.add(tmpInnerShort);
+                                tmp2.add(tmpOuterShort);
+                                if (alreadySeen.get(tmp1) == null && alreadySeen.get(tmp2) == null) {
+
+                                    myDedUtils.pairJoinRelation(tmpOuterShort, tmpInnerShort, tmp, 0.6, "symhash", false);
+                                    alreadySeen.put(tmp1, -1);
+                                    alreadySeen.put(tmp2, -1);
+                                }
+                            }
                         }
 
                     }
@@ -717,111 +635,14 @@ public class DeductionNotNullJoin {
 
     }
 
-    public void showMissingPairs() throws IOException {
+    public void showTotalBGPs() throws IOException {
 
         int totalBGPs = 0;
-
         Map<List<List<String>>, Integer> mySeen = new HashMap<>();
         Map<List<List<String>>, Integer> mySeenClear = new HashMap<>();
-
         List<List<String>> tmpPair = new LinkedList<>();
         List<List<String>> tmpPair2 = new LinkedList<>();
 
-        List<List<String>> pair = new LinkedList<>();
-        List<String> outer = new LinkedList<>();
-        List<String> inner = new LinkedList<>();
-
-        if (!single) {
-            if (collectionName.contains("CD")) {
-                pair = new LinkedList<>();
-                outer = new LinkedList<>();
-                inner = new LinkedList<>();
-                outer.add("?x");
-                outer.add("<http://data.nytimes.com/elements/topicPage>");
-                outer.add("?page");
-
-                pair.add(outer);
-                inner.add("?x");
-                inner.add("<http://www.w3.org/2002/07/owl#sameAs>");
-                inner.add("<http://dbpedia.org/resource/Barack_Obama>");
-                pair.add(inner);
-                mySeenClear.put(pair, 1);
-
-                pair = new LinkedList<>();
-                outer = new LinkedList<>();
-                inner = new LinkedList<>();
-                outer.add("?y");
-                outer.add("<http://www.w3.org/2002/07/owl#sameAs>");
-                outer.add("?location");
-
-                pair.add(outer);
-                inner.add("?y");
-                inner.add("<http://data.nytimes.com/elements/topicPage>");
-                inner.add("?news");
-                pair.add(inner);
-                mySeenClear.put(pair, 1);
-
-                pair = new LinkedList<>();
-                outer = new LinkedList<>();
-                inner = new LinkedList<>();
-                outer.add("?y");
-                outer.add("<http://www.w3.org/2002/07/owl#sameAs>");
-                outer.add("?x");
-                pair.add(outer);
-                inner.add("?y");
-                inner.add("<http://data.nytimes.com/elements/topicPage>");
-                inner.add("?news");
-                pair.add(inner);
-                mySeenClear.put(pair, 1);
-
-            }
-
-        }
-
-        /* if(nameDB.contains("mydatabasefedxlsseq2")){
-            
-         pair = new LinkedList<>();
-         outer = new LinkedList<>();
-         inner = new LinkedList<>();
-         outer.add("?chebiDrug");
-         outer.add("<http://purl.org/dc/elements/1.1/title>");
-         outer.add("?drugBankName");
-         pair.add(outer);
-         inner.add("?chebiDrug");
-         inner.add("<http://bio2rdf.org/ns/bio2rdf#image>");
-         inner.add("?chebiImage");
-         pair.add(inner);
-         mapTruePositivePairs.put(pair, 1);
-                
-                
-         pair = new LinkedList<>();
-         outer = new LinkedList<>();
-         inner = new LinkedList<>();
-         outer.add("?drug");
-         outer.add("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/drugCategory>");
-         outer.add("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugcategory/cathartics>");
-         pair.add(outer);
-         inner.add("?drug");
-         inner.add("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/keggCompoundId>");
-         inner.add("?cpd");
-         pair.add(inner);
-         mapTruePositivePairs.put(pair, 1);
-         mySeen.put(pair, 1);
-         pair = new LinkedList<>();
-         outer = new LinkedList<>();
-         inner = new LinkedList<>();
-         outer.add("?drug");
-         outer.add("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/keggCompoundId>");
-         outer.add("?keggDrug");
-         pair.add(outer);
-         inner.add("?keggDrug");
-         inner.add("<http://bio2rdf.org/ns/bio2rdf#url>");
-         inner.add("?keggUrl");
-         pair.add(inner);
-         mapTruePositivePairs.put(pair, 1);
-         mySeen.put(pair, 1);
-                
-         }*/
         for (List<List<String>> keyOuter : mapGroundTruthPairs.keySet()) {
 
             tmpPair = new LinkedList<>();
@@ -839,6 +660,7 @@ public class DeductionNotNullJoin {
             }
 
         }
+
         showDeducedBGPs();
 
         totalBGPs = triplePatternsNotInDeducedBGP();

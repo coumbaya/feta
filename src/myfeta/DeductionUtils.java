@@ -526,6 +526,10 @@ public class DeductionUtils {
 
         endpoints = mapCTPToEndpsSrc.get(originalTP);
         mapDTPtoInnerQuery.put(mapDTPToDeducedID.get(triplePattern), mapCTPIDtoQuerySrc.get(CTPindx));
+        if(endpoints==null){
+            endpoints=new LinkedList<>();
+            endpoints.add("8700");
+        }
         myBasUtils.insertToMap3(mapDTPToEndpsSrc, endpoints, triplePattern);
         mapDTPToFinishTime.put(triplePattern, myBasUtils.getTimeInSec(mapCTPToFinishTime.get(CTPindx)));
         mapDTPToStartTime.put(triplePattern, myBasUtils.getTimeInSec(mapCTPToStartTime.get(CTPindx)));

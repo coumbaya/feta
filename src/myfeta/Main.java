@@ -69,6 +69,8 @@ public class Main {
     public static boolean single;
     //
     public static double inverseThresh;
+    //
+    public static boolean traceGen;
 
     /**
      * This method inits all program's options, objects and paths to be used
@@ -80,14 +82,14 @@ public class Main {
         loadDB = false;
         resetDB = false;
         setCouchDB = false;
-        setMonetDB = true;
+        setMonetDB = false;
         cntSELECTS = 0;
         cntall = 0;
         single = false;
 
         logPath = "/home/nassopoulos-g/CD6.txt";
 
-        nameDB = "mydatabasefedxcdquery1";
+        nameDB = "mydatabasefedxcd1";
         engineName = "FedX";
         collectionName = "CD";
         collectionName = collectionName + engineName;
@@ -96,8 +98,9 @@ public class Main {
         simpleExecution = false;
         help = false;
         windowSlice = 1000000000;
-        windowJoin = 1000000000;
+        windowJoin = 1000000;
         inverseThresh = 0.01;
+        traceGen=true;
     }
 
     /**
@@ -106,17 +109,19 @@ public class Main {
      */
     public static void usage() {
 
-        System.out.println(" Usage : --load or -l for loading a new DB");
-        System.out.println("         --resetDB or -r , for reseting an existing DB");
-        System.out.println("         --nameDB or -n for setting DB name");
-        System.out.println("         --systemDB or -s for setting \"couchDB\" or \"monetDB\" system (by default \"couchDB\" )");
-        System.out.println("         --sameConcept or -c enabling \"SameConcept/SameAs\" and passing Endpoints IP Addresses as argument");
-        System.out.println("         --nestedInverse or -i for enabling inverse mapping in \"NestedLoopDetection\", necessary for FedX");
-        System.out.println("         --setWindowSlice or -ws for setting the maximum temporal distance between first and last subquery, defining DB slice, , by default 1000000 seconds");
-        System.out.println("         --setWindowJoin or -wj for setting the maximum joinable window interval"
-                + " gap (Tjoin), by default 1000000 seconds");
-        System.out.println("         --onlyGraphCon or -og to stop FETA deduction just after \"Graph Construction\" heuristic");
-        System.out.println("         --help or -h for showing help");
+        System.out.println(" Usage : --load or -l <path_to_capture>: for loading a capture into the DB");
+        System.out.println("         --resetDB or -r: for reseting an existing DB");
+        System.out.println("         --nameDB or -n: for setting DB name");
+        System.out.println("         --systemDB or -s <systemDB_to_use>: for setting \"couchDB\" or \"monetDB\" system (by default \"couchDB\" )");
+        System.out.println("         --inverseMap or -i <inverse_mapping_threshold>: for enabling inverse mapping in \"NestedLoopDetection\" heuristic, necessary for FedX, "
+                + "and setting the threshold to validate a matching");
+        System.out.println("         --sameConcept or -c <path_to_endpoints_addresses>: enabling \"SameConcept/SameAs\" and passing Endpoints IP Addresses as argument");
+        System.out.println("         --setWinSlice or -ws <window_in_seconds>: for setting the maximum temporal distance between first and last subquery, "
+                + "defining DB slice (by default 1000000 seconds)");
+        System.out.println("         --setWinJoin or -wj <window_in_seconds>: for setting the maximum joinable window interval gap between two subqueries or triple patterns"
+                + " (by default 1000000 seconds)");
+        System.out.println("         --onlyGraphCon or -og: to stop FETA deduction just after \"Graph Construction\" heuristic");
+        System.out.println("         --help or -h: for showing help");
     }
 
     /**
@@ -190,7 +195,7 @@ public class Main {
                     }
                     i++;
                     break;
-                case "--setWindowJoin":
+                case "--setWinJoin":
                 case "-wj":
                     windowJoin = Integer.parseInt(args[i + 1]);
                     if (args[i + 1].startsWith("-")) {
@@ -200,7 +205,7 @@ public class Main {
                     }
                     i++;
                     break;
-                case "--setWindowSlice":
+                case "--setWinSlice":
                 case "-ws":
                     windowSlice = Integer.parseInt(args[i + 1]);
                     if (args[i + 1].startsWith("-")) {
@@ -210,22 +215,13 @@ public class Main {
                     }
                     i++;
                     break;
-                case "--nestedInverse":
+                case "--inverseMap":
                 case "-i":
                     inverseMapping = true;
                     break;
                 case "--onlyGraphCon":
                 case "-og":
                     simpleExecution = true;
-                    break;
-                case "--endpoints":
-                case "-e":
-                    if (args[i + 1].startsWith("-")) {
-
-                        System.out.println("Please give input file with all endpoints' IP Addresses");
-                        System.exit(-1);
-                    }
-                    i++;
                     break;
                 case "--help":
                 case "-h":

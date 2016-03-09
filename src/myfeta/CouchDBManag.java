@@ -3,6 +3,10 @@ package myfeta;
 import com.fourspaces.couchdb.Database;
 import com.fourspaces.couchdb.Document;
 import com.fourspaces.couchdb.Session;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -11,6 +15,7 @@ import net.sf.json.JSONObject;
 import static myfeta.Deduction.mapAnsIDtoEntry;
 import static myfeta.Main.verbose;
 import static myfeta.Deduction.docAnswers;
+import static myfeta.Main.traceGen;
 
 /**
  * Class for interacting with DB (CouchDB)
@@ -26,6 +31,9 @@ public class CouchDBManag {
 
     BasicUtilis myBasUtils;
     DeductionUtils myDecUtils;
+    
+     FileWriter writerCapt;
+
 
     // List of Documents stored in database, ("queryLog" or "endpointsAnswers")
     public static List<Document> myListDocs;
@@ -39,11 +47,14 @@ public class CouchDBManag {
     // Current id of Document of List "myDoc"
     private int idDoc;
 
-    public CouchDBManag() {
+    public CouchDBManag() throws IOException {
 
         myListDocs = new LinkedList<>();
         myDecUtils = new DeductionUtils();
         myBasUtils = new BasicUtilis();
+        if(traceGen){
+           writerCapt = new FileWriter("capture.txt");
+        }
     }
 
     /**
@@ -312,18 +323,23 @@ public class CouchDBManag {
      * Parse every answer string, and match all answer entities (IRIs/Literals)
      * to the corresponding hashMaps
      */
-    public void setAnswerStringToMaps() {
-
+    public void setAnswerStringToMaps() throws IOException, URISyntaxException {
+        
+       
         List<String> entryInformation = null;
         String Answer = "", ClientIpAddress = "", requestQuery = "", receptTime = "", endpoint = "";
         for (Object key : docAnswers.keySet()) {
-
+            
             try {
                 if (key.toString().contains("_")) {
                     continue;
                 }
 
                 entryInformation = getAnswerEntry(key.toString());
+                 if(traceGen){
+            
+                     addEntryInTrace(entryInformation);
+                } 
                 mapAnsIDtoEntry.put(Integer.parseInt(key.toString()), entryInformation);
 
                 if (!entryInformation.isEmpty()) {
@@ -347,6 +363,26 @@ public class CouchDBManag {
             }
 
         }
+    }
+    
+    public void addEntryInTrace(List<String> entryInformation) throws IOException, URISyntaxException{
+        
+        for(int i=0; i<entryInformation.size();i++){
+            
+            if(i==4){
+        URI uri = new URI("http", null, "localhost", 8900,
+                "/sparql/", "default-graph-uri=&query=" + entryInformation.get(i) + "&format=json&timeout=0&debug=on", null);
+
+       writerCapt.write( uri.toString());
+            }
+            
+            else{
+                
+           writerCapt.write(entryInformation.get(i));
+            }
+        }
+
+        System.out.print("****************");
     }
 
 }
