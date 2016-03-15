@@ -5,7 +5,7 @@ Each federated query log, is produced by concurently executing a set of queries 
 
 Summary
 
-[1. ](https://github.com/coumbaya/feta/edit/master/fedbench_precision_recall.md "Cross Domain (CD) collection") inline link.
+[Cross Domain (CD) collection](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#CrossDomain(CD) collection.md)
 
 # Cross Domain (CD) collection
 
