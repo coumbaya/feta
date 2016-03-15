@@ -15,4 +15,4 @@ Next figures concern the concurrent execution of all LS collection queries (LS1 
 
 # Collection of non-similar queries
 
-Next figures concern the concurrent execution of non similar queries for CD and LS coolections, i.e. queries that have a null resultset for their common projected variables, namely: CD3, CD4, CD5, CD6, LS2 and LS3.
+Next figures concern the concurrent execution of non similar queries from CD and LS coolections, i.e. queries that have a null resultset for their common projected variables, namely: CD3, CD4, CD5, CD6, LS2 and LS3.
