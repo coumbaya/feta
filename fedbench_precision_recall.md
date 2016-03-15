@@ -5,9 +5,9 @@ Each federated query log, is produced by concurently executing a set of queries 
 
 Summary
 
-[Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#crossdomain(cd).md)
-[Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#lifescience(ls).md)
-[Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#non-smilarqueries.md)
+1. [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#crossdomain(cd).md)
+2. [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#lifescience(ls).md)
+3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#non-smilarqueries.md)
 
 # Cross Domain (CD)
 
