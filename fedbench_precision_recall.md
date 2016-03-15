@@ -1,4 +1,4 @@
-# FETA: precision and recall results
+# FETA: precision and recall
 
 In this Section we present FETA recall/precision of deduced joins over fedbench queries, produced with FedX and Anapsid.
 Each federated query log, is produced by concurently executing a set of queries with the same query engine IP Address.
@@ -21,4 +21,4 @@ Next figures concern the concurrent execution of all LS collection queries (LS1 
 
 # Non-similar queries
 
-Next figures concern the concurrent execution of non similar queries from CD and LS coolections, i.e. queries that have a null resultset for their common projected variables, namely: CD3, CD4, CD5, CD6, LS2 and LS3.
+Next figures concern the concurrent execution of non similar queries from CD and LS collections, i.e. queries that have a null resultset for their common projected variables, namely: CD3, CD4, CD5, CD6, LS2 and LS3.
