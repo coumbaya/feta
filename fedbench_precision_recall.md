@@ -3,6 +3,10 @@
 In this Section we present FETA recall/precision of deduced joins over fedbench queries, produced with FedX and Anapsid.
 Each federated query log, is produced by concurently executing a set of queries with the same query engine IP Address.
 
+Summary
+
+[1. ](https://github.com/coumbaya/feta/edit/master/fedbench_precision_recall.md "Cross Domain (CD) collection") inline link.
+
 # Cross Domain (CD) collection
 
 Next figures concern the concurrent execution of all CD collection queries (CD1 to CD7).
