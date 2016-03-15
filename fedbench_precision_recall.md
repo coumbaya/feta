@@ -1,4 +1,4 @@
-# FETA: precision and recall of FedBench queries
+# FETA: precision and recall results
 
 In this Section we present FETA recall/precision of deduced joins over fedbench queries, produced with FedX and Anapsid.
 Each federated query log, is produced by concurently executing a set of queries with the same query engine IP Address.
