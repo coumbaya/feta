@@ -1,17 +1,17 @@
-# FETA: similarity, precision and recall
+# FETA: experiments with FedBench
 
 In this Section we present FETA, first, similarity and recall of queries executed in isolation and, second, precision/recall of concurently executed set of queries, both with the same query engine IP Address.
 
 **Summary**
 
 1. **Isolated execution**
-   * [Similarity jaccard](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#similarityjaccard)
-   * [Recall of joins](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#recallofjoins)
+   * [Similarity jaccard](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench#similarityjaccard)
+   * [Recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallofjoins)
 
 2. **Concurent execution**
-   * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#crossdomain)
-   * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#lifescience)
-   * [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-similar)
+   * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#crossdomain)
+   * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
+   * [Non-similar queries](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#non-similar)
 
 
 ## SimilarityJaccard
