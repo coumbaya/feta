@@ -69,8 +69,11 @@ Then, you can launch FETA's deduction algorithm:
 
 In order to test FETA's functionality, you can use traces of FedBench's Cross Domain (CD) and Life Science (LS) collections, captured by using either FedX or ANAPSID. 
 
-1. In directory **query_traces_isolated** you find traces of queries executed in isolation.
-2. In directory **query_traces_concurrency** you find traces of queries of the same collection executed concurrently.
+1. In directory [**query_traces_isolated**](https://github.com/coumbaya/feta/tree/master/experiments_with_fedbench/query_traces_isolated) you find traces of queries executed in isolation.
+2. In directory [**query_traces_concurrency*](https://github.com/coumbaya/feta/tree/master/experiments_with_fedbench/query_traces_concurency) you find traces of queries of the same collection executed concurrently.
+
+
+
 
 FETA's experiment results  are available [here](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md)
 
