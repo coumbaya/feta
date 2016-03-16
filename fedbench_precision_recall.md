@@ -5,20 +5,21 @@ Each federated query log, is produced by concurently executing a set of queries 
 
 Summary
 
-1. [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#crossdomain(cd).md)
-2. [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#lifescience(ls).md)
-3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#non-smilarqueries.md)
+1. [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#crossdomain)
+2. [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#lifescience)
+3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#non-smilar)
 
-# Cross Domain (CD)
+# CrossDomain
 
 Next figures concern the concurrent execution of all CD collection queries (CD1 to CD7).
 
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_CD_pairJoins_precision_all_traces.jpeg)
 
-# Life Science (LS)
+# LifeScience
 
 Next figures concern the concurrent execution of all LS collection queries (LS1 to LS7).
 
 
-# Non-similar queries
+# Non-similar
 
 Next figures concern the concurrent execution of non similar queries from CD and LS collections, i.e. queries that have a null resultset for their common projected variables, namely: CD3, CD4, CD5, CD6, LS2 and LS3.
