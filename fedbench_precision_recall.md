@@ -1,13 +1,23 @@
 # FETA: precision and recall
 
-In this Section we present FETA recall/precision of deduced joins over fedbench queries, produced with FedX and Anapsid.
-Each federated query log, is produced by concurently executing a set of queries with the same query engine IP Address.
+In this Section we present FETA, first, similarity and recall of queries executed in isolation and then precision/recall of concurently executed set of queries, both with the same query engine IP Address.
 
 Summary
 
-1. [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#crossdomain)
-2. [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#lifescience)
-3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-similar)
+1. Isolated execution
+   * [Similarity jaccard](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#similarityjaccard)
+   * [Recall of joins](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#recallofjoins)
+
+2. Concurent execution
+   * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#crossdomain)
+   * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#lifescience)
+   * [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-similar)
+
+
+# SimilarityJaccard
+
+# RecallOfJoins
+
 
 # CrossDomain
 
