@@ -7,7 +7,7 @@ Summary
 
 1. [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#crossdomain)
 2. [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#lifescience)
-3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-smilar)
+3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-similar)
 
 # CrossDomain
 
