@@ -1,6 +1,6 @@
 # FETA: precision and recall
 
-In this Section we present FETA, first, similarity and recall of queries executed in isolation and then precision/recall of concurently executed set of queries, both with the same query engine IP Address.
+In this Section we present FETA, first, similarity and recall of queries executed in isolation and, second, precision/recall of concurently executed set of queries, both with the same query engine IP Address.
 
 Summary
 
