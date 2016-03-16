@@ -72,7 +72,7 @@ In order to test FETA's functionality, you can use traces of FedBench's Cross Do
 1. In directory **query_traces_isolated** you find traces of queries executed in isolation.
 2. In directory **query_traces_concurrency** you find traces of queries of the same collection executed concurrently.
 
-FETA's experiment results  are available [here](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md)
+FETA's experiment results  are available [here](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md)
 
 ## About and Contact
 
