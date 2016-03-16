@@ -19,7 +19,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       We use this tool, in order to capture both queries and their answers. You may create your own captures, when   
       at the same time running queries with FedX or ANAPSID query engines. To do so, you need to run the command:
       
-      `<$ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp">`
+      `$ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp"`
    
    2. CouchDB: A Database for the Web
    
@@ -43,34 +43,34 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
 
 In order to execute FETA, you must run the command:
 
-$ java -jar "myFETA.jar" -[option]
+`$ java -jar "myFETA.jar" -[option]`
 
 The first step, is to load the captured trace into a database, of your DBMS choice:
 
---load or -l "path_to_capture": for loading a capture into the DB
+`--load or -l "path_to_capture"`: for loading a capture into the DB
 
---resetDB or -r: for reseting an existing DB
+`--resetDB or -r`: for reseting an existing DB
 
---systemDB or -s "dbms_to_use": for setting "couchDB" or "monetDB" system (by default "couchDB")
+`--systemDB or -s "dbms_to_use"`: for setting "couchDB" or "monetDB" system (by default "couchDB")
 
---nameDB or -n "db_name": for setting the DB name
+`--nameDB or -n "db_name"`: for setting the DB name
 
 Then, you can launch FETA's deduction algorithm:
 
---inverseMap or -i "inverse_mapping_threshold": for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX, and setting the minimum threshold to validate a matching
+`--inverseMap or -i "inverse_mapping_threshold"`: for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX, and setting the minimum threshold to validate a matching
 
---sameConcept or -c "path_to_endpoints_addresses": enabling "SameConcept/SameAs" heuristic and passing endpoints IP Addresses as argument
+`--sameConcept or -c "path_to_endpoints_addresses"`: enabling "SameConcept/SameAs" heuristic and passing endpoints IP Addresses as argument
 
---setWinSlice or -ws "window_in_seconds": for setting the maximum temporal distance between first and last subquery, defining the input DB slice (by default 1000000 seconds)
+`--setWinSlice or -ws "window_in_seconds"`: for setting the maximum temporal distance between first and last subquery, defining the input DB slice (by default 1000000 seconds)
 
---setWinJoin or -wj "window_in_seconds": for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 1000000 seconds)
+`--setWinJoin or -wj "window_in_seconds"`: for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 1000000 seconds)
 
 ## Testing FETA with FedBench queries' traces
 
 In order to test FETA's functionality, you can use traces of FedBench's Cross Domain (CD) and Life Science (LS) collections, captured by using either FedX or ANAPSID. 
 
-1. In directory "query_traces_isolated" you find traces of queries executed in isolation.
-2. In directory "query_traces_concurrency" you find traces of queries of the same collection executed concurrently.
+1. In directory **query_traces_isolated** you find traces of queries executed in isolation.
+2. In directory **query_traces_concurrency** you find traces of queries of the same collection executed concurrently.
 
 FETA's experiment results  are available [here](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md)
 
