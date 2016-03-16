@@ -39,7 +39,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
    
       This is an alternative DB system used to store FETA's federated log.
 
-# Run FETA
+## Run FETA
 
 In order to execute FETA, you must run the command:
 
@@ -65,7 +65,7 @@ Then, you can launch FETA's deduction algorithm:
 
 --setWinJoin or -wj "window_in_seconds": for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 1000000 seconds)
 
-# Testing FETA with FedBench queries' traces
+## Testing FETA with FedBench queries' traces
 
 In order to test FETA's functionality, you can use traces of FedBench's Cross Domain (CD) and Life Science (LS) collections, captured by using either FedX or ANAPSID. 
 
@@ -74,7 +74,7 @@ In order to test FETA's functionality, you can use traces of FedBench's Cross Do
 
 FETA's experiment results  are available [here](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md)
 
-# About and Contact
+## About and Contact
 
 FETA was developed at University of Nantes as an ongoing academic effort. You can contact the current maintainers by email at georges.nassopoulos[at]etu[dot]univ-nantes[dot]fr.
 
