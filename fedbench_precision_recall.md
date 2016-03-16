@@ -14,7 +14,7 @@ Summary
 Next figures concern the concurrent execution of all CD collection queries (CD1 to CD7).
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_CD_pairJoins_precision_all_traces.jpeg)
-
+Format: ![Alt Text](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_CD_pairJoins_precision_all_traces.jpeg)
 # LifeScience
 
 Next figures concern the concurrent execution of all LS collection queries (LS1 to LS7).
