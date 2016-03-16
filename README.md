@@ -53,7 +53,7 @@ The first step, is to load the captured trace into a database, of your DBMS choi
 
 `--systemDB or -s "dbms_to_use"`: for setting "couchDB" or "monetDB" system (by default "couchDB")
 
-`--nameDB or -n "db_name"`: for setting the DB name
+`--nameDB or -n "db_name"`: with the DB name
 
 Then, you can launch FETA's deduction algorithm:
 
