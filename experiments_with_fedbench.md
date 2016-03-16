@@ -1,4 +1,4 @@
-# FETA: similarity, precision and recall
+# FETA: experiments with FedBench
 
 In this Section we present FETA, first, similarity and recall of queries executed in isolation and, second, precision/recall of concurently executed set of queries, both with the same query engine IP Address.
 
