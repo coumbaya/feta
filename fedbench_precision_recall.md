@@ -25,14 +25,14 @@ Next figures concern the concurrent execution of all CD collection queries (CD1 
 
 **ANAPSID traces**
 
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_CD_pairJoins_precision_all_traces.jpeg)
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_CD_pairJoins_recall_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/ANAPSID_CD_pairJoins_precision_all_traces.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/ANAPSID_CD_pairJoins_recall_all_mixages.jpeg)
 
 
 **FedX traces**
 
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_CD_pairJoins_precision_all_mixages.jpeg)
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_CD_pairJoins_recall_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/FEDX_CD_pairJoins_precision_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/FEDX_CD_pairJoins_recall_all_mixages.jpeg)
 
 ## LifeScience
 
@@ -40,14 +40,14 @@ Next figures concern the concurrent execution of all LS collection queries (LS1 
 
 **ANAPSID traces**
 
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_LS_pairJoins_precision_all_traces.jpeg)
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_LS_pairJoins_recall_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/ANAPSID_LS_pairJoins_precision_all_traces.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/ANAPSID_LS_pairJoins_recall_all_mixages.jpeg)
 
 
 **FedX traces**
 
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_LS_pairJoins_precision_all_mixages.jpeg)
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_LS_pairJoins_recall_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/FEDX_LS_pairJoins_precision_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/FEDX_LS_pairJoins_recall_all_mixages.jpeg)
 
 ## Non-similar
 
@@ -55,11 +55,11 @@ Next figures concern the concurrent execution of non similar queries from CD and
 
 **ANAPSID traces**
 
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_MX_pairJoins_precision_all_traces.jpeg)
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_MX_pairJoins_recall_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/ANAPSID_MX_pairJoins_precision_all_traces.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/ANAPSID_MX_pairJoins_recall_all_mixages.jpeg)
 
 
 **FedX traces**
 
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_MX_pairJoins_precision_all_mixages.jpeg)
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_MX_pairJoins_recall_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/FEDX_MX_pairJoins_precision_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/FEDX_MX_pairJoins_recall_all_mixages.jpeg)
