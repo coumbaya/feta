@@ -5,13 +5,13 @@ In this Section we present FETA, first, similarity and recall of queries execute
 **Summary**
 
 1. **Isolated execution**
-   * [Similarity jaccard](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#similarityjaccard)
-   * [Recall of joins](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#recallofjoins)
+   * [Similarity jaccard](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#similarityjaccard)
+   * [Recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallofjoins)
 
 2. **Concurent execution**
-   * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#crossdomain)
-   * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#lifescience)
-   * [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-similar)
+   * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#crossdomain)
+   * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
+   * [Non-similar queries](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#non-similar)
 
 
 ## SimilarityJaccard
