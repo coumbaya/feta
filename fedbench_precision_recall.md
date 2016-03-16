@@ -7,9 +7,9 @@ Summary
 
 1. [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#crossdomain)
 2. [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#lifescience)
-3. [Non-similar](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-smilar)
+3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-smilar)
 
-# Cross Domain
+# CrossDomain
 
 Next figures concern the concurrent execution of all CD collection queries (CD1 to CD7).
 
@@ -24,10 +24,9 @@ Next figures concern the concurrent execution of all CD collection queries (CD1 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_CD_pairJoins_precision_all_mixages.jpeg)
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_CD_pairJoins_recall_all_mixages.jpeg)
 
-# Life Science
+# LifeScience
 
 Next figures concern the concurrent execution of all LS collection queries (LS1 to LS7).
-
 
 **ANAPSID traces**
 
@@ -40,8 +39,17 @@ Next figures concern the concurrent execution of all LS collection queries (LS1 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_LS_pairJoins_precision_all_mixages.jpeg)
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_LS_pairJoins_recall_all_mixages.jpeg)
 
-
-
 # Non-similar
 
 Next figures concern the concurrent execution of non similar queries from CD and LS collections, i.e. queries that have a null resultset for their common projected variables, namely: CD3, CD4, CD5, CD6, LS2 and LS3.
+
+**ANAPSID traces**
+
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_MX_pairJoins_precision_all_traces.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_MX_pairJoins_recall_all_mixages.jpeg)
+
+
+**FedX traces**
+
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_MX_pairJoins_precision_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_MX_pairJoins_recall_all_mixages.jpeg)
