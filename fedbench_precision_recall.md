@@ -7,9 +7,9 @@ Summary
 
 1. [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#crossdomain)
 2. [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#lifescience)
-3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-smilar)
+3. [Non-similar](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-smilar)
 
-# CrossDomain
+# Cross Domain
 
 Next figures concern the concurrent execution of all CD collection queries (CD1 to CD7).
 
@@ -24,7 +24,7 @@ Next figures concern the concurrent execution of all CD collection queries (CD1 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_CD_pairJoins_precision_all_mixages.jpeg)
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_CD_pairJoins_recall_all_mixages.jpeg)
 
-# LifeScience
+# Life Science
 
 Next figures concern the concurrent execution of all LS collection queries (LS1 to LS7).
 
