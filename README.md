@@ -4,7 +4,7 @@ A FEderated TrAcking System for the Linked Data
 
 [1] Tracking Federated Queries in the Linked Data, Georges Nassopoulos, Patricia Serrano-Alvarado, Pascal Molli, Emmanuel Desmontils. Tracking Federated Queries in the Linked Data. [Research Report] LINA-University of Nantes. 2015. <hal-01187519>
 
-# Install FETA's dependencies
+## Install FETA's dependencies
 
 FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to FETA, you need to execute installDepends.sh. This script will install:
 
