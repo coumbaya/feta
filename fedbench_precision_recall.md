@@ -5,9 +5,9 @@ Each federated query log, is produced by concurently executing a set of queries 
 
 Summary
 
-1. [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#crossdomain)
-2. [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#lifescience)
-3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall#non-smilar)
+1. [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#crossdomain)
+2. [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#lifescience)
+3. [Non-similar queries](https://github.com/coumbaya/feta/blob/master/fedbench_precision_recall.md#non-smilar)
 
 # CrossDomain
 
@@ -27,6 +27,19 @@ Next figures concern the concurrent execution of all CD collection queries (CD1 
 # LifeScience
 
 Next figures concern the concurrent execution of all LS collection queries (LS1 to LS7).
+
+
+**ANAPSID traces**
+
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_LS_pairJoins_precision_all_traces.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_LS_pairJoins_recall_all_mixages.jpeg)
+
+
+**FedX traces**
+
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_LS_pairJoins_precision_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_LS_pairJoins_recall_all_mixages.jpeg)
+
 
 
 # Non-similar
