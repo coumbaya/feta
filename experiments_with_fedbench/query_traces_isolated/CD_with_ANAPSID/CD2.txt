@@ -1,0 +1,74 @@
+GET /sparql/?query=ASK+%7B+%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.%3Fx+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23sameAs%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+.+%7D&format=application%2Fsparql-results%2Bjson HTTP/1.1
+Accept-Encoding: identity
+Host: 172.16.9.15:8704
+Referer: http://172.16.9.15:8704/sparql/
+Accept: */*
+User-Agent: Anapsid/2.7
+
+HTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Fri, 04 Dec 2015 13:43:43 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8704/nytimesNews
+Content-Type: application/sparql-results+json
+Content-Length: 43
+
+{  "head": { "link": [] }, "boolean": true}
+GET /sparql/?query=SELECT+DISTINCT+%3Fx+%3Fpage+WHERE+%7B%0A++++++++%3Fx+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23sameAs%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+.+%0A++++++++%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage%0A%0A%7D+LIMIT+10000+OFFSET+0&format=application%2Fsparql-results%2Bjson HTTP/1.1
+Accept-Encoding: identity
+Host: 172.16.9.15:8704
+Referer: http://172.16.9.15:8704/sparql/
+Accept: */*
+User-Agent: Anapsid/2.7
+
+HTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Fri, 04 Dec 2015 13:43:44 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8704/nytimesNews
+Content-Type: application/sparql-results+json
+Content-Length: 332
+
+
+{ "head": { "link": [], "vars": ["x", "page"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "x": { "type": "uri", "value": "http://data.nytimes.com/47452218948077706853" }	, "page": { "type": "uri", "value": "http://topics.nytimes.com/top/reference/timestopics/people/o/barack_obama/index.html" }} ] } }
+GET /sparql/?query=SELECT+DISTINCT+%3Fparty+WHERE+%7B%0A++++++++%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fontology%2Fparty%3E+%3Fparty%0A%0A%7D&format=application%2Fsparql-results%2Bjson HTTP/1.1
+Accept-Encoding: identity
+Host: 172.16.9.15:8710
+Referer: http://172.16.9.15:8710/sparql/
+Accept: */*
+User-Agent: Anapsid/2.7
+
+HTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Fri, 04 Dec 2015 13:43:44 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8710/dbpediaInfoBox
+Content-Type: application/sparql-results+json
+Content-Length: 227
+
+
+{ "head": { "link": [], "vars": ["party"] },
+  "results": { "distinct": false, "ordered": true, "bindings": [
+    { "party": { "type": "uri", "value": "http://dbpedia.org/resource/Democratic_Party_%28United_States%29" }} ] } }
+GET /sparql/?query=ASK+%7B+%3Fx+%3Chttp%3A%2F%2Fdata.nytimes.com%2Felements%2FtopicPage%3E+%3Fpage+.%3Fx+%3Chttp%3A%2F%2Fwww.w3.org%2F2002%2F07%2Fowl%23sameAs%3E+%3Chttp%3A%2F%2Fdbpedia.org%2Fresource%2FBarack_Obama%3E+.+%7D&format=application%2Fsparql-results%2Bjson HTTP/1.1
+Accept-Encoding: identity
+Host: 172.16.9.15:8704
+Referer: http://172.16.9.15:8704/sparql/
+Accept: */*
+User-Agent: Anapsid/2.7
+
+HTTP/1.1 200 OK
+Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu  
+Connection: Keep-Alive
+Date: Fri, 04 Dec 2015 13:43:44 GMT
+Accept-Ranges: bytes
+X-SPARQL-default-graph: http://localhost:8704/nytimesNews
+Content-Type: application/sparql-results+json
+Content-Length: 43
+
+{  "head": { "link": [] }, "boolean": true}
