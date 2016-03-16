@@ -12,9 +12,14 @@ Summary
 # CrossDomain
 
 Next figures concern the concurrent execution of all CD collection queries (CD1 to CD7).
-
+**ANAPSID traces**
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_CD_pairJoins_precision_all_traces.jpeg)
-Format: ![Alt Text](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_CD_pairJoins_precision_all_traces.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/ANAPSID_CD_pairJoins_recall_all_mixages.jpeg)
+
+**FedX traces**
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_CD_pairJoins_precision_all_mixages.jpeg)
+![GitHub Logo](https://github.com/coumbaya/feta/blob/master/execution_figures/FEDX_CD_pairJoins_recall_all_mixages.jpeg)
+
 # LifeScience
 
 Next figures concern the concurrent execution of all LS collection queries (LS1 to LS7).
