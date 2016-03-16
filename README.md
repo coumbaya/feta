@@ -19,7 +19,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       We use this tool, in order to capture both queries and their answers. You may create your own captures, when   
       at the same time running queries with FedX or ANAPSID query engines. To do so, you need to run the command:
       
-      < $ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp" >
+      '<$ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp">'
    
    2. CouchDB: A Database for the Web
    
