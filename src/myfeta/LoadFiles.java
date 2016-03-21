@@ -1,6 +1,5 @@
 package myfeta;
 
-import com.fourspaces.couchdb.Document;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,7 +7,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.LineNumberReader;
 import java.sql.SQLException;
-import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
@@ -21,39 +19,27 @@ import static myfeta.Main.verbose;
  * "capture.log" in Document "endpointsAnswers"
  *
  * @author Nassopoulos Georges
- * @version 0.9
- * @since 2016-01-13
+ * @version 1.0
+ * @since 2016-03-19
  */
 public class LoadFiles {
 
     CouchDBManag myDB;
     MonetDBManag myMDB;
-    DeductionUtils myDeductioUtils;
     BasicUtilis myBasUtils;
 
-    //Creation date for xml type of logs, for virtuoso log as input 
-    public static String date;
-    //List of Documents stored in CouchDB, for "queryLog" and "answerLog"
-    private List<Document> docList;
     //Index of document in which input file will be loaded, for CouchDB
     private int indxDoc;
 
-    public LoadFiles(List<Document> listDocument, CouchDBManag db) throws ParserConfigurationException {
+    public LoadFiles(CouchDBManag db) throws ParserConfigurationException {
 
-        docList = listDocument;
         myDB = db;
-        date = "";
-
-        myDeductioUtils = new DeductionUtils();
         myBasUtils = new BasicUtilis();
     }
 
     public LoadFiles(MonetDBManag db) throws ParserConfigurationException {
 
         myMDB = db;
-        date = "";
-
-        myDeductioUtils = new DeductionUtils();
         myBasUtils = new BasicUtilis();
     }
 
@@ -134,13 +120,10 @@ public class LoadFiles {
             while ((sCurrentLine = br.readLine()) != null) {
 
                 ligneNumber++;
-
-                // System.out.println("currentLine " + LineNumberReader);
                 if ((sCurrentLine.contains("POST") || (sCurrentLine.contains("GET") && sCurrentLine.contains("/sparql/?query"))) && !flagPacket) {
 
                     flagAnsw = false;
                     flagPacket = true;
-
                     System.out.println("currentLine " + ligneNumber);
 
                     if ((sCurrentLine.contains("GET") && sCurrentLine.contains("/sparql/?query"))) {
@@ -177,39 +160,24 @@ public class LoadFiles {
                             System.out.println("query XDecimal: " + queryXDec);
                             System.out.println("query ASCII: " + queryASCII);
                             System.out.println("---------------------------------------");
-
-                            if (queryASCII.contains("micronutrient") && queryASCII.contains("SELECT")) {
-                                int razraz = 0;
-                            }
                         }
 
                         answerMappings += "\n";
                         if (setMonetDB) {
 
                             myMDB.saveEntryAnswers("TableEntryAnswers", ipClient, portClient + Integer.toString(cntNumberPackets), portEndpoint, answerMappings, time, queryASCII, indxDoc);
-
                         } else {
 
                             myDB.saveEntryAnswers(ipClient, portClient + Integer.toString(cntNumberPackets), portEndpoint, answerMappings, time, queryASCII, cntNumberPackets);
-
                         }
-                        if (cntNumberPackets == 2) {
-
-                            //   break;
-                        }
+                        
                         cntNumberPackets++;
                         answerMappings = "";
                         portEndpoint = "";
                         time = "";
-
                         queryXDec = "";
                         queryASCII = "";
-
                         flagAnsw = false;
-
-                        /**
-                         * *******************BUUUUUUUUUUUUUUUUUUG************************
-                         */
                         flagANAPSID = false;
 
                         if ((sCurrentLine.contains("GET") && sCurrentLine.contains("/sparql/?query"))) {

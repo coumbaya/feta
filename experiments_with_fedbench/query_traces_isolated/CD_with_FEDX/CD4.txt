@@ -2471,26 +2471,3 @@ Content-Length: 112
 
 { "head": { "link": [], "vars": ["y"] },
   "results": { "distinct": false, "ordered": true, "bindings": [ ] } }
- ±  ­ë+fcé7š˜j:l…IÑqhTˆËÚ|îUl‹ªw*  .À+À/À
-À	ÀÀÀÀÀ 3 2 E 9 8 ˆ  / A 5 „ 
-    V      ssl.gstatic.comÿ   
-         #  3t            X  TV^îM]Áº°¾"#UóÒ¦ÁÒX}£%Ç¯õE)¡F À+  ,ÿ       #  3t h2spdy/3.1http/1.1   t p m ï0‚ë0‚Ó Ûy³#>0	*†H†÷ 0I10	UUS10U
-
-Google Inc1%0#UGoogle Internet Authority G20151126000943Z160223000000Z0f10	UUS10U
-California10UMountain View10U
-
-Google Inc10U*.google.com0Y0*†HÎ=*†HÎ=B ÀòÔÓíf¯C3ş…~Œ^|ÚvZŒöş÷íºÑ*`É²¯ƒ0‰0pÆ³UÔ¯É1% órÅ¦»:!şO<æîS£‚ƒ0‚0U%0++0‚BU‚90‚5‚*.google.com‚*.android.com‚*.appengine.google.com‚*.cloud.google.com‚*.google-analytics.com‚*.google.ca‚*.google.cl‚*.google.co.in‚*.google.co.jp‚*.google.co.uk‚*.google.com.ar‚*.google.com.au‚*.google.com.br‚*.google.com.co‚*.google.com.mx‚*.google.com.tr‚*.google.com.vn‚*.google.de‚*.google.es‚*.google.fr‚*.google.hu‚*.google.it‚*.google.nl‚*.google.pl‚*.google.pt‚*.googleadapis.com‚*.googleapis.cn‚*.googlecommerce.com‚*.googlevideo.com‚*.gstatic.cn‚*.gstatic.com‚
-*.gvt1.com‚
-*.gvt2.com‚*.metric.gstatic.com‚*.urchin.com‚*.url.google.com‚*.youtube-nocookie.com‚*.youtube.com‚*.youtubeeducation.com‚*.ytimg.com‚android.clients.google.com‚android.com‚g.co‚goo.gl‚google-analytics.com‚
-google.com‚googlecommerce.com‚
-urchin.com‚youtu.be‚youtube.com‚youtubeeducation.com0U€0h+\0Z0++0†http://pki.google.com/GIAG2.crt0++0†http://clients1.google.com/ocsp0UjqnZ-æEáªAËâ[ºMùJM¹40Uÿ0 0U#0€Jİ¼öhµvõ¶»bºZ/0!U 00
-+Öy0g00U)0'0% # !†http://pki.google.com/GIAG2.crl0	*†H†÷ ‚ EIÌ+é"õîxE¯	LÉ 
-å	í _™ŠÔK X¿ËipâöG®ÆvAW‚­aø¾Ûp: ²wíFÔùU#Z%ğj{?8ßµ#jf=MşL+kçkus ¸Áj>ÿŞDÏóL 3€<ä3/3«-$@ò’@¶1WÓù\-º"—Û7!9WDòtXúÓ³@Ç—¸ÿ{GLAı3b9ÇÑ oSW ßÏL:'R	ZdÁ{&É·qIß},TÏS”	ø¾Rà%áÏÊ´‘®KıvâÃËÌ½±+R½:èaõ··é÷R\ÜD âDfñ {=_ÃRİÁr¾[“Ãï~Hm6é ô0‚ğ0‚Ø :ƒ0	*†H†÷ 0B10	UUS10U
-GeoTrust Inc.10UGeoTrust Global CA0130405151556Z161231235959Z0I10	UUS10U
-
-Google Inc1%0#UGoogle Internet Authority G20‚"0	*†H†÷ ‚ 0‚
-‚ œ*w\ØP‘:£‚àØPH¼‰?ñpˆF~àÅñ‰Î!îZşa·2D‰ tSOU¤Î‚b•îëY_Æá€Ä^”?¼[H8ôS÷$æû‘éÄÏôSôJüŸTŞ}¾ ko‡ÀĞP(0@ÚsQlÿ:<§7½Kë}$Şæùü1qû”Õ`ó.J¯BÒËêÄj²ÌSİK‹ÈaÍ¨>c+„5ie„ÈÅF"øS•¾ã€JÆ*ìº— Ç9™ ğaz•%ŒNRuâ¶íÊüÎ"j³NÏF——~À±Ş{¯E3Ïº>q·Şô%%Â5‰ûy‰7Å¯ri £ç0ä0U#0€Àz˜h‰û«d}ª}e¸ÊÌN0UJİ¼öhµvõ¶»bºZ/0Uÿ0.+"0 0+0†http://g.symcd.com0Uÿ0ÿ 05U.0,0* ( &†$http://g.symcb.com/crls/gtglobal.crl0U 00
-+Öy0	*†H†÷ ‚ ªú© Íjgƒí^Ô~ŞÄà% Å$û©È-m~Ş‚e,c4f>éRÂ´Ë/÷_™:jœPz…Œ}Ñ*H„Ó	l|ÂÍ5Ÿó‚îRŞh_ä Š –÷)šMË¨Ş†ÈoV‡}?Üúy}!ùÈ:/QvŒÇA’q%Î7øJL #ïÄ5®à#€s|M4.ÈnÖ™„spòíUîêgî2ë,İg?ö‹ÂpŞ[ æ»Ó6"ll°5Bl	=“éd	"…ŸÂs!Óæ_€ä…":s±`®hâô>—ç`	h6Ş:ÖâC•[7’»×­RdW–Ù^4~È5Ø 0‚}0‚æ »æ0	*†H†÷ 0N10	UUS10U
-Equifax1-0+U$Equifax Secure Certificate Authority0020521040000Z180821040000Z0B10	UUS10U
-GeoTrust Inc.10UGeoTrust Global CA0‚"0	*†H†÷ ‚ 0‚
-‚ ÚÌc0ıô#V~[ß<l8äq·x‘Ô¼¡ØLø¨C¶éM!ˆÚX/f9)½x‹8è·j~q¤æÄ`¦°ï€ä‰(%Öíƒó­¦‘Ç˜ÉB5­˜F’.OÊñ‡CÁ•W-Pï‰-€zW­òî_kÒ ¹ø5ÙÀF£{rÈ‘¿ÉU+ÍĞ—>œ&dÌßÎƒqÊNæÔÕ{©ÍUŞÈìÒ^8Så\OŒ-şP#6üfæË¤9 ·•9‘ş8.ÑšöM>o¯,`9âú6S9Ô^&+Û=¨½2ë(Rqå«3=á8»6„bœyê0ô_À+èqkäù £ğ0í0U#0€Hæhù+Ò²•×GØ# O3˜ŸÔ0UÀz˜h‰û«d}ª}e¸ÊÌN0Uÿ0ÿ0Uÿ0:U3010/ - +†)http://crl.geotrust.com/crls/secureca.crl0NU G0E0CU  0;09+-https://www.geotrust.com/resources/repository0	*†H†÷  vánNK†0²ÏğÇÇq~fîÂíÔ;ÿğğÈNÖC8°¹0}ĞUƒ¢jË6œèHf£m¸ÔGş‹Z\sü®Ù28«—4ª–Òë£I¶»å‘ïƒ6ëVoÊÚ¼scä{>"Ë=í_8tœãPN¡¯˜îaò„? •  ‘ A£ĞïrxĞ]3úß¥¼ñ„—L9èfC¾NjH MN„—‰”FàÁ&¥Af	#LVn½÷6›õRñju1Txû H0F! š&íî_y²Ïšuö…–-!/…NÑaå¯êëa`b×! œe×ºöéd8L«—Õr®…Dê±µ~ÙXdFY Õ    

@@ -1,40 +1,25 @@
 package myfeta;
 
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Set;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
 
-import static myfeta.Deduction.cntEGTotal;
-import static myfeta.Deduction.cntEGTrPo;
 import static myfeta.Deduction.dedGraphSelect;
-import static myfeta.Deduction.mapAnsEntryToAllSignatures;
-import static myfeta.Deduction.mapAnsEntryToListValues;
-import static myfeta.Deduction.mapAnsIDToLogClQuery;
-import static myfeta.Deduction.mapAnsIDToTimeSecs;
-import static myfeta.Deduction.mapAnsIDtoEntry;
-import static myfeta.Deduction.mapAnsSingatureToAllValues;
-import static myfeta.Deduction.mapDTPtoCANCELofEG;
-import static myfeta.Deduction.mapGroundTruthPairs;
 import static myfeta.Deduction.mapLogClQueryToAllTPEnts;
-import static myfeta.Deduction.mapLogClQueryToAnsEntry;
 import static myfeta.Deduction.mapLogClQueryToDedGraph;
 import static myfeta.Deduction.mapLogClQueryToTimeSecs;
-import static myfeta.Deduction.mapTPtoAnswersSourcesInverse;
-import static myfeta.Deduction.mapTruePositivePairs;
 import static myfeta.Deduction.totalPairs;
-import static myfeta.Deduction.truePositivesPairs;
-import static myfeta.DeductionLogClean.mapCTPtoFILTERUNION;
+import static myfeta.DeductionLogClean.mapCTPtoFILTERwithBoundJ;
 import static myfeta.DeductionLogClean.queries;
 import static myfeta.DeductionUtils.DTPCandidates;
+import static myfeta.Main.inverseBestMap;
 import static myfeta.Main.inverseMapping;
 import static myfeta.Main.inverseThresh;
-import static myfeta.Main.setMonetDB;
 import static myfeta.Main.windowJoin;
 
 /**
@@ -44,53 +29,37 @@ import static myfeta.Main.windowJoin;
  * Pattern (DTP), or identify the CTP directly as a DTP.
  *
  * @author Nassopoulos Georges
- * @version 0.9
- * @since 2016-01-13
+ * @version 1.0
+ * @since 2016-03-19
  */
 public class DeductionNestedLoop {
 
     BasicUtilis myBasUtils;
-    Deduction myDeduction;
     DeductionUtils myDedUtils;
-    DeductionLogClean myLogClean;
-    DeductionGraphConstruction myGraph;
-    MonetDBManag myMonet;
 
-    int cntEGpairs;
     private boolean flagSTOPNONPROJECTEDvars = false;
-    public static List<List<Integer>> dedGraphBeforeNesLoop;
-    public static List<List<List<String>>> setDTPbasedConcepts;
-    public static List<List<String>> allCTPs;
-    public static List<List<List<String>>> notnullJoinBGPs;
-    public static List<List<List<String>>> sameConceptBGPs;
-    public static HashMap<Integer, List<String>> mapEGtoCTPTmp;
-    public static HashMap<Integer, Integer> mapEGtoCancel;
-    public static HashMap<List<String>, Integer> mapEGtoOccurs;
-    public static HashMap<Integer, Integer> mapCTPtoDedGraph;
 
     //******************************Hash Maps concerning Candidate Triple Patterns (CTPs)******************************//
+    // list of all Candidate Triple Patterns
+    public static List<List<String>> allCTPs;
+    // concering the deduced graph of queries that contain the CTP
+    public static HashMap<Integer, Integer> mapCTPtoDedGraph;
     // concerning source queries containing it
     public static HashMap<List<String>, List<Integer>> mapCTPtoQuerySrc;
-    public static HashMap<Integer, List<Integer>> mapCTPIDtoQuerySrc;
+    // concerning source queries' endpoints
+    public static HashMap<List<String>, List<String>> mapCTPToEndpsSrc;
     // concerning constant values (IRIs or Litarals) to be searched in inverse mapping
     public static HashMap<List<String>, List<String>> mapCTPtoConstants;
     // concerning first query's timestamp
     public static HashMap<Integer, String> mapCTPToStartTime;
     // concerning latest query's timestamp
     public static HashMap<Integer, String> mapCTPToFinishTime;
-    // concerning source queries' endpoints
-    public static HashMap<List<String>, List<String>> mapCTPToEndpsSrc;
     // concerning source queries' answers, for CTP variables
     public static HashMap<List<String>, List<String>> mapCTPtoAnswTotal;
-    // concerning original or inverse variables, used for Sequential Pattern Mining
-    public static HashMap<List<String>, List<String>> mapCTPtoAllVars;
-    // 
-    public static HashMap<List<String>, List<List<String>>> mapCTPtoAllDTPs;
 
     //******************************Hash Maps concerning Deduced Triple Patterns (DTP)******************************//   
     // concerning to its serial deduction id 
     public static HashMap<List<String>, Integer> mapDTPToDeducedID;
-    public static HashMap<List<String>, Integer> mapDTPToTimeDeduction;
     // concerning source queries containing it, possible inner nested loop part
     public static HashMap<Integer, List<Integer>> mapDTPtoInnerQuery;
     // concerning queries injecting values as constants, certified as an outer nested loop part
@@ -101,63 +70,59 @@ public class DeductionNestedLoop {
     public static HashMap<List<String>, Integer> mapDTPToStartTime;
     // concerning latest query's timestamp
     public static HashMap<List<String>, Integer> mapDTPToFinishTime;
-    // concerning  answers, for both CTP and deduced variables
+    // concerning source answers, for deduced free (i.e. not hidden) variables
     public static HashMap<List<String>, List<String>> mapDTPtoAnswTotal;
-    // concerning SameConcept/Same As BGP containing it 
-    public static HashMap<List<String>, Integer> mapDTPtoConceptBGP;
+    // concerning matched answers, for variables matched during inverse mapping 
+    public static HashMap<List<String>, List<String>> mapDTPtoAnsInverseMap;
     // concerning NotNullJoin BGP containing it 
     public static HashMap<List<String>, Integer> mapDTPtoJoinBGP;
     // concerning Exclusive Group containing it 
     public static HashMap<List<String>, Integer> mapDTPtoExclGroup;
-    // concerning Exclusive Group containing it 
-    public static HashMap<List<List<String>>, Integer> mapPairExclGroup;
+    // concerning the BGP to which a DTP belongs
     public static HashMap<Integer, Integer> mapDTPToAnyJoin;
     // concerning alternative DTPs, with differents vars for common values
     public static HashMap<List<String>, Integer> mapDTPtoAlternatives;
-    // 
-    public static HashMap<List<List<String>>, Integer> mapDTPpair;
-    //
+    // concerning DTP that participate in an exclusive group
     public static HashMap<List<String>, Integer> mapDTPofEGNested;
-        //
+    // concerning DTP that participate in a bound join implementation
     public static HashMap<List<String>, Integer> mapSrcTPtoBoundJoin;
-              //
+    // concerning DTP that participate in a single triple pattern query
     public static HashMap<List<String>, Integer> mapSrcTPtoSingleTPQuery;
 
-    //******************************Hash Maps concerning relation between Deduced Triple Patterns******************************//   
+    //******************************Hash Maps concerning joins between Deduced Triple Patterns******************************//  
+    // concerning an Exclusive Group
+    public static HashMap<List<List<String>>, Integer> mapPairExclGroup;
+    // concerning each list of temporal exclusive groups
+    public static HashMap<Integer, List<String>> mapTmpEGtoAllTPs;
+    // concerning which exclusive groups are going to be canceled (nested loop with exclusive groups)
+    public static HashMap<Integer, Integer> mapEGtoCancel;
+    // concerning occurances of exclusive group (and nested loop with exclusive groups)
+    public static HashMap<List<String>, Integer> mapEGtoOccurs;
     // concerning type of join: "Alternative inverese mapping vars", "exclusive groups", "nested loop" or "symmetric hash"
-    public static HashMap<List<List<String>>, String> mapPairTPsToTypeJoin;
-    // affecting a JOIN BGP graph to a level of confidence
-    public static HashMap<Integer, Float> mapJOINBGPtoConfidence;
+    public static HashMap<List<List<String>>, String> mapPairToRelation;
+    // affecting a BGP graph to a level of confidence
+    public static HashMap<Integer, Float> mapBGPtoConfidence;
+    // concerning all deduced join BGPs
+    public static List<List<List<String>>> notnullJoinBGPs;
 
     public DeductionNestedLoop() throws ParserConfigurationException {
 
         myDedUtils = new DeductionUtils();
         myBasUtils = new BasicUtilis();
-        myLogClean = new DeductionLogClean();
-        myGraph = new DeductionGraphConstruction();
-        myMonet = new MonetDBManag();
 
-        notnullJoinBGPs = new LinkedList<>();
-        sameConceptBGPs = new LinkedList<>();
-        mapPairTPsToTypeJoin = new HashMap<>();
-        mapJOINBGPtoConfidence = new HashMap<>();
-
+        allCTPs = null;
         mapCTPtoQuerySrc = new HashMap<>();
         mapCTPtoConstants = new HashMap<>();
-        mapCTPtoAllVars = new HashMap<>();
         mapCTPtoAnswTotal = new HashMap<>();
-        mapCTPIDtoQuerySrc = new HashMap();
         mapCTPToFinishTime = new HashMap<>();
         mapCTPToStartTime = new HashMap<>();
         mapCTPToEndpsSrc = new HashMap<>();
         mapCTPtoDedGraph = new HashMap<>();
 
-        setDTPbasedConcepts = new LinkedList<>();
         mapDTPToDeducedID = new HashMap<>();
         mapDTPToFinishTime = new HashMap<>();
         mapDTPToStartTime = new HashMap<>();
         mapDTPtoJoinBGP = new HashMap<>();
-        mapDTPtoConceptBGP = new HashMap<>();
         mapDTPtoInnerQuery = new HashMap<>();
         mapDTPtoOuterQuery = new HashMap<>();
         mapDTPtoExclGroup = new HashMap<>();
@@ -165,21 +130,18 @@ public class DeductionNestedLoop {
         mapDTPToAnyJoin = new HashMap();
         mapDTPToEndpsSrc = new HashMap<>();
         mapDTPtoAnswTotal = new HashMap<>();
-        mapDTPToTimeDeduction = new HashMap<>();
+        mapDTPtoAnsInverseMap = new HashMap<>();
+        mapDTPofEGNested = new HashMap<>();
+        mapSrcTPtoBoundJoin = new HashMap<>();
+        mapSrcTPtoSingleTPQuery = new HashMap<>();
 
         mapPairExclGroup = new HashMap<>();
-
-        mapEGtoCTPTmp = new HashMap<>();
+        mapTmpEGtoAllTPs = new HashMap<>();
         mapEGtoOccurs = new HashMap<>();
-
-        mapCTPtoAllDTPs = new HashMap<>();
-        mapDTPpair = new HashMap<>();
-        allCTPs = null;
-        cntEGpairs = 0;
         mapEGtoCancel = new HashMap<>();
-        mapDTPofEGNested = new HashMap<>();
-        mapSrcTPtoBoundJoin= new HashMap<>();
-        mapSrcTPtoSingleTPQuery= new HashMap<>();
+        notnullJoinBGPs = new LinkedList<>();
+        mapPairToRelation = new HashMap<>();
+        mapBGPtoConfidence = new HashMap<>();
     }
 
     /**
@@ -197,14 +159,14 @@ public class DeductionNestedLoop {
      *
      * In other case, we identify directly the CTP as a DTP
      *
-     * @param windowDed deduction window, defining DB slice
+     * @param windowSlice deduction window, defining DB slice
      * @throws javax.xml.transform.TransformerException
      * @throws javax.xml.parsers.ParserConfigurationException
      * @throws java.sql.SQLException
      * @throws java.lang.InstantiationException
      * @throws java.lang.IllegalAccessException
      */
-    public void NestedLoopDetection(int windowDed) throws TransformerException, ParserConfigurationException, SQLException, InstantiationException, IllegalAccessException {
+    public void NestedLoopDetection(int windowSlice) throws TransformerException, ParserConfigurationException, SQLException, InstantiationException, IllegalAccessException {
 
         long startTime = 0;
         long finishTime = 0;
@@ -212,15 +174,10 @@ public class DeductionNestedLoop {
         List<String> allCTPconsts = null;
         List<String> tmpCTP = null;
 
-        if (setMonetDB) {
-
-            myMonet.openSession("jdbc:monetdb://localhost/demo", "feta", "feta");
-        }
-
         long tmpTime = System.nanoTime();
         System.out.println("[START] ---> Triple Pattern's extraction");
         System.out.println();
-        allCTPs = getPatternValues(dedGraphSelect);
+        allCTPs = getCTPsfromGraphs(dedGraphSelect);
         System.out.println("[FINISH] ---> Triple Pattern's extraction (Elapsed time: " + (System.nanoTime() - tmpTime) / 1000000000 + " seconds)");
         System.out.println();
         System.out.println("-----------------------------------------------------------------------------------------------------------------");
@@ -230,48 +187,35 @@ public class DeductionNestedLoop {
         System.out.println("[START] ---> NestedLoopDetection heuristic");
         System.out.println();
 
-        dedGraphBeforeNesLoop = myBasUtils.cloneListOfList2(dedGraphSelect);
-
+        //Try to match every CTP's constant value, (IRI/Literal) to reveal hidden
+        //variables, or, directly match a CTP (when inverseMapping is disabled 
+        //or CTP's subject and object are variables)
         for (int i = 0; i < allCTPs.size(); i++) {
 
-            allCTPconsts = myDedUtils.getValuesFromCTP(i);
-            HashSet hs = new HashSet();
-            hs.addAll(allCTPconsts);
-            allCTPconsts.clear();
-            allCTPconsts.addAll(hs);
-            Collections.sort(allCTPconsts);
-        }
-
-        //search every CTP's constant value, (IRI/Literal) with inverse mapping 
-        //to reveal hidden variables or directly corresponding values to hash map structures 
-        //(e.g., endpoints, answers)
-        for (int i = 0; i < allCTPs.size(); i++) {
-
+            allCTPconsts = myBasUtils.sortAndRemoveRedundancy(myDedUtils.getValuesFromCTP(i));
             tmpCTP = myDedUtils.getCleanTP(allCTPs.get(i));
 
             if (!inverseMapping) {
 
-               // System.out.println(tmpCTP);
-                 //System.out.println(i);
                 myDedUtils.setDTPHashInfo(tmpCTP, i);
                 allCTPconsts = myDedUtils.getValuesFromCTP(i);
-                myBasUtils.insertToMap1(mapCTPtoAllDTPs, tmpCTP, tmpCTP);
-                directMatchingTP(i, allCTPconsts, allCTPs.get(i));
+                flagSTOPNONPROJECTEDvars = myDedUtils.setDTPtoSrcAns(i, allCTPconsts, allCTPs.get(i), flagSTOPNONPROJECTEDvars);
             } else {
 
-                SearchValueInverseMap(i);
+                getMatchVarsOfCTP(i);
             }
 
         }
 
         //Get FILTER values, for ANAPSID trace's inner subqueres of NLFO
-        checkNestedLoopFilter();
-        //Get FILTER values, for FedX trace's inner subqueres of NLBJ
-        cancelJoinsNLEG();
-        //Search for possible double NLBJ implementation in subject and object 
-        //position of each triple pattern, where the second NLBJ is implemented
-        //into a FILTER option
-        matchFedXFilterValsToVariable();
+        checkNLFOJoin();
+
+        //Cancel exclusive groups, if they are identified as a NLEG implementation of FedX
+        cancelJoinsNLEGJoin();
+
+        //Search for possible double NLBJ implementation of FedX on subject and object 
+        //The second NLBJ is implemented as FILTER option
+        checkNLBJwithFilter();
 
         finishTime = System.nanoTime();
         elapsedTime = finishTime - startTime;
@@ -282,12 +226,13 @@ public class DeductionNestedLoop {
     /**
      * Extract all Candidate Triple Patterns (CTPs) from all deduced graphs
      *
-     * @param listOfDedGraphs
-     * @return
+     * @param listOfDedGraphs input of all deduced graphs
+     * @return list of Candidate Triple Patterns (CTP)
      */
-    public List<List<String>> getPatternValues(List<List<Integer>> listOfDedGraphs) {
+    public List<List<String>> getCTPsfromGraphs(List<List<Integer>> listOfDedGraphs) {
 
         List<String> queryTriplets = null;
+        int count = 0;
 
         for (int i = 0; i < listOfDedGraphs.size(); i++) {
 
@@ -295,15 +240,11 @@ public class DeductionNestedLoop {
             for (int j = 0; j < listOfDedGraphs.get(i).size(); j++) {
 
                 queryTriplets = mapLogClQueryToAllTPEnts.get(listOfDedGraphs.get(i).get(j) - 1);
-                if (queryTriplets.size() > 0) {
-
-                    parseNgetCTP(queryTriplets, i, listOfDedGraphs.get(i).get(j) - 1);
-                }
+                getCTPfromQuery(queryTriplets, i, listOfDedGraphs.get(i).get(j) - 1);
 
             }
         }
 
-        int count = 0;
         System.out.println();
         System.out.println("\t================ Candidate Triple Patterns (CTPs)================");
         System.out.println();
@@ -323,90 +264,69 @@ public class DeductionNestedLoop {
     }
 
     /**
-     * Parse query triplets and identify new CTP or update exisitng one
+     * Parse query triplets of each suquery and identify new CTP or update info
+     * of an exisitng one
      *
-     * @param queryTriplets
-     * @param dedGraphId
-     * @param indxLogCleanQuery
+     * @param queryTriplets all query's triplets in form of entities
+     * @param dedGraphId deduced graph of queries, containing this query
+     * @param indxLogCleanQuery index of current query
      */
-    public void parseNgetCTP(List<String> queryTriplets, int dedGraphId, int indxLogCleanQuery) {
+    public void getCTPfromQuery(List<String> queryTriplets, int dedGraphId, int indxLogCleanQuery) {
 
         int indxValue = -1;
         int indxLogQueryDedGraph = mapLogClQueryToDedGraph.get(indxLogCleanQuery);
         int indxNewTPDedGraph = -1;
-        List<String> tmpTriplet = null;
         List<String> tmpTripletClean = null;
         List<Integer> allIdPats = null;
         List<Integer> deducedTPnotCoveredTimestamp = new LinkedList<>();
         String strDedQueryId = Integer.toString(dedGraphId);
-        String constanValue = "";
         boolean flagTriplePatternOutOfTimeRange = false;
 
+        //For all triple patterns
         for (int f = 0; f < queryTriplets.size(); f += 3) {
-            tmpTriplet = new LinkedList<>();
-            tmpTriplet.add(queryTriplets.get(f + 0));
-            tmpTriplet.add(queryTriplets.get(f + 1));
-            tmpTriplet.add(queryTriplets.get(f + 2));
-            tmpTripletClean = myDedUtils.getCleanTP(tmpTriplet);
 
-            if (tmpTriplet.get(0).contains("?Int")
-                    && tmpTriplet.get(1).contains("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug1>")
-                    && tmpTriplet.get(2).contains("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00863>")) {
+            tmpTripletClean = myDedUtils.getCleanTP(new LinkedList<>(queryTriplets.subList(f, f + 3)));
 
-                int zeze = 0;
-            }
+            //Check if query is an Exclusive Group
+            checkTPinEG(queryTriplets, tmpTripletClean, indxLogCleanQuery);
 
-            if (queryTriplets.size() > 6 && !queries.get(indxLogCleanQuery).contains("UNION") && !queries.get(indxLogCleanQuery).contains("_0")) {
+            //Check if query is a Bound Join implementation or it's a single TP query
+            checkSingleTPorBoundJ(queryTriplets, tmpTripletClean, indxLogCleanQuery);
 
-                if (!tmpTriplet.get(0).contains("?") || !tmpTriplet.get(2).contains("?")) {
+            //[CASE A] When both subjects and objects are variables, or inverseMapping is disabled
+            if (tmpTripletClean.get(0).contains("?") && tmpTripletClean.get(2).contains("?") || !inverseMapping) {
 
-                    mapDTPofEGNested.put(tmpTripletClean, 1);
-                }
+                //A_(i) It's the frist time we see this CTP
+                allIdPats = myDedUtils.getIdemCTPs(DTPCandidates, tmpTripletClean.get(0), tmpTripletClean.get(1), tmpTripletClean.get(2));
 
-            }
-            
-            //save all RAW triple patterns participating into a bound JOIN
-            if(queries.get(indxLogCleanQuery).contains("UNION") && queries.get(indxLogCleanQuery).contains("_0")){
-                mapSrcTPtoBoundJoin.put(tmpTripletClean, 1);
-            }
-
-            
-                    if (queryTriplets.size() ==3 && !queries.get(indxLogCleanQuery).contains("UNION") && !queries.get(indxLogCleanQuery).contains("_0")) {
-
-                if (!tmpTriplet.get(0).contains("?") || !tmpTriplet.get(2).contains("?")) {
-
-                    mapSrcTPtoSingleTPQuery.put(tmpTripletClean, 1);
-                }
-
-            }
-                    
-            //If both subject and object are variables, identify directly the CTP as a whole
-            if (queryTriplets.get(f).contains("?") && queryTriplets.get(f + 2).contains("?") || !inverseMapping) {
-
-                //case (a), for its first apparition
-                allIdPats = myDedUtils.getIdemCTPs(DTPCandidates, queryTriplets.get(f), queryTriplets.get(f + 1), queryTriplets.get(f + 2));
                 if (allIdPats.isEmpty()) {
 
-                    myDedUtils.setNewCTPInfo(tmpTriplet, "", indxLogCleanQuery, indxLogQueryDedGraph, strDedQueryId, "");
-                    matchAnswOrigVarsToCTP(tmpTriplet, indxLogCleanQuery, "", DTPCandidates.size() - 1, queryTriplets.get(f + 0));
-                } // case (b), for its second apparition then check if is covered by the Tjoin (Gap)
-                // if not, concidered it as a new CTP
+                    myDedUtils.setNewCTPInfo(tmpTripletClean, "", indxLogCleanQuery, indxLogQueryDedGraph, strDedQueryId, "");
+                    myDedUtils.setTPtoSrcAns(tmpTripletClean, indxLogCleanQuery, "", DTPCandidates.size() - 1);
+                } //A_(ii) It's not the first time we identify it
                 else {
 
+                    //Then, we must be sure that it's not an existing CTP
                     for (int l = allIdPats.size() - 1; l >= 0; l--) {
 
                         indxNewTPDedGraph = mapCTPtoDedGraph.get(allIdPats.get(l));
+
+                        //First we check it belongs to the same graph with previous identified CTP
                         if (indxNewTPDedGraph != indxLogQueryDedGraph) {
 
                             flagTriplePatternOutOfTimeRange = true;
-                            myDedUtils.setNewCTPInfo(tmpTriplet, queryTriplets.get(f + 0), indxLogCleanQuery, indxLogQueryDedGraph, strDedQueryId, "_" + allIdPats.size());
-                            matchAnswOrigVarsToCTP(tmpTriplet, indxLogCleanQuery, "", DTPCandidates.size() - 1, queryTriplets.get(f + 0));
+                            myDedUtils.setNewCTPInfo(tmpTripletClean, tmpTripletClean.get(0), indxLogCleanQuery, indxLogQueryDedGraph, strDedQueryId, "_" + allIdPats.size());
+                            myDedUtils.setTPtoSrcAns(tmpTripletClean, indxLogCleanQuery, "", DTPCandidates.size() - 1);
                             deducedTPnotCoveredTimestamp.add(DTPCandidates.size() - 1);
                             break;
-                        } else {
+                        } //if not, it's a new CTP (we distinguish them with "_#number")
+                        //This happens when Tjoin is not big enough to merge some subqueries
+                        //with same characteristics
+                        else {
 
-                            myDedUtils.updateCTPInfo(tmpTriplet, constanValue, indxLogCleanQuery, indxLogQueryDedGraph, allIdPats.get(l));
-                            matchAnswOrigVarsToCTP(tmpTriplet, indxLogCleanQuery, "", allIdPats.get(l), constanValue);
+                            myDedUtils.updateCTPInfo(tmpTripletClean, "", indxLogCleanQuery, indxLogQueryDedGraph, allIdPats.get(l));
+                            myDedUtils.setTPtoSrcAns(tmpTripletClean, indxLogCleanQuery, "", allIdPats.get(l));
+
                             if ((DTPCandidates.get(allIdPats.get(l)).get(0).contains("?") && DTPCandidates.get(allIdPats.get(l)).get(0).contains("_"))
                                     || (DTPCandidates.get(allIdPats.get(l)).get(2).contains("?") && DTPCandidates.get(allIdPats.get(l)).get(2).contains("_"))) {
 
@@ -420,36 +340,30 @@ public class DeductionNestedLoop {
 
                 }
 
-                //ELse if subject or object is Literal/IRI
-            } else {
+            } //If subject or object is a constant, we repeat the procedure depending 
+            //on if it is a Single TP or part of BoundJoin
+            else {
 
-                if (queryTriplets.get(f).contains("?") && (queryTriplets.get(f + 2).contains("<")
-                        || queryTriplets.get(f + 2).contains("\"") || queryTriplets.get(f + 2).contains("'")) && inverseMapping) {
+                if (inverseMapping) {
 
-                    indxValue = 2;
-                }
-                if (queryTriplets.get(f + 2).contains("?") && (queryTriplets.get(f).contains("<")
-                        || queryTriplets.get(f).contains("\"") || queryTriplets.get(f).contains("'")) && inverseMapping) {
-
-                    indxValue = 0;
+                    indxValue = myDedUtils.getIndxConstant(tmpTripletClean);
                 }
 
-                setOrUpdateCTPInfo(tmpTripletClean, f, indxValue, strDedQueryId, indxLogCleanQuery);
+                setOrUpdateCTPList(tmpTripletClean, indxValue, strDedQueryId, indxLogCleanQuery);
             }
 
         }
 
-        //check for  an exclusive group relation between CTP            
-        if (queryTriplets.size() >= 6 && !flagTriplePatternOutOfTimeRange) {
-            if (!queries.get(indxLogCleanQuery).contains("UNION")) {
+        //check for  an exclusive group relation between CTP
+        //It could be a EG or NLEG
+        if (queryTriplets.size() >= 6 && !flagTriplePatternOutOfTimeRange && !queries.get(indxLogCleanQuery).contains("UNION")) {
 
-                if (checkExclusiveGroupJoin(queryTriplets)) {
-                    for (int i = 0; i < deducedTPnotCoveredTimestamp.size(); i++) {
-                        if (mapDTPToAnyJoin.get(deducedTPnotCoveredTimestamp.get(i)) == null) {
+            if (checkEGJoin(queryTriplets)) {
+                for (int i = 0; i < deducedTPnotCoveredTimestamp.size(); i++) {
+                    if (mapDTPToAnyJoin.get(deducedTPnotCoveredTimestamp.get(i)) == null) {
 
-                            mapDTPToDeducedID.put(DTPCandidates.get(deducedTPnotCoveredTimestamp.get(i)), deducedTPnotCoveredTimestamp.get(i));
-                            mapDTPToAnyJoin.put(deducedTPnotCoveredTimestamp.get(i), -1);
-                        }
+                        mapDTPToDeducedID.put(DTPCandidates.get(deducedTPnotCoveredTimestamp.get(i)), deducedTPnotCoveredTimestamp.get(i));
+                        mapDTPToAnyJoin.put(deducedTPnotCoveredTimestamp.get(i), -1);
                     }
                 }
             }
@@ -458,87 +372,123 @@ public class DeductionNestedLoop {
     }
 
     /**
-     * Identify new CTP or update existing info of corresponding hash maps
+     * Check if identified CTP is part of an EG
      *
-     * @param tmpTriplet
-     * @param indexTPinQuery
-     * @param indxValue
-     * @param strDedQueryId
-     * @param indxLogCleanQuery
+     * @param queryTriplets all query's triplets in form of entities
+     * @param currTP current triple pattern
+     * @param indxLogCleanQuery index of current query
      */
-    public void setOrUpdateCTPInfo(List<String> tmpTriplet, int indexTPinQuery, int indxValue, String strDedQueryId, int indxLogCleanQuery) {
+    public void checkTPinEG(List<String> queryTriplets, List<String> currTP, int indxLogCleanQuery) {
+
+        if (queryTriplets.size() > 6 && !queries.get(indxLogCleanQuery).contains("UNION") && !queries.get(indxLogCleanQuery).contains("_0")) {
+
+            if (!currTP.get(0).contains("?") || !currTP.get(2).contains("?")) {
+
+                mapDTPofEGNested.put(currTP, 1);
+            }
+
+        }
+    }
+
+    /**
+     * Particular function for FedX traces. Check if identified CTP is part of
+     * an bound join
+     *
+     * @param queryTriplets all query's triplets in form of entities
+     * @param currTP current triple pattern
+     * @param indxLogCleanQuery index of current query
+     */
+    public void checkSingleTPorBoundJ(List<String> queryTriplets, List<String> currTP, int indxLogCleanQuery) {
+
+        //save all RAW triple patterns participating into a bound JOIN
+        if (queries.get(indxLogCleanQuery).contains("UNION") && queries.get(indxLogCleanQuery).contains("_0")) {
+
+            mapSrcTPtoBoundJoin.put(currTP, 1);
+        }
+
+        if (queryTriplets.size() == 3 && !queries.get(indxLogCleanQuery).contains("UNION") && !queries.get(indxLogCleanQuery).contains("_0")) {
+
+            if (!currTP.get(0).contains("?") || !currTP.get(2).contains("?")) {
+
+                mapSrcTPtoSingleTPQuery.put(currTP, 1);
+            }
+
+        }
+    }
+
+    /**
+     * Identify new CTP or update existing CTP info
+     *
+     * @param currTP current triple pattern
+     * @param indxConstValue index of constant value of a triple pattern,
+     * subject or object
+     * @param strDedQueryId BUUUUUUUUUUUUUUUUUG
+     * @param indxLogCleanQuery index of current query
+     */
+    public void setOrUpdateCTPList(List<String> currTP, int indxConstValue, String strDedQueryId, int indxLogCleanQuery) {
 
         int indxLogQueryDedGraph = mapLogClQueryToDedGraph.get(indxLogCleanQuery);
         int indxNewTPDedGraph = -1;
         List<Integer> allIdPats = new LinkedList<>();
-        String constantVal = "";
+        String constantVal = myDedUtils.getConstantVal(currTP);
 
-        //CHANGE get constants
-        if (!tmpTriplet.get(0).contains("?")) {
-
-            constantVal = tmpTriplet.get(0);
-        } else if (!tmpTriplet.get(2).contains("?")) {
-
-            constantVal = tmpTriplet.get(2);
-        }
-
-        //case inverseMapping is enabled, we are looking how many CTPs with same
-        //elements on two out of three entities (i.e., variable and predicate) actually match
+        //First, check for matching to existing CTP on two out of three entities 
+        //and differning on subject or object
         if (inverseMapping) {
-            switch (indxValue) {
+            switch (indxConstValue) {
 
                 case 0:
 
-                    allIdPats = myDedUtils.getDerivedCTPs(DTPCandidates, tmpTriplet.get(1), 1, tmpTriplet.get(2), 2);
+                    allIdPats = myDedUtils.getDerivedCTPs(DTPCandidates, currTP.get(1), 1, currTP.get(2), 2);
                     break;
                 case 1:
 
-                    allIdPats = myDedUtils.getDerivedCTPs(DTPCandidates, tmpTriplet.get(0), 0, tmpTriplet.get(2), 2);
+                    allIdPats = myDedUtils.getDerivedCTPs(DTPCandidates, currTP.get(0), 0, currTP.get(2), 2);
                     break;
                 case 2:
 
-                    allIdPats = myDedUtils.getDerivedCTPs(DTPCandidates, tmpTriplet.get(0), 0, tmpTriplet.get(1), 1);
+                    allIdPats = myDedUtils.getDerivedCTPs(DTPCandidates, currTP.get(0), 0, currTP.get(1), 1);
                     break;
             }
         } else {
 
-            allIdPats = myDedUtils.getIdemCTPs(DTPCandidates, tmpTriplet.get(0), tmpTriplet.get(1), tmpTriplet.get(2));
+            allIdPats = myDedUtils.getIdemCTPs(DTPCandidates, currTP.get(0), currTP.get(1), currTP.get(2));
         }
 
-        //case (a), for CTP first apparition
+        //A_(i) It's the frist time we see this CTP
         if (allIdPats.isEmpty()) {
 
-            myDedUtils.setNewCTPInfo(tmpTriplet, constantVal, indxLogCleanQuery, indxLogQueryDedGraph, strDedQueryId, "");
-            matchAnswOrigVarsToCTP(tmpTriplet, indxLogCleanQuery, "", DTPCandidates.size() - 1, constantVal);
-        } // case (b), for already treated CTP  check if is covered by the Tjoin (Gap)
-        // if not, concidered it as a new CTP
+            myDedUtils.setNewCTPInfo(currTP, constantVal, indxLogCleanQuery, indxLogQueryDedGraph, strDedQueryId, "");
+            myDedUtils.setTPtoSrcAns(currTP, indxLogCleanQuery, "", DTPCandidates.size() - 1);
+        } //A_(ii) It's not the first time we identify it
         else if (allIdPats.size() > 0) {
 
+            //Then, we must be sure that it's not an existing CTP
             for (int l = allIdPats.size() - 1; l >= 0; l--) {
-                //  for (int l = 0; l < allIdPats.size(); l++) {
 
                 indxLogQueryDedGraph = mapLogClQueryToDedGraph.get(indxLogCleanQuery);
                 indxNewTPDedGraph = mapCTPtoDedGraph.get(allIdPats.get(l));
                 int startTime = myBasUtils.getTimeInSec(mapCTPToStartTime.get(allIdPats.get(l)));
                 int stopTime = myBasUtils.getTimeInSec(mapCTPToFinishTime.get(allIdPats.get(l)));
 
+                //First we check their timestamp's intervals are cover by Tjoin
                 if (indxNewTPDedGraph != indxLogQueryDedGraph && (!(mapLogClQueryToTimeSecs.get(indxLogCleanQuery) - startTime <= windowJoin)
                         || !(mapLogClQueryToTimeSecs.get(indxLogCleanQuery) - stopTime <= windowJoin))) {
 
-                    myDedUtils.setNewCTPInfo(tmpTriplet, constantVal, indxLogCleanQuery, indxLogQueryDedGraph, strDedQueryId, "_" + Integer.toString(allIdPats.size() + 1));
-                    matchAnswOrigVarsToCTP(tmpTriplet, indxLogCleanQuery, "", DTPCandidates.size() - 1, constantVal);
+                    myDedUtils.setNewCTPInfo(currTP, constantVal, indxLogCleanQuery, indxLogQueryDedGraph, strDedQueryId, "_" + Integer.toString(allIdPats.size() + 1));
+                    myDedUtils.setTPtoSrcAns(currTP, indxLogCleanQuery, "", DTPCandidates.size() - 1);
                     break;
-                } else {
+                } //if not, it's a new CTP (we distinguish them with "_#number")
+                else {
 
-                    //CHANGE must simplify
                     if (DTPCandidates.get(allIdPats.get(l)).get(0).contains("_")) {
 
                         myDedUtils.updateCTPInfo(DTPCandidates.get(allIdPats.get(l)), constantVal, indxLogCleanQuery, indxLogQueryDedGraph, allIdPats.get(l));
-                        matchAnswOrigVarsToCTP(DTPCandidates.get(allIdPats.get(l)), indxLogCleanQuery, "", allIdPats.get(l), constantVal);
+                        myDedUtils.setTPtoSrcAns(DTPCandidates.get(allIdPats.get(l)), indxLogCleanQuery, "", allIdPats.get(l));
                     } else {
 
-                        myDedUtils.updateCTPInfo(tmpTriplet, constantVal, indxLogCleanQuery, indxLogQueryDedGraph, allIdPats.get(l));
-                        matchAnswOrigVarsToCTP(tmpTriplet, indxLogCleanQuery, "", allIdPats.get(l), constantVal);
+                        myDedUtils.updateCTPInfo(currTP, constantVal, indxLogCleanQuery, indxLogQueryDedGraph, allIdPats.get(l));
+                        myDedUtils.setTPtoSrcAns(currTP, indxLogCleanQuery, "", allIdPats.get(l));
                     }
 
                     break;
@@ -550,14 +500,14 @@ public class DeductionNestedLoop {
     }
 
     /**
-     * Identify exclusive groups and combine respective DTPs and at the same time
-     * check for possible Nested Loop with Exclusive Groups implementation, made
-     * by FedX
+     * Particular function for FedX traces. Identify exclusive groups and
+     * combine respective DTPs and at the same time check for possible Nested
+     * Loop with Exclusive Groups implementation.
      *
-     * @param queryTriplets
-     * @return
+     * @param queryTriplets tps of a query, in form of query entities
+     * @return true, if query are previously identified as an exclusive group
      */
-    public boolean checkExclusiveGroupJoin(List<String> queryTriplets) {
+    public boolean checkEGJoin(List<String> queryTriplets) {
 
         boolean flagEG = false;
         boolean foundEG = false;
@@ -567,22 +517,20 @@ public class DeductionNestedLoop {
         List<String> outerDTP = null;
         List<String> currEG = null;
 
-        boolean flagSkip = false;
-
         if (queryTriplets.size() >= 6) {
 
-            for (int key : mapEGtoCTPTmp.keySet()) {
+            for (int key : mapTmpEGtoAllTPs.keySet()) {
 
-                currEG = mapEGtoCTPTmp.get(key);
+                currEG = mapTmpEGtoAllTPs.get(key);
+                int commElems = myBasUtils.candidateTPcomElems(currEG, queryTriplets);
 
                 if (currEG.size() == queryTriplets.size()) {
-
-                    int commElems = myBasUtils.candidateTPcomElems(currEG, queryTriplets);
 
                     // the second condition, is used to capture Nested Loop with EG operator, made by FedX
                     if (commElems == currEG.size() || commElems == currEG.size() - 1) {
 
                         if (commElems == currEG.size() - 1) {
+
                             mapEGtoCancel.put(key, 1);
                             mapEGtoOccurs.put(currEG, 2);
                         }
@@ -595,81 +543,23 @@ public class DeductionNestedLoop {
 
             }
 
+            //If it's the first time we see this EG or NLEG, we save each pairWise join as EG
             if (!foundEG) {
 
-                int indEG = mapEGtoCTPTmp.size();
-                mapEGtoCTPTmp.put(indEG, queryTriplets);
+                int indEG = mapTmpEGtoAllTPs.size();
+                mapTmpEGtoAllTPs.put(indEG, queryTriplets);
                 mapEGtoOccurs.put(currEG, 1);
 
                 for (int i = 0; i < queryTriplets.size(); i += 3) {
 
-                    outerDTP = new LinkedList<>();
-                    outerDTP.add(queryTriplets.get(i));
-                    outerDTP.add(queryTriplets.get(i + 1));
-                    outerDTP.add(queryTriplets.get(i + 2));
-
+                    outerDTP = myDedUtils.getCleanTP(new LinkedList<>(queryTriplets.subList(i, i + 3)));
                     for (int f = i + 3; f < queryTriplets.size(); f += 3) {
 
-                        //CHANGE: unnessacary condition
-                        if (queryTriplets.get(i).equalsIgnoreCase(queryTriplets.get(f)) || queryTriplets.get(i + 2).equalsIgnoreCase(queryTriplets.get(f + 2))
-                                || queryTriplets.get(i + 2).equalsIgnoreCase(queryTriplets.get(f)) || queryTriplets.get(i).equalsIgnoreCase(queryTriplets.get(f + 2))) {
-
-                            innerDTP = new LinkedList<>();
-                            innerDTP.add(queryTriplets.get(f));
-                            innerDTP.add(queryTriplets.get(f + 1));
-                            innerDTP.add(queryTriplets.get(f + 2));
-                            newEGpair = new LinkedList<>();
-                            newEGpair2 = new LinkedList<>();
-                            innerDTP = myDedUtils.getCleanTP(innerDTP);
-                            outerDTP = myDedUtils.getCleanTP(outerDTP);
-                            newEGpair.add(innerDTP);
-                            newEGpair.add(outerDTP);
-                            newEGpair2.add(outerDTP);
-                            newEGpair2.add(innerDTP);
-
-                            int currDTPsize = mapDTPToDeducedID.size();
-
-                            if (mapDTPToDeducedID.get(outerDTP) == null) {
-
-                                mapDTPToDeducedID.put(outerDTP, currDTPsize);
-                                mapDTPToAnyJoin.put(currDTPsize, 1);
-                            }
-
-                            currDTPsize = mapDTPToDeducedID.size();
-                            if (mapDTPToDeducedID.get(innerDTP) == null) {
-
-                                mapDTPToDeducedID.put(innerDTP, currDTPsize);
-                                mapDTPToAnyJoin.put(currDTPsize, 1);
-                            }
-
-                            mapDTPtoExclGroup.put(innerDTP, indEG + 1);
-                            mapDTPtoExclGroup.put(outerDTP, indEG + 1);
-
-                            int EGsize = mapPairExclGroup.size();
-
-                            if (mapPairExclGroup.get(newEGpair) == null && mapPairExclGroup.get(newEGpair2) == null) {
-
-                                mapPairExclGroup.put(newEGpair, EGsize);
-                                mapPairExclGroup.put(newEGpair2, EGsize);
-                                totalPairs++;
-                                cntEGTotal++;
-                            }
-
-                            if (mapGroundTruthPairs.get(newEGpair) != null && mapTruePositivePairs.get(newEGpair) == null) {
-
-                                mapTruePositivePairs.put(newEGpair, 1);
-                                mapTruePositivePairs.put(newEGpair2, 1);
-                                cntEGTrPo++;
-                                truePositivesPairs++;
-                            }
-
-                            mapDTPpair.put(newEGpair, 1);
-                            mapDTPpair.put(newEGpair2, 1);
-
-                            flagEG = true;
-                            myDedUtils.setNewEGInfo(outerDTP, innerDTP, newEGpair, indEG);
-                        }
-
+                        flagEG = true;
+                        innerDTP = myDedUtils.getCleanTP(new LinkedList<>(queryTriplets.subList(f, f + 3)));
+                        newEGpair = Arrays.asList(innerDTP, outerDTP);
+                        newEGpair2 = Arrays.asList(outerDTP, innerDTP);
+                        myDedUtils.setNewEGInfo(outerDTP, innerDTP, newEGpair, newEGpair2, indEG);
                     }
 
                 }
@@ -687,54 +577,28 @@ public class DeductionNestedLoop {
      * @param indxCTP index of candidate triple pattern
      * @throws java.sql.SQLException
      */
-    public void SearchValueInverseMap(int indxCTP) throws SQLException {
+    public void getMatchVarsOfCTP(int indxCTP) throws SQLException {
 
-        String Answer = "", SPARQLEndpointPort = "", OriginalQuery = "";
-        String candVar = "", mapVar = "";
-        String TimeCandTPFinsh = mapCTPToFinishTime.get(indxCTP);
-        String TimeCandTPStart = mapCTPToStartTime.get(indxCTP);
-        int sourceGraph = 0, logCLeanIDquery = -1;
-        int TimeCandTPSecFinish = myBasUtils.getTimeInSec(TimeCandTPFinsh);
-        int TimeCandTPSecStart = myBasUtils.getTimeInSec(TimeCandTPStart);
-        boolean flagSkipPattern = false, flagAnswerMatch = false, flagSkipBoundJoinQuery = false;
-        //maps a candidate var to CTP matched values
-        HashMap<String, List<String>> mapCandVarToMatchedVals = new HashMap<>();
-        //maps a candidate var to all answer values
-        HashMap<String, List<String>> mapCandVarToAllAnsMaps = new HashMap<>();
+        int sourceGraph = 0;
+        boolean flagSkipPattern = false;
         List<String> tpClean = null;
         List<String> allCTPVals = myDedUtils.getValuesFromCTP(indxCTP);
         List<String> tmpPattern = myDedUtils.getCleanTP(allCTPs.get(indxCTP));
-        List<String> entryInformation = null;
-        List<String> currAnsVals = null;
-        List<String> currCTPValsMatched = null;
-        List<String> answerEntryVars = new LinkedList<>();
-        List<String> allVarAns = new LinkedList<>();
+        HashMap<String, List<String>> mapCandVarToMatchedVals = new HashMap<>();
+        HashMap<String, List<String>> mapCandVarToAllAnsMaps = new HashMap<>();
         flagSTOPNONPROJECTEDvars = false;
-        
-        if(indxCTP==13){
-            
-            int aezra=0;
-        }
-
-        if (allCTPVals == null) {
-
-            allCTPVals = new LinkedList<>();
-        }
-
         System.out.println("\t####### CTP No [" + (indxCTP + 1) + "] ####### ===> values to match: " + allCTPVals.size());
-        System.out.print("\t\t" + DTPCandidates.get(indxCTP).get(0) + " ");
-        System.out.print("" + DTPCandidates.get(indxCTP).get(1) + " ");
-        System.out.println("" + DTPCandidates.get(indxCTP).get(2) + "\"");
+        System.out.print("\t\t" + DTPCandidates.get(indxCTP).get(0) + " " + DTPCandidates.get(indxCTP).get(1) + " " + DTPCandidates.get(indxCTP).get(2) + "\"");
 
-        if (DTPCandidates.get(indxCTP).get(0).contains("?")
-                && DTPCandidates.get(indxCTP).get(2).contains("?")) {
+        //If both subjects and objects are variables, skip matching
+        if (DTPCandidates.get(indxCTP).get(0).contains("?") && DTPCandidates.get(indxCTP).get(2).contains("?")) {
 
             System.out.println("\t\t\tCandidate Pattern skipped, no values to match");
             myDedUtils.setDTPHashInfo(myDedUtils.getCleanTP(DTPCandidates.get(indxCTP)), indxCTP);
-            myBasUtils.insertToMap1(mapCTPtoAllDTPs, tmpPattern, tmpPattern);
             flagSkipPattern = true;
         }
 
+        //Else search for matching variables
         if (!flagSkipPattern) {
 
             for (int i = 0; i < allCTPVals.size(); i++) {
@@ -744,274 +608,170 @@ public class DeductionNestedLoop {
                 mapDTPToStartTime.put(tpClean, myBasUtils.getTimeInSec(mapCTPToStartTime.get(indxCTP)));
             }
 
-            Collections.sort(allCTPVals);
-        }
+            //find matching vars, and also exactly which CTP values are matched
+            myDedUtils.searchMatchingVars(mapCandVarToAllAnsMaps, mapCandVarToMatchedVals, allCTPVals);
 
-        if (!flagSkipPattern) {
+            // sort and remove rendundancy of lists
+            for (String matchVar : mapCandVarToMatchedVals.keySet()) {
 
-            for (int key : mapAnsIDtoEntry.keySet()) {
-
-                if (setMonetDB) {
-
-                    entryInformation = myMonet.getEntryAnswers(key);
-                } else {
-
-                    entryInformation = mapAnsIDtoEntry.get(key);
-                }
-
-                flagSkipBoundJoinQuery = false;
-                flagAnswerMatch = false;
-
-                if (!entryInformation.isEmpty()) {
-
-                    if (mapAnsIDToTimeSecs.get(key) == null) {
-
-                        continue;
-                    }
-
-                    int TimeAnswTPSec = mapAnsIDToTimeSecs.get(key);
-
-                    if (!(((TimeCandTPSecFinish - TimeAnswTPSec <= windowJoin) || TimeCandTPSecFinish - TimeAnswTPSec == 0)
-                            || ((TimeCandTPSecStart - TimeAnswTPSec <= windowJoin) || TimeCandTPSecStart - TimeAnswTPSec == 0))) {
-                        continue;
-                    }
-
-                    Answer = entryInformation.get(0);
-                    OriginalQuery = entryInformation.get(4);
-
-                    if (OriginalQuery.contains("SELECT *") || (Answer.contains("\"s\"") && Answer.contains("\"p\"") && Answer.contains("\"o\""))) {
-                        continue;
-                    }
-
-                    if (!Answer.contains("boolean") || Answer.contains("results") && Answer.contains("value")) {
-
-                        SPARQLEndpointPort = entryInformation.get(1);
-                        answerEntryVars = myBasUtils.getAnswerVars(Answer);
-
-                        for (int y = 0; y < answerEntryVars.size(); y++) {
-
-                            if (flagSkipBoundJoinQuery) {
-                                break;
-                            }
-
-                            if (answerEntryVars.get(y).contains("predicate")) {
-
-                                continue;
-                            }
-
-                            if (answerEntryVars.get(y).contains("_")) {
-
-                                flagSkipBoundJoinQuery = true;
-                            }
-
-                            candVar = myDedUtils.getCleanCandVar(answerEntryVars.get(y));
-
-                            for (String currSignature : mapAnsEntryToAllSignatures.get(Integer.toString(key))) {
-
-                                if (currSignature.contains("NoAnswersToQuery") || currSignature.contains("predicate")) {
-                                    continue;
-                                }
-
-                                mapVar = currSignature.substring(currSignature.indexOf("_") + 1, currSignature.length());
-                                mapVar = mapVar.substring(0, mapVar.indexOf("_"));
-                                mapVar = "?" + mapVar;
-                                //  if(mapVar.equalsIgnoreCase(answerEntryVars.get(y)))   
-                                {
-                                    currAnsVals = mapAnsSingatureToAllValues.get(currSignature);
-
-                                    if (currAnsVals != null) {
-
-                                        currCTPValsMatched = myDedUtils.compareListsForIntersection(currAnsVals, allCTPVals);
-
-                                        if (!currCTPValsMatched.isEmpty()) {
-
-                                            flagAnswerMatch = true;
-
-                                        }
-
-                                        if (flagAnswerMatch) {
-
-                                            String subKey = currSignature.substring(currSignature.indexOf("_") + 1, currSignature.length());
-
-                                            myBasUtils.insertToMap(mapCandVarToAllAnsMaps, currAnsVals, subKey);
-                                            myBasUtils.insertToMap(mapCandVarToMatchedVals, currCTPValsMatched, subKey);
-                                        }
-                                    }
-                                }
-                            }
-
-                        }
-                    }
-                }
-
+                myBasUtils.sortAndRemoveRedundancy(mapCandVarToMatchedVals.get(matchVar));
             }
-        }
 
-        List<String> allCTPconsts = null;
-        for (String matchVar : mapCandVarToMatchedVals.keySet()) {
+            for (String matchVar : mapCandVarToAllAnsMaps.keySet()) {
 
-            allCTPconsts = mapCandVarToMatchedVals.get(matchVar);
-            Set<String> hs = new HashSet<>();
-            hs.addAll(allCTPconsts);
-            allCTPconsts.clear();
-            allCTPconsts.addAll(hs);
-            mapCandVarToMatchedVals.put(matchVar, allCTPconsts);
+                myBasUtils.sortAndRemoveRedundancy(mapCandVarToAllAnsMaps.get(matchVar));
+            }
 
         }
 
-        for (String matchVar : mapCandVarToAllAnsMaps.keySet()) {
-
-            allCTPconsts = mapCandVarToAllAnsMaps.get(matchVar);
-            Set<String> hs = new HashSet<>();
-            hs.addAll(allCTPconsts);
-            allCTPconsts.clear();
-            allCTPconsts.addAll(hs);
-        }
-
-        processCandVars(mapCandVarToMatchedVals, mapCandVarToAllAnsMaps,
+        //Process matching variables, to see which will be finaly validated
+        processMatchVars(mapCandVarToMatchedVals, mapCandVarToAllAnsMaps,
                 flagSkipPattern, indxCTP, sourceGraph, allCTPVals);
     }
 
     /**
-     * Processes candidate variables, by removing false positives, combine
-     * alternative mappings, and match variables to related Hash map structures
+     * Process matching variables, to see which will be finaly validated.
      *
-     * @param mapCandVarToMatchedVals
-     * @param mapCandVarToAllAnsMaps
-     * @param flagSkipCTP
-     * @param indxCTP
-     * @param srcGraph
-     * @param allCTPvals
+     * @param mapCandVarToMatchedVals map a candidate var to matching values to
+     * a CTP
+     * @param mapCandVarToAllAnsMaps map a candidate var to all its answers
+     * @param flagSkipCTP boolean value to skip inverese mapping of a cuuretn tp
+     * @param indxCTP index of current CTP
+     * @param srcGraph deduced graph of queries, containing the CTP
+     * @param allCTPvals all CTP values to be matched
      */
-    public void processCandVars(HashMap<String, List<String>> mapCandVarToMatchedVals,
+    public void processMatchVars(HashMap<String, List<String>> mapCandVarToMatchedVals,
             HashMap<String, List<String>> mapCandVarToAllAnsMaps,
             boolean flagSkipCTP, int indxCTP, int srcGraph, List<String> allCTPvals) {
 
+        if (indxCTP == 18) {
+
+            int araz = 0;
+        }
+
         List<String> removeKeys = null;
         List<String> tmpPattern = null;
+        List<String> newCandVals = new LinkedList<>();
+        List<String> cleanCANDTP = myDedUtils.getCleanTP(DTPCandidates.get(indxCTP));
 
-        //Remove false positives
-        removeKeys = confirmMappings(mapCandVarToMatchedVals, mapCandVarToAllAnsMaps, indxCTP);
+        //Confirm or reject variables based on matching threshold OR/AND best matching choice
+        removeKeys = confirmMatchVars(mapCandVarToMatchedVals, mapCandVarToAllAnsMaps, indxCTP);
 
         for (int k = 0; k < removeKeys.size(); k++) {
 
             mapCandVarToMatchedVals.remove(removeKeys.get(k));
         }
 
-        //Combine alternative variables and match variables to corresponding hash maps
-        matchDTPtoMaps(mapCandVarToMatchedVals, mapCandVarToAllAnsMaps, indxCTP, srcGraph);
+        //Identify EG as NLEG and combine alternative variables and match variables to corresponding hash maps
+        refineDTPmatchVars(mapCandVarToMatchedVals, mapCandVarToAllAnsMaps, indxCTP, srcGraph);
 
-        //Match a CTP directly to a DTP, when no candidate var matched 
-        List<String> newCandVals = new LinkedList<>();
+        //Match a CTP directly to a DTP, when no vars matched during inverse mapping
         if (mapCandVarToMatchedVals.isEmpty()) {
 
-            if (allCTPvals == null) {
+            //If values to match correspond to CTP part of a BoundJoin, that we
+            //could not match because of a small Tjoin
+            if (allCTPvals == null || (allCTPvals != null && allCTPvals.size() > 3)) {
 
                 tmpPattern = myDedUtils.getCleanTP(allCTPs.get(indxCTP));
+                if (mapCTPtoQuerySrc.get(tmpPattern) != null) {
 
+                    if (mapDTPToDeducedID.get(tmpPattern) == null) {
+
+                        mapDTPToDeducedID.put(tmpPattern, mapDTPToDeducedID.size() + 1);
+                    }
+
+                    // System.out.println(mapDTPToDeducedID.get(newDedTP));
+                    myBasUtils.insertToMap2(mapDTPtoInnerQuery, mapCTPtoQuerySrc.get(tmpPattern), mapDTPToDeducedID.get(tmpPattern));
+                }
+
+                //If CTP's subject and object are variables, we have already match
+                //this as a DTP
                 if (!flagSkipCTP) {
 
                     myDedUtils.setDTPHashInfo(tmpPattern, indxCTP);
                     allCTPvals = myDedUtils.getValuesFromCTP(indxCTP);
-                    directMatchingTP(indxCTP, allCTPvals, tmpPattern);
+                    flagSTOPNONPROJECTEDvars = myDedUtils.setDTPtoSrcAns(indxCTP, allCTPvals, tmpPattern, flagSTOPNONPROJECTEDvars);
                 }
 
-            } else {
+            } //If values to match correspond to singleTPs that surely are not part
+            //of a BoundJoin, then match them directly as DTPs
+            else if (allCTPvals.size() <= 3) {
 
-                if (allCTPvals.size() <= 3) {
+                for (int i = 0; i < allCTPvals.size(); i++) {
 
-                    for (int i = 0; i < allCTPvals.size(); i++) {
+                    tmpPattern = myDedUtils.getNewRawTP(allCTPs.get(indxCTP), allCTPvals.get(i));
 
-                        tmpPattern = myDedUtils.getNewRawTP(allCTPs.get(indxCTP), allCTPvals.get(i));
+                    if (mapCTPtoQuerySrc.get(tmpPattern) != null) {
 
-                        if (!flagSkipCTP) {
+                        if (mapDTPToDeducedID.get(tmpPattern) == null) {
 
-                            myDedUtils.setDTPHashInfo(tmpPattern, indxCTP);
-                            allCTPvals = myDedUtils.getValuesFromCTP(indxCTP);
-                            newCandVals = new LinkedList<>();
-                            newCandVals.add(allCTPvals.get(i));
-                            directMatchingTP(indxCTP, allCTPvals, tmpPattern);
+                            mapDTPToDeducedID.put(tmpPattern, mapDTPToDeducedID.size() + 1);
                         }
+
+                        // System.out.println(mapDTPToDeducedID.get(newDedTP));
+                        myBasUtils.insertToMap2(mapDTPtoInnerQuery, mapCTPtoQuerySrc.get(tmpPattern), mapDTPToDeducedID.get(tmpPattern));
                     }
-                } else {
-                    tmpPattern = myDedUtils.getCleanTP(allCTPs.get(indxCTP));
 
                     if (!flagSkipCTP) {
 
                         myDedUtils.setDTPHashInfo(tmpPattern, indxCTP);
                         allCTPvals = myDedUtils.getValuesFromCTP(indxCTP);
-                        directMatchingTP(indxCTP, allCTPvals, tmpPattern);
+                        newCandVals = new LinkedList<>();
+                        newCandVals.add(allCTPvals.get(i));
+                        flagSTOPNONPROJECTEDvars = myDedUtils.setDTPtoSrcAns(indxCTP, allCTPvals, tmpPattern, flagSTOPNONPROJECTEDvars);
                     }
-
                 }
-
-            }
-            if (!flagSkipCTP) {
-                for (int i = 0; i < allCTPvals.size(); i++) {
-
-                    tmpPattern = myDedUtils.getNewRawTP(allCTPs.get(indxCTP), allCTPvals.get(i));
-                    myBasUtils.insertToMap1(mapCTPtoAllDTPs, tmpPattern, tmpPattern);
-
-                }
-
             }
 
         }
 
-        allCTPvals = myDedUtils.getValuesFromCTP(indxCTP);
-        List<String> cleanCANDTP = myDedUtils.getCleanTP(DTPCandidates.get(indxCTP));
-
+        //In any case, we must capture source endpoints of each source TP of a CTP
+        //and if there is no matching variable, save each source TPs as a DTP
         for (int i = 0; i < allCTPvals.size(); i++) {
 
             tmpPattern = myDedUtils.getNewRawTP(allCTPs.get(indxCTP), allCTPvals.get(i));
             myBasUtils.insertToMap3(mapDTPToEndpsSrc, mapCTPToEndpsSrc.get(cleanCANDTP), tmpPattern);
-
         }
 
     }
 
     /**
-     * Confirm candidate variables or cancel them
+     * Confirm candidate variables or cancel them, based on matching threshold
+     * "inverseThresh" and if it is enabled the best matching var (i.e.,
+     * inverseBestMap)
      *
-     * @param mapCandVarToMatchedVals
-     * @param mapCandVarToAllAnsMaps
-     * @param indxCTP
-     * @return
+     * @param mapCandVarToMatchedVals map a candidate var to matching values to
+     * a CTP
+     * @param mapCandVarToAllAnsMaps map a candidate var to all its answers
+     * @param indxCTP index of current CTP
+     * @return all confirmed matching variables
      */
-    public List<String> confirmMappings(HashMap<String, List<String>> mapCandVarToMatchedVals,
+    public List<String> confirmMatchVars(HashMap<String, List<String>> mapCandVarToMatchedVals,
             HashMap<String, List<String>> mapCandVarToAllAnsMaps, int indxCTP) {
 
+        System.out.println("\t\t\t\t\t ================ CONFIRM or REJECT matched vars ================");
         List<String> valuesCandVar = null;
         List valuesCandVarAns = null;
         List<String> removeKeys = new LinkedList<>();
+        double maxMatchValue = 0;
 
-        System.out.println("\t\t\t\t\t ================ CONFIRM or REJECT matched vars ================");
         for (String keyOuter : mapCandVarToMatchedVals.keySet()) {
-
-            if (myBasUtils.elemInListEquals(removeKeys, keyOuter)) {
-
-                continue;
-            }
 
             valuesCandVarAns = mapCandVarToAllAnsMaps.get(keyOuter);
             valuesCandVar = mapCandVarToMatchedVals.get(keyOuter);
-            double percentageMatchec = (double)valuesCandVar.size() / valuesCandVarAns.size();
+            double percentageMatchec = (double) valuesCandVar.size() / valuesCandVarAns.size();
 
-            if(indxCTP==8){
-                int ar=0;
+            if (maxMatchValue < percentageMatchec) {
+
+                maxMatchValue = percentageMatchec;
             }
+
             if (valuesCandVarAns != null && valuesCandVar != null) {
 
-                if(keyOuter.contains("drug")){
-                    int azr=0;
-                }
-                //  if (valuesCandVarAns.size() - valuesCandVar.size() > 20 && valuesCandVar.size() < 10) {
-                //                if ((percentageMatchec < invrmatchThresh)&&!(DTPCandidates.get(indxCTP).get(0).equalsIgnoreCase("?o")||DTPCandidates.get(indxCTP).get(2).equalsIgnoreCase("?o"))) {
-
                 //BUUUUUUUUUUUUUUUUUG
-                if ((percentageMatchec < inverseThresh&&!(Double.toString(percentageMatchec).contains("E")))||
-                        (DTPCandidates.get(indxCTP).get(1).contains("?")&&percentageMatchec < 0.10)||
-                        (valuesCandVar.size()==1&&percentageMatchec<0.04)) {
+                if ((percentageMatchec < inverseThresh && !(Double.toString(percentageMatchec).contains("E")))
+                        || (DTPCandidates.get(indxCTP).get(1).contains("?") && percentageMatchec < 0.10)
+                        || (valuesCandVar.size() == 1 && percentageMatchec < 0.04)) {
 
                     if (!myBasUtils.elemInListEquals(removeKeys, keyOuter)) {
 
@@ -1019,21 +779,58 @@ public class DeductionNestedLoop {
                         removeKeys.add(keyOuter);
                     }
                 } else {
+                    if (!inverseBestMap) {
+                        System.out.println("\t\t\t\t\t\t VALIDATE candidate var: ?" + keyOuter.substring(0, keyOuter.indexOf("_")) + ", while actually mathced: " + (percentageMatchec * 100) + " %");
 
-                    System.out.println("\t\t\t\t\t\t VALIDATE candidate var: ?" + keyOuter.substring(0, keyOuter.indexOf("_")) + ", while actually mathced: " + (percentageMatchec * 100) + " %");
+                    }
                 }
 
-            } else if (valuesCandVar == null) {
-                if (!myBasUtils.elemInListEquals(removeKeys, keyOuter) || keyOuter.contains("subject")) {
-
-                    System.out.println("\t\t\t\t\t\t CANCEL var: ?" + keyOuter.substring(0, keyOuter.indexOf("_")) + ", while actually mathced: " + (percentageMatchec * 100) + " %");
-                    removeKeys.add(keyOuter);
-                }
+            } //BUUUUUUUUUUUUUUUUUG
+            else if (valuesCandVar == null) {
+                removeKeys.add(keyOuter);
             } else {
+                if (!inverseBestMap) {
+                    System.out.println("\t\t\t\t\t\t VALIDATE var: ?" + keyOuter.substring(0, keyOuter.indexOf("_")) + ", while actually mathced: " + (percentageMatchec * 100) + " %");
 
-                System.out.println("\t\t\t\t\t\t VALIDATE var: ?" + keyOuter.substring(0, keyOuter.indexOf("_")) + ", while actually mathced: " + (percentageMatchec * 100) + " %");
+                }
             }
 
+        }
+
+        if (inverseBestMap) {
+
+            for (String keyOuter : mapCandVarToMatchedVals.keySet()) {
+
+                valuesCandVarAns = mapCandVarToAllAnsMaps.get(keyOuter);
+                valuesCandVar = mapCandVarToMatchedVals.get(keyOuter);
+                double percentageMatchec = (double) valuesCandVar.size() / valuesCandVarAns.size();
+
+                if (valuesCandVarAns != null && valuesCandVar != null) {
+
+                    if (maxMatchValue > percentageMatchec) {
+
+                        if (!myBasUtils.elemInListEquals(removeKeys, keyOuter)) {
+
+                            System.out.println("\t\t\t\t\t\t CANCEL as not best matching var: ?" + keyOuter.substring(0, keyOuter.indexOf("_")) + ", while actually mathced: " + (percentageMatchec * 100) + " %");
+                            removeKeys.add(keyOuter);
+                        }
+                    } else {
+
+                        System.out.println("\t\t\t\t\t\t VALIDATE candidate var: ?" + keyOuter.substring(0, keyOuter.indexOf("_")) + ", while actually mathced: " + (percentageMatchec * 100) + " %");
+                    }
+
+                } //BUUUUUUUUUUUUUUUUUG
+                else if (valuesCandVar == null) {
+                    if (!myBasUtils.elemInListEquals(removeKeys, keyOuter)) {
+                        removeKeys.add(keyOuter);
+                    }
+
+                } else {
+
+                    System.out.println("\t\t\t\t\t\t VALIDATE var: ?" + keyOuter.substring(0, keyOuter.indexOf("_")) + ", while actually mathced: " + (percentageMatchec * 100) + " %");
+                }
+
+            }
         }
 
         System.out.println("\t\t\t\t\t ================ CONFIRM or REJECT matched vars ================");
@@ -1042,422 +839,160 @@ public class DeductionNestedLoop {
     }
 
     /**
-     * Combine alternative mappings and match variables to related map
-     * structures
+     * For all confirmed matched vars, identify EG as NLEG, combine alternative
+     * DTPs and identify not matched values as distinct DTPs.
      *
-     * @param mapCandVarToMatchedVals
-     * @param mapCandVarToAllAnsMaps
-     * @param indxCTP
-     * @param srcGraph
+     * @param mapCandVarToMatchedVals map a candidate var to matching values to
+     * a CTP
+     * @param mapCandVarToAllAnsMaps map a candidate var to all its answers
+     * @param indxCTP index of current CTP
+     * @param srcGraph deduced graph of queries, containing the CTP
      */
-    public void matchDTPtoMaps(HashMap<String, List<String>> mapCandVarToMatchedVals,
+    public void refineDTPmatchVars(HashMap<String, List<String>> mapCandVarToMatchedVals,
             HashMap<String, List<String>> mapCandVarToAllAnsMaps, int indxCTP, int srcGraph) {
 
         List<String> valueskeyOuter = null;
         List<String> valuesCandAnswMapOuter = null;
-        List valuesCandAnswMapInner = null;
         List<String> newDedTP = null;
-        List<String> valueskeyInner = null;
-        List<List<String>> newPairTPs = null;
-        List<String> newDedTPOuter = null;
-        List<String> newDedTPInner = null;
-        List<String> currEGouterTP = null;
-        List<String> currEGinnerTP = null;
-        List<List<String>> pairEGtoNested = new LinkedList<>();
+        List<String> cloneTP = null;
         List<String> originalTP = myDedUtils.getCleanTP(DTPCandidates.get(indxCTP));
-        HashMap<List<String>, Integer> mapMatchedConstant = new HashMap<>();
-        int currentSizeDTPtoAlternatives = mapDTPtoAlternatives.size();
         List<String> allCTPVals = myDedUtils.getValuesFromCTP(indxCTP);
-         List<String> cloneTP=null;
-        String originalVar="";
-        if(indxCTP==27){
-            
-            int araz=0;
-        }
-        
-        if(DTPCandidates.get(indxCTP).get(0).contains("?")&&!DTPCandidates.get(indxCTP).get(2).contains("?")){
-            originalVar=DTPCandidates.get(indxCTP).get(0);
-        }
-        
-         if(!DTPCandidates.get(indxCTP).get(0).contains("?")&&DTPCandidates.get(indxCTP).get(2).contains("?")){
-            originalVar=DTPCandidates.get(indxCTP).get(2);
-        }
+        HashMap<List<String>, Integer> mapMatchedConstant = new HashMap<>();
+        String originalVar = myDedUtils.getOriginalVar(DTPCandidates.get(indxCTP));
 
+        //Init each CTP value as "non-mathced"
         for (int i = 0; i < allCTPVals.size(); i++) {
 
-            List<String> newRAAAWTP = myDedUtils.getNewRawTP(DTPCandidates.get(indxCTP), allCTPVals.get(i));
-            mapMatchedConstant.put(newRAAAWTP, -1);
+            List<String> srcTPofCTP = myDedUtils.getNewRawTP(DTPCandidates.get(indxCTP), allCTPVals.get(i));
+            mapMatchedConstant.put(srcTPofCTP, -1);
         }
 
+        //For all confirmed variables, 
         for (String keyOuter : mapCandVarToMatchedVals.keySet()) {
 
-            String cleanVariable = "";
-            cleanVariable = keyOuter.substring(0, keyOuter.indexOf("_"));
-            cleanVariable = "?" + cleanVariable;
-            newDedTP = myDedUtils.getInstanceCTP(DTPCandidates.get(indxCTP), cleanVariable);
-            
-            if(newDedTP.get(0).contains("?Int")&&newDedTP.get(1).contains("<http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugbank/interactionDrug1>")){
-                
-                int arazr=0;
-            }
-             
+            String cleanVariable = "?" + keyOuter.substring(0, keyOuter.indexOf("_"));
+            newDedTP = myDedUtils.getNewRawTP(DTPCandidates.get(indxCTP), cleanVariable);
             valueskeyOuter = mapCandVarToMatchedVals.get(keyOuter);
             valuesCandAnswMapOuter = mapCandVarToAllAnsMaps.get(keyOuter);
             List<String> tmpTP = myDedUtils.getCleanTP(newDedTP);
-            List<List<String>> pair = new LinkedList<>();
 
+            //match each source TP to its corresponding DTPs, matching vars and marked as "matched"
             for (int i = 0; i < valuesCandAnswMapOuter.size(); i++) {
 
                 List<String> rawTP = myDedUtils.getNewRawTP(originalTP, valuesCandAnswMapOuter.get(i));
-                
-                   if(rawTP.get(2).contains("http://www4.wiwiss.fu-berlin.de/drugbank/resource/drugs/DB00002")){
-                
-                    int arazr=0;
-                 }
+                setEGasNLEG(rawTP, newDedTP);
 
-                for (int keyEG : mapEGtoCTPTmp.keySet()) {
-
-                    List<String> currEG = mapEGtoCTPTmp.get(keyEG);
-                    
-                    if((mapEGtoOccurs.get(currEG)!=null&&mapEGtoOccurs.get(currEG)>1)||
-                            (mapEGtoOccurs.get(currEG)!=null&&mapEGtoOccurs.get(currEG)==1)){
-                                 for (int k = 0; k < currEG.size(); k += 3) {
-
-                        currEGouterTP = new LinkedList<>();
-                        currEGouterTP.add(currEG.get(k));
-                        currEGouterTP.add(currEG.get(k + 1));
-                        currEGouterTP.add(currEG.get(k + 2));
-
-                        if (currEGouterTP.equals(rawTP)&&!currEGouterTP.contains("ontology")) {
-
-                            for (int l = k + 3; l < currEG.size(); l += 3) {
-
-                                currEGinnerTP = new LinkedList<>();
-                                currEGinnerTP.add(currEG.get(l));
-                                currEGinnerTP.add(currEG.get(l + 1));
-                                currEGinnerTP.add(currEG.get(l + 2));
-
-                                pairEGtoNested = new LinkedList<>();
-                                pairEGtoNested.add(newDedTP);
-                                pairEGtoNested.add(currEGinnerTP);
-                                myDedUtils.pairJoinRelation(newDedTP, currEGinnerTP, pairEGtoNested, 1, "nestedLoop", true);
-                            }
-
-                        }
-
-                    }  
-                    }
-
-         
+                if (mapMatchedConstant.get(rawTP) != null) {
+                    mapMatchedConstant.put(rawTP, 1);
                 }
-
-                myBasUtils.insertToMap1(mapCTPtoAllDTPs, newDedTP, rawTP);
-                myBasUtils.insertToMap(mapCTPtoAllVars, cleanVariable, rawTP);
-                if(mapMatchedConstant.get(rawTP)!=null)
-                mapMatchedConstant.put(rawTP, 1);
             }
 
+            //Finally, match a confirmed DTP to source values and answers
             for (int i = 0; i < valueskeyOuter.size(); i++) {
 
                 List<String> rawTP = myDedUtils.getNewRawTP(originalTP, valueskeyOuter.get(i));
-                myBasUtils.insertToMap1(mapCTPtoAllDTPs, newDedTP, rawTP);
-                myBasUtils.insertToMap(mapCTPtoAllVars, cleanVariable, rawTP);
-                    if(mapMatchedConstant.get(rawTP)!=null)
-                mapMatchedConstant.put(rawTP, 1);
-                    
-                    if(newDedTP.size()==3){
-                         cloneTP=myBasUtils.cloneListElems(newDedTP);
-                        cloneTP.add(originalVar);
-                           
-                       if(mapCTPtoAnswTotal.get(rawTP)!=null){
-                        
-                        myBasUtils.insertToMap3(mapCTPtoAnswTotal, mapCTPtoAnswTotal.get(rawTP),cloneTP);
-                       }
-                    }
-                 
 
+                if (mapMatchedConstant.get(rawTP) != null) {
+                    mapMatchedConstant.put(rawTP, 1);
+                }
+
+                if (newDedTP.size() == 3) {
+
+                    cloneTP = new LinkedList<>(newDedTP.subList(0, newDedTP.size()));
+                    cloneTP.add(originalVar);
+
+                    if (mapCTPtoAnswTotal.get(rawTP) != null) {
+
+                        myBasUtils.insertToMap3(mapCTPtoAnswTotal, mapCTPtoAnswTotal.get(rawTP), cloneTP);
+                    }
+                }
 
             }
 
             myDedUtils.setDTPHashInfo(newDedTP, indxCTP);
 
-            if (mapDTPtoJoinBGP.get(newDedTP) == null) {
-
-                mapDTPtoJoinBGP.put(newDedTP, -1);
-                mapDTPtoConceptBGP.put(newDedTP, -1);
+            if (mapCTPtoQuerySrc.get(DTPCandidates.get(indxCTP)) != null) {
+                // System.out.println(mapDTPToDeducedID.get(newDedTP));
+                myBasUtils.insertToMap2(mapDTPtoInnerQuery, mapCTPtoQuerySrc.get(DTPCandidates.get(indxCTP)), mapDTPToDeducedID.get(newDedTP));
             }
 
-            if (valuesCandAnswMapInner != null) {
-
-                tmpTP.add(cleanVariable);
-                myBasUtils.insertToMap4(mapTPtoAnswersSourcesInverse, tmpTP, valuesCandAnswMapOuter);
-                myBasUtils.insertToMap4(mapDTPtoAnswTotal, tmpTP, valuesCandAnswMapOuter);
-
-            } else {
-
-                tmpTP.add(cleanVariable);
-                myBasUtils.insertToMap4(mapTPtoAnswersSourcesInverse, tmpTP, valueskeyOuter);
-                myBasUtils.insertToMap4(mapDTPtoAnswTotal, tmpTP, valueskeyOuter);
-            }
-
-            directMatchingTP(indxCTP, valueskeyOuter, newDedTP);
-            
-        
-                
+            tmpTP.add(cleanVariable);
+            myBasUtils.insertToMap4(mapDTPtoAnsInverseMap, tmpTP, valuesCandAnswMapOuter);
+            myBasUtils.insertToMap4(mapDTPtoAnswTotal, tmpTP, valuesCandAnswMapOuter);
+            flagSTOPNONPROJECTEDvars = myDedUtils.setDTPtoSrcAns(indxCTP, valueskeyOuter, newDedTP, flagSTOPNONPROJECTEDvars);
         }
 
-        for (String keyOuter : mapCandVarToMatchedVals.keySet()) {
+        //For confirmed vars, identify all alternative DTPs
+        //which do not count as deduced joins
+        myDedUtils.setDTPtoAlternatives(mapCandVarToMatchedVals, indxCTP);
 
-            valueskeyOuter = mapCandVarToMatchedVals.get(keyOuter);
-            String cleanVariableOuter = "";
-            cleanVariableOuter = keyOuter.substring(0, keyOuter.indexOf("_"));
-            cleanVariableOuter = "?" + cleanVariableOuter;
-            newDedTPOuter = myDedUtils.getInstanceCTP(DTPCandidates.get(indxCTP), cleanVariableOuter);
-
-            for (String keyInner : mapCandVarToMatchedVals.keySet()) {
-
-                if (keyInner.equalsIgnoreCase(keyOuter)) {
-                    continue;
-                }
-
-                String cleanVariableInner = "";
-                cleanVariableInner = keyInner.substring(0, keyInner.indexOf("_"));
-                cleanVariableInner = "?" + cleanVariableInner;
-                valueskeyInner = mapCandVarToMatchedVals.get(keyInner);
-
-                if (!Collections.disjoint(valueskeyOuter, valueskeyInner)) {
-
-                    newDedTPInner = myDedUtils.getInstanceCTP(DTPCandidates.get(indxCTP), cleanVariableInner);
-                    newPairTPs = new LinkedList<>();
-                    newPairTPs.add(newDedTPOuter);
-                    newPairTPs.add(newDedTPInner);
-
-                    mapDTPtoAlternatives.put(newDedTPOuter, currentSizeDTPtoAlternatives + 1);
-                    mapDTPtoAlternatives.put(newDedTPInner, currentSizeDTPtoAlternatives + 1);
-                    myDedUtils.addPairTPinNotNullJoinBGP(newPairTPs, (float) 1.0);
-                    mapPairTPsToTypeJoin.put(newPairTPs, "alternativeMappings");
-                }
-
-            }
-        }
-
+        //For CTP values that are not matched them finally to a variable
         for (List<String> raw : mapMatchedConstant.keySet()) {
 
             int val = mapMatchedConstant.get(raw);
 
             if (val == -1) {
-                
-               // System.out.println("Gaaaaaaaaaaaaaaaaaaaaaaa: "+raw);
+
                 for (String keyOuter : mapCandVarToMatchedVals.keySet()) {
 
-                    String cleanVariable = "";
-                    cleanVariable = keyOuter.substring(0, keyOuter.indexOf("_"));
-                    cleanVariable = "?" + cleanVariable;
-                    newDedTP = myDedUtils.getInstanceCTP(DTPCandidates.get(indxCTP), cleanVariable);
-                    myBasUtils.insertToMap1(mapCTPtoAllDTPs, newDedTP, raw);
-
-                    myBasUtils.insertToMap(mapCTPtoAllVars, keyOuter, raw);
+                    String cleanVariable = "?" + keyOuter.substring(0, keyOuter.indexOf("_"));
+                    newDedTP = myDedUtils.getNewRawTP(DTPCandidates.get(indxCTP), cleanVariable);
                     mapMatchedConstant.put(raw, 1);
                 }
 
             }
         }
-        
 
     }
 
     /**
-     * Match directly a Candidate Triple Pattern (CTP) or a Deduced Triple
-     * Pattern (DTP) to its original variable's answers, for queries that
-     * containing them
+     * Particular function for FedX traces. Cancel a join identified as an EG
+     * and convert it into a Nested Loop with EG.
      *
-     * @param indxCTP
-     * @param candTPvals
-     * @param deducedTP
+     * @param rawTP source triple pattern, part of the current NLEG
+     * implementation
+     * @param newDedTP deduced triple pattern for the current NLEG
+     * implementation
      */
-    public void directMatchingTP(int indxCTP, List<String> candTPvals, List<String> deducedTP) {
+    public void setEGasNLEG(List<String> rawTP, List<String> newDedTP) {
 
-        List<String> tmpTP = null;
-        List<String> answEntitiesOfTPinDTP = null;
-        List<String> newDeducedTP = myDedUtils.getCleanTP(deducedTP);
-        List<List<String>> newPairTPs = new LinkedList<>();
-        List<List<String>> newPairTPsTmp = new LinkedList<>();
-        List<String> outerTMP = new LinkedList<>();
-        List<String> innerTMP = new LinkedList<>();
-        String originalVAR = myDedUtils.getTPVariables(DTPCandidates.get(indxCTP)).get(0);
-        newDeducedTP.add(originalVAR);
+        List<String> currEGouterTP = null;
+        List<String> currEGinnerTP = null;
+        List<List<String>> pairEGtoNested = new LinkedList<>();
 
-        for (int l = 0; l < candTPvals.size(); l++) {
+        for (int keyEG : mapTmpEGtoAllTPs.keySet()) {
 
-            if (candTPvals.get(l).contains("?")) {
-                continue;
-            }
+            List<String> currEG = mapTmpEGtoAllTPs.get(keyEG);
+            if ((mapEGtoOccurs.get(currEG) != null && mapEGtoOccurs.get(currEG) > 1)
+                    || (mapEGtoOccurs.get(currEG) != null && mapEGtoOccurs.get(currEG) == 1)) {
 
-            tmpTP = myDedUtils.getInstanceCTP(allCTPs.get(indxCTP), candTPvals.get(l));
-            tmpTP = myDedUtils.getCleanTP(tmpTP);
-            answEntitiesOfTPinDTP = mapCTPtoAnswTotal.get(tmpTP);
+                for (int k = 0; k < currEG.size(); k += 3) {
 
-            if (answEntitiesOfTPinDTP != null) {
-                if (answEntitiesOfTPinDTP.size() > 0) {
+                    currEGouterTP = new LinkedList<>(currEG.subList(k, k + 3));
+                    if (currEGouterTP.equals(rawTP) && !currEGouterTP.contains("ontology")) {
 
-                    myBasUtils.insertToMap4(mapDTPtoAnswTotal, newDeducedTP, answEntitiesOfTPinDTP);
-                }
-                if (myBasUtils.elemInListContained(answEntitiesOfTPinDTP, "noneProjected") && !flagSTOPNONPROJECTEDvars) {
+                        //Identify a EG as a nested loop with EG
+                        for (int l = k + 3; l < currEG.size(); l += 3) {
 
-                    newPairTPs.add(deducedTP);
-                    newPairTPs.add(tmpTP);
-                    flagSTOPNONPROJECTEDvars = true;
-                    newPairTPsTmp = new LinkedList<>();
-                    outerTMP = new LinkedList<>();
-                    outerTMP.add(deducedTP.get(0));
-                    outerTMP.add(deducedTP.get(1));
-                    outerTMP.add(deducedTP.get(2));
-                    innerTMP = new LinkedList<>();
-                    innerTMP.add(tmpTP.get(0));
-                    innerTMP.add(tmpTP.get(1));
-                    innerTMP.add(tmpTP.get(2));
-                    newPairTPsTmp.add(outerTMP);
-                    newPairTPsTmp.add(innerTMP);
-
-                    if (mapDTPofEGNested.get(outerTMP) == null && mapDTPofEGNested.get(innerTMP) == null) {
-
-                        myDedUtils.addPairTPinNotNullJoinBGP(newPairTPsTmp, (float) 1.0);
-
-                    }
-                }
-            }
-        }
-
-    }
-
-    /**
-     * Set original CTP's variables answer to corresponding hash maps
-     *
-     * @param triplePattern
-     * @param indxLogCleanQuery
-     * @param variableOriginal
-     * @param indxPattern
-     * @param constantVal
-     */
-    public void matchAnswOrigVarsToCTP(List<String> triplePattern, int indxLogCleanQuery,
-            String variableOriginal, int indxPattern, String constantVal) {
-
-        String Answer = "", ClientIpAddress = "", requestQuery = "", receptTime = "", endpoint = "";
-        List<String> matchQueryExtrVars = null;
-        List<String> entryInformation = null;
-        List<String> answerEntities = null;
-        List<String> tmpTP = new LinkedList<>();
-        List<String> tpVars = new LinkedList<>();
-        boolean flagPassed = false;
-        String constantValue = "";
-
-        if (variableOriginal.equals("")) {
-
-            tpVars = myDedUtils.getTPVariables(triplePattern);
-        } else {
-
-            tpVars.add(variableOriginal);
-        }
-        
-        if(indxPattern==27){
-            
-            int araz=0;
-        }
-
-        constantValue = myDedUtils.getTPConstants(triplePattern);
-        List<Integer> key = mapLogClQueryToAnsEntry.get(indxLogCleanQuery);
-
-        if (key != null) {
-
-            if (key.size() > 0) {
-
-                for (int k = 0; k < key.size(); k++) {
-
-                    entryInformation = mapAnsIDtoEntry.get(key.get(k));
-                    if (entryInformation != null) {
-
-                        if (!entryInformation.isEmpty()) {
-
-                            Answer = entryInformation.get(0);
-                            endpoint = entryInformation.get(1);
-                            ClientIpAddress = entryInformation.get(2);
-                            receptTime = entryInformation.get(3);
-                            requestQuery = entryInformation.get(4);
-
-                            myBasUtils.insertToMap(mapCTPToEndpsSrc, endpoint, triplePattern);
-
-                            String indxQueryString = mapAnsIDToLogClQuery.get(key.get(k));
-                            myBasUtils.insertToMap2(mapCTPIDtoQuerySrc, Integer.parseInt(indxQueryString), indxPattern);
-                            List<Integer> test = new LinkedList<>();
-                            test.add(Integer.parseInt(indxQueryString));
-                            mapDTPtoInnerQuery.put(indxPattern, test);
-
-                            if (!requestQuery.contains(constantValue)) {
-
-                                break;
-                            } else {
-
-                                matchQueryExtrVars = myBasUtils.getProjVars(requestQuery);
-                            }
-
-                            if ((((Answer.contains("results"))
-                                    && !Answer.contains("boolean")) || Answer.contains("value"))) {
-
-                                for (int u = 0; u < matchQueryExtrVars.size(); u++) {
-
-                                    if (myBasUtils.elemInListContained(tpVars, matchQueryExtrVars.get(u))) {
-
-                                        answerEntities = mapAnsEntryToListValues.get(key.get(k) + (matchQueryExtrVars.get(u).substring(matchQueryExtrVars.get(u).indexOf("?") + 1)));
-                                        if (answerEntities == null) {
-
-                                            answerEntities = mapAnsEntryToListValues.get(key.get(k) + (matchQueryExtrVars.get(u).substring(matchQueryExtrVars.get(u).indexOf("?") + 1).toLowerCase()));
-                                        }
-
-                                        if (answerEntities == null) {
-
-                                            answerEntities = new LinkedList<>();
-                                        }
-
-                                        tmpTP = myDedUtils.getCleanTP(triplePattern);
-                                        tmpTP.add(matchQueryExtrVars.get(u));
-
-                                        myBasUtils.insertToMap4(mapCTPtoAnswTotal, triplePattern, answerEntities);
-                                        myBasUtils.insertToMap(mapCTPToEndpsSrc, endpoint, triplePattern);
-
-                                        if (tmpTP.get(0).contains("?") && tmpTP.get(2).contains("?") || !inverseMapping) {
-                                            myBasUtils.insertToMap4(mapDTPtoAnswTotal, tmpTP, answerEntities);
-                                        }
-
-                                        myBasUtils.insertToMap4(mapCTPtoAnswTotal, tmpTP, answerEntities);
-                                        myBasUtils.insertToMap(mapCTPToEndpsSrc, endpoint, tmpTP);
-
-                                        flagPassed = true;
-                                    }
-
-                                }
-                            }
+                            currEGinnerTP = new LinkedList<>(currEG.subList(l, l + 3));
+                            pairEGtoNested = Arrays.asList(newDedTP, currEGinnerTP);
+                            myDedUtils.pairJoinRelation(newDedTP, currEGinnerTP, pairEGtoNested, 1, "nestedLoop", true);
                         }
+
                     }
 
                 }
-
-                if (flagPassed == false) {
-
-                    answerEntities = new LinkedList<>();
-                    answerEntities.add("noneProjected");
-                    myBasUtils.insertToMap4(mapCTPtoAnswTotal, triplePattern, answerEntities);
-                    myBasUtils.insertToMap(mapCTPToEndpsSrc, endpoint, triplePattern);
-                }
-
             }
+
         }
+
     }
 
     /**
      * Particular function for ANAPPSID traces. Captute filter option values, as
      * possible inverse mapping values of a NLFO
      */
-    public void checkNestedLoopFilter() {
+    public void checkNLFOJoin() {
 
         String extractedVar = "";
         String currQuery = "";
@@ -1484,11 +1019,12 @@ public class DeductionNestedLoop {
                     extractedVar = myBasUtils.getFILTERvar(currQuery);
 
                     if (extractedVals.size() >= 1) {
+
                         if (key.get(0).equalsIgnoreCase(extractedVar) || key.get(2).equalsIgnoreCase(extractedVar)) {
 
                             tmpTP = myDedUtils.getCleanTP(key);
                             tmpTP.add(extractedVar);
-                            myBasUtils.insertToMap4(mapTPtoAnswersSourcesInverse, tmpTP, extractedVals);
+                            myBasUtils.insertToMap4(mapDTPtoAnsInverseMap, tmpTP, extractedVals);
                         }
                     }
 
@@ -1500,52 +1036,31 @@ public class DeductionNestedLoop {
     }
 
     /**
-     * Particular function for FedX traces. Cancle joins in which a DTP,
-     * evaluated with NLEG and falsely believed as an exclusive group,
-     * participated
-     *
-     *
+     * Particular function for FedX traces. Cancle joins in which a DTP
+     * participated, while evaluated with NLEG and falsely believed as an
+     * exclusive group.
      */
-    public void cancelJoinsNLEG() {
+    public void cancelJoinsNLEGJoin() {
 
         List<String> currEG = null;
         List<String> currOuterTP = null;
-        List<String> currInnerTP = null;
 
-        for (int keyOuter : mapEGtoCTPTmp.keySet()) {
+        for (int keyOuter : mapTmpEGtoAllTPs.keySet()) {
 
             if (mapEGtoCancel.get(keyOuter) != null) {
 
-                currEG = mapEGtoCTPTmp.get(keyOuter);
+                currEG = mapTmpEGtoAllTPs.get(keyOuter);
 
                 for (int i = 0; i < currEG.size(); i += 3) {
 
-                    currOuterTP = new LinkedList<>();
-                    currOuterTP.add(currEG.get(i));
-                    currOuterTP.add(currEG.get(i + 1));
-                    currOuterTP.add(currEG.get(i + 2));
+                    currOuterTP = new LinkedList<>(currEG.subList(i, i + 3));
+                    //BUUUUUUUUUUUUG check if it is a ontology
+                    if (!currOuterTP.get(0).contains("?") && !currOuterTP.get(0).contains("#")
+                            || !currOuterTP.get(2).contains("?") && !currOuterTP.get(2).contains("#")) {
 
-                    if (!currOuterTP.get(0).contains("?") && !currOuterTP.get(0).contains("<http://bio2rdf.org/ns/kegg#Enzyme>")
-                            || !currOuterTP.get(2).contains("?") && !currOuterTP.get(2).contains("<http://bio2rdf.org/ns/kegg#Enzyme>")) {
-
-                        mapDTPtoCANCELofEG.put(currOuterTP, 1);
-                        int currID = mapDTPToDeducedID.get(currOuterTP);
-                        mapDTPToAnyJoin.remove(currID);
-                        mapDTPToDeducedID.remove(currOuterTP);
-                        mapDTPToEndpsSrc.remove(currOuterTP);
-                        mapDTPToFinishTime.remove(currOuterTP);
-                        mapDTPToStartTime.remove(currOuterTP);
-                        mapDTPToTimeDeduction.remove(currOuterTP);
-                        mapDTPtoAnswTotal.remove(currOuterTP);
-                        mapDTPtoConceptBGP.remove(currOuterTP);
-                        mapDTPtoJoinBGP.remove(currOuterTP);
-
+                        myDedUtils.cancelDTP(currOuterTP);
                         for (int j = i + 3; j < currEG.size(); j += 3) {
 
-                            currInnerTP = new LinkedList<>();
-                            currInnerTP.add(currEG.get(j));
-                            currInnerTP.add(currEG.get(j + 1));
-                            currInnerTP.add(currEG.get(j + 2));
                             totalPairs--;
                         }
                     }
@@ -1557,181 +1072,66 @@ public class DeductionNestedLoop {
 
     }
 
-    public void matchFedXFilterValsToVariable() throws SQLException, InstantiationException, IllegalAccessException {
+    /**
+     * Particular function for FedX traces. Identify a nested loop with filter
+     * option at the same time with a NLBJ. The filter variable is a particular
+     * variable for FedX, namely "?o".
+     *
+     * @throws SQLException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
+    public void checkNLBJwithFilter() throws SQLException, InstantiationException, IllegalAccessException {
 
-        String Answer = "", OriginalQuery = "";
-        String mapVar = "";
-        boolean flagAnswerMatch = false, flagSkipBoundJoinQuery = false;
         //maps a candidate var to CTP matched values
         HashMap<String, List<String>> mapCandVarToMatchedVals = new HashMap<>();
         //maps a candidate var to all answer values
         HashMap<String, List<String>> mapCandVarToAllAnsMaps = new HashMap<>();
         List<String> allFilterVals = null;
-        List<String> entryInformation = null;
-        List<String> currAnsVals = null;
-        List<String> currCTPValsMatched = null;
-        List<String> answerEntryVars = new LinkedList<>();
-        List<String> allVarAns = new LinkedList<>();
-        List<List<String>> allNewDTPShort = null;
         HashMap<List<String>, List<String>> newDTPtoALtenativeTotalAns = new HashMap<>();
         HashMap<List<String>, List<String>> newDTPtoALtenativeInverseMap = new HashMap<>();
+        List<List<String>> allNewDTPShort = null;
 
-        
-        if (setMonetDB) {
+        for (List<String> keyFilterVar : mapCTPtoFILTERwithBoundJ.keySet()) {
 
-            myMonet.openSession("jdbc:monetdb://localhost/demo", "feta", "feta");
-        }
-        
-        for (List<String> keyFilterVar : mapCTPtoFILTERUNION.keySet()) {
-
-            allFilterVals = mapCTPtoFILTERUNION.get(keyFilterVar);
+            allFilterVals = mapCTPtoFILTERwithBoundJ.get(keyFilterVar);
 
             //If there is only one FILTER value of BOUND JOIN, skip matching
             if (allFilterVals.size() == 1) {
+
                 continue;
             }
-            for (int key : mapAnsIDtoEntry.keySet()) {
 
-                if (setMonetDB) {
-
-                    entryInformation = myMonet.getEntryAnswers(key);
-                } else {
-
-                    entryInformation = mapAnsIDtoEntry.get(key);
-                }
-
-                flagSkipBoundJoinQuery = false;
-                flagAnswerMatch = false;
-
-                if (!entryInformation.isEmpty()) {
-
-                    Answer = entryInformation.get(0);
-                    OriginalQuery = entryInformation.get(4);
-
-                    if (OriginalQuery.contains("?s ?p ?o") || (Answer.contains("\"s\"") && Answer.contains("\"p\"") && Answer.contains("\"o\""))) {
-                        continue;
-                    }
-
-                    if (!Answer.contains("boolean") || Answer.contains("results") && Answer.contains("value")) {
-
-                        answerEntryVars = myBasUtils.getAnswerVars(Answer);
-
-                        for (int y = 0; y < answerEntryVars.size(); y++) {
-
-                            if (flagSkipBoundJoinQuery) {
-                                break;
-                            }
-
-                            if (answerEntryVars.get(y).contains("predicate")) {
-
-                                continue;
-                            }
-
-                            if (answerEntryVars.get(y).contains("_")) {
-
-                                flagSkipBoundJoinQuery = true;
-                            }
-
-                            for (String currSignature : mapAnsEntryToAllSignatures.get(Integer.toString(key))) {
-
-                                if (currSignature.contains("NoAnswersToQuery") || currSignature.contains("predicate")) {
-                                    continue;
-                                }
-
-                                mapVar = currSignature.substring(currSignature.indexOf("_") + 1, currSignature.length());
-                                mapVar = mapVar.substring(0, mapVar.indexOf("_"));
-                                mapVar = "?" + mapVar;
-
-                                String mapAnsVar = answerEntryVars.get(y);
-
-                                if (!mapAnsVar.contains("?")) {
-
-                                    mapAnsVar = "?" + mapAnsVar;
-                                }
-
-                                if (mapVar.equalsIgnoreCase(mapAnsVar)) {
-                                    currAnsVals = mapAnsSingatureToAllValues.get(currSignature);
-
-                                    if (currAnsVals != null) {
-
-                                        currCTPValsMatched = myDedUtils.compareListsForIntersection(currAnsVals, allFilterVals);
-
-                                        if (!currCTPValsMatched.isEmpty()) {
-
-                                            flagAnswerMatch = true;
-
-                                        }
-
-                                        if (flagAnswerMatch) {
-
-                                            String subKey = currSignature.substring(currSignature.indexOf("_") + 1, currSignature.length());
-
-                                            myBasUtils.insertToMap(mapCandVarToAllAnsMaps, currAnsVals, subKey);
-                                            myBasUtils.insertToMap(mapCandVarToMatchedVals, currCTPValsMatched, subKey);
-
-                                        }
-                                    }
-                                }
-                            }
-
-                        }
-                    }
-                }
-
-            }
-
+            myDedUtils.searchMatchingVars(mapCandVarToAllAnsMaps, mapCandVarToMatchedVals, allFilterVals);
             allNewDTPShort = new LinkedList<>();
             List<String> matchingValues = new LinkedList<>();
 
             for (String matchVar : mapCandVarToMatchedVals.keySet()) {
 
+                // Identify particular "?o_#value" variable indicating a NLFO
                 if (!matchVar.contains("o_") && mapCandVarToMatchedVals.get(matchVar).size() > 0) {
 
                     for (List<String> keyDTP : mapDTPtoAnswTotal.keySet()) {
 
                         if (keyDTP.get(1).equalsIgnoreCase(keyFilterVar.get(1))) {
 
+                            //Case "?o_#value" is in the subject of the triple pattern
                             if (keyDTP.get(0).equalsIgnoreCase(keyFilterVar.get(0)) && keyDTP.get(0).equalsIgnoreCase("?o") && !keyDTP.get(3).equalsIgnoreCase("?o")) {
 
-                                List<String> newDTP = new LinkedList<>();
-                                newDTP.add("?" + matchVar.substring(0, matchVar.indexOf("_")));
-                                newDTP.add(keyDTP.get(1));
-                                newDTP.add(keyDTP.get(2));
-
-                                if (mapDTPToDeducedID.get(newDTP) == null) {
-                                    mapDTPToDeducedID.put(newDTP, mapDTPToDeducedID.size() + 1);
-
-                                }
-
-                                if (mapDTPToAnyJoin.get(mapDTPToDeducedID.get(newDTP)) == null) {
-
-                                    mapDTPToAnyJoin.put(mapDTPToDeducedID.get(newDTP), -1);
-                                }
-
+                                List<String> newDTP = Arrays.asList("?" + matchVar.substring(0, matchVar.indexOf("_")), keyDTP.get(1), keyDTP.get(2));
+                                myDedUtils.setDTPbasicInfo(newDTP);
                                 allNewDTPShort.add(newDTP);
-                                newDTP.add(keyDTP.get(3));
+                                newDTP = Arrays.asList("?" + matchVar.substring(0, matchVar.indexOf("_")), keyDTP.get(1), keyDTP.get(2), keyDTP.get(3));
                                 matchingValues.addAll(mapCandVarToMatchedVals.get(matchVar));
                                 newDTPtoALtenativeTotalAns.put(newDTP, keyDTP);
 
-                            } else if (keyDTP.get(2).equalsIgnoreCase(keyFilterVar.get(2)) && keyDTP.get(2).equalsIgnoreCase("?o") && !keyDTP.get(3).equalsIgnoreCase("?o")) {
-                                List<String> newDTP = new LinkedList<>();
+                            } //Case "?o_#value" is in the object of the triple pattern
+                            else if (keyDTP.get(2).equalsIgnoreCase(keyFilterVar.get(2)) && keyDTP.get(2).equalsIgnoreCase("?o") && !keyDTP.get(3).equalsIgnoreCase("?o")) {
 
-                                newDTP.add(keyDTP.get(0));
-                                newDTP.add(keyDTP.get(1));
-                                newDTP.add("?" + matchVar.substring(0, matchVar.indexOf("_")));
-
-                                if (mapDTPToDeducedID.get(newDTP) == null) {
-                                    mapDTPToDeducedID.put(newDTP, mapDTPToDeducedID.size() + 1);
-
-                                }
-
-                                if (mapDTPToAnyJoin.get(mapDTPToDeducedID.get(newDTP)) == null) {
-                                    mapDTPToAnyJoin.put(mapDTPToDeducedID.get(newDTP), -1);
-
-                                }
-
+                                List<String> newDTP = Arrays.asList(keyDTP.get(0), keyDTP.get(1), "?" + matchVar.substring(0, matchVar.indexOf("_")));
+                                myDedUtils.setDTPbasicInfo(newDTP);
                                 allNewDTPShort.add(newDTP);
-                                newDTP.add(keyDTP.get(3));
+                                newDTP = Arrays.asList(keyDTP.get(0), keyDTP.get(1), "?" + matchVar.substring(0, matchVar.indexOf("_")), keyDTP.get(3));
                                 newDTPtoALtenativeTotalAns.put(newDTP, keyDTP);
                                 matchingValues.addAll(mapCandVarToMatchedVals.get(matchVar));
                             }
@@ -1740,33 +1140,24 @@ public class DeductionNestedLoop {
 
                 }
 
-                for (List<String> keyDTP : mapTPtoAnswersSourcesInverse.keySet()) {
+                // Search all nestedl loop values of the new DTP, passed as FILTER options 
+                // to the inner queries implementing the NLFO
+                for (List<String> keyDTP : mapDTPtoAnsInverseMap.keySet()) {
 
                     for (List<String> newDTPfilter : allNewDTPShort) {
 
                         if ((keyDTP.get(0).equalsIgnoreCase("?o") && (newDTPfilter.get(2).equalsIgnoreCase(keyDTP.get(2)) && newDTPfilter.get(1).equalsIgnoreCase(keyDTP.get(1)))) || (keyDTP.get(2).equalsIgnoreCase("?o") && (newDTPfilter.get(0).equalsIgnoreCase(keyDTP.get(0)) && newDTPfilter.get(1).equalsIgnoreCase(keyDTP.get(1))))) {
 
-                            List<String> newDTP = new LinkedList<>();
-                            newDTP.add(newDTPfilter.get(0));
-                            newDTP.add(newDTPfilter.get(1));
-                            newDTP.add(newDTPfilter.get(2));
+                            List<String> newDTP = new LinkedList<>(newDTPfilter.subList(0, 3));
 
                             if (!myBasUtils.elemInListContained(newDTP, "?" + matchVar.substring(0, matchVar.indexOf("_")))) {
+
                                 continue;
                             }
-                            if (mapDTPToDeducedID.get(newDTP) == null) {
-                                mapDTPToDeducedID.put(newDTP, mapDTPToDeducedID.size() + 1);
 
-                            }
-
-                            if (mapDTPToAnyJoin.get(mapDTPToDeducedID.get(newDTP)) == null) {
-                                mapDTPToAnyJoin.put(mapDTPToDeducedID.get(newDTP), -1);
-
-                            }
-
+                            myDedUtils.setDTPbasicInfo(newDTP);
                             newDTP.add("?" + matchVar.substring(0, matchVar.indexOf("_")));
                             newDTPtoALtenativeInverseMap.put(newDTP, keyDTP);
-
                         }
                     }
 
@@ -1774,68 +1165,16 @@ public class DeductionNestedLoop {
 
             }
 
+            // Fetch answer values from th NLBJ to NLFO deduced triple pattern
             for (List<String> keyTotalNEW : newDTPtoALtenativeTotalAns.keySet()) {
 
-                List<String> tripletTMP = new LinkedList<>();
-                List<String> tripletNew = new LinkedList<>();
-
-                tripletNew.add(keyTotalNEW.get(0));
-                tripletNew.add(keyTotalNEW.get(1));
-                tripletNew.add(keyTotalNEW.get(2));
-                tripletTMP.add(newDTPtoALtenativeTotalAns.get(keyTotalNEW).get(0));
-                tripletTMP.add(newDTPtoALtenativeTotalAns.get(keyTotalNEW).get(1));
-                tripletTMP.add(newDTPtoALtenativeTotalAns.get(keyTotalNEW).get(2));
-
-                mapDTPToEndpsSrc.put(tripletNew, mapDTPToEndpsSrc.get(tripletTMP));
-
-                if (mapDTPToDeducedID.get(tripletTMP) == null) {
-                    mapDTPToDeducedID.put(tripletTMP, mapDTPToDeducedID.size() + 1);
-
-                }
-
-                if (mapDTPToAnyJoin.get(mapDTPToDeducedID.get(tripletTMP)) == null) {
-                    mapDTPToAnyJoin.put(mapDTPToDeducedID.get(tripletTMP), -1);
-
-                }
-
-                mapTPtoAnswersSourcesInverse.put(keyTotalNEW, mapTPtoAnswersSourcesInverse.get(newDTPtoALtenativeTotalAns.get(keyTotalNEW)));
-                mapDTPtoAnswTotal.put(keyTotalNEW, mapDTPtoAnswTotal.get(newDTPtoALtenativeTotalAns.get(keyTotalNEW)));
-                mapDTPToStartTime.put(tripletNew, mapDTPToStartTime.get(tripletTMP));
-                mapDTPToFinishTime.put(tripletNew, mapDTPToFinishTime.get(tripletTMP));
-                int currentSizeDTPtoAlternatives = mapDTPtoAlternatives.size();
-                mapDTPtoAlternatives.put(tripletTMP, currentSizeDTPtoAlternatives);
-                mapDTPtoAlternatives.put(tripletNew, currentSizeDTPtoAlternatives);
+                myDedUtils.setDTPinfoToAnother(keyTotalNEW, newDTPtoALtenativeTotalAns, mapDTPtoAnswTotal.get(newDTPtoALtenativeTotalAns.get(keyTotalNEW)));
 
             }
 
             for (List<String> keyTotalInvMaps : newDTPtoALtenativeInverseMap.keySet()) {
 
-                List<String> tripletTMP = new LinkedList<>();
-                List<String> tripletNew = new LinkedList<>();
-                tripletNew.add(keyTotalInvMaps.get(0));
-                tripletNew.add(keyTotalInvMaps.get(1));
-                tripletNew.add(keyTotalInvMaps.get(2));
-
-                if (mapDTPToDeducedID.get(tripletNew) == null) {
-                    mapDTPToDeducedID.put(tripletNew, mapDTPToDeducedID.size() + 1);
-
-                }
-
-                if (mapDTPToAnyJoin.get(mapDTPToDeducedID.get(tripletNew)) == null) {
-                    mapDTPToAnyJoin.put(mapDTPToDeducedID.get(tripletNew), -1);
-
-                }
-                tripletTMP.add(newDTPtoALtenativeInverseMap.get(keyTotalInvMaps).get(0));
-                tripletTMP.add(newDTPtoALtenativeInverseMap.get(keyTotalInvMaps).get(1));
-                tripletTMP.add(newDTPtoALtenativeInverseMap.get(keyTotalInvMaps).get(2));
-
-                mapDTPtoAnswTotal.put(keyTotalInvMaps, matchingValues);
-                mapDTPToEndpsSrc.put(tripletNew, mapDTPToEndpsSrc.get(tripletTMP));
-                mapDTPToStartTime.put(tripletNew, mapDTPToStartTime.get(tripletTMP));
-                mapDTPToFinishTime.put(tripletNew, mapDTPToFinishTime.get(tripletTMP));
-                int currentSizeDTPtoAlternatives = mapDTPtoAlternatives.size();
-                mapDTPtoAlternatives.put(tripletTMP, currentSizeDTPtoAlternatives);
-                mapDTPtoAlternatives.put(tripletNew, currentSizeDTPtoAlternatives);
+                myDedUtils.setDTPinfoToAnother(keyTotalInvMaps, newDTPtoALtenativeInverseMap, matchingValues);
             }
 
         }

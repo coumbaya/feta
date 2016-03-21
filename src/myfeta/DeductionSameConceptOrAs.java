@@ -20,26 +20,18 @@ import static myfeta.DeductionNestedLoop.mapDTPtoAnswTotal;
  * on their same concept over their projected common variables or constants
  *
  * @author Nassopoulos Georges
- * @version 0.9
- * @since 2016-01-13
+ * @version 1.0
+ * @since 2016-03-19
  */
 public class DeductionSameConceptOrAs {
 
-    DeductionUtils myDedUtils;
-    DeductionNestedLoop myInverse;
     BasicUtilis myBasUtils;
 
-    public static List<List<List<String>>> setDTPbasedConceptsLatest;
     public static HashMap<List<String>, List<String>> mapTPtoConcepts;
-    public static List<List<List<String>>> sameConceptBGPsFinal;
 
     public DeductionSameConceptOrAs() throws ParserConfigurationException {
 
-        myDedUtils = new DeductionUtils();
-        myInverse = new DeductionNestedLoop();
         myBasUtils = new BasicUtilis();
-        sameConceptBGPsFinal = new LinkedList<>();
-        setDTPbasedConceptsLatest = new LinkedList<>();
         mapTPtoConcepts = new HashMap<>();
     }
 

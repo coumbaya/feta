@@ -2202,25 +2202,3 @@ Content-Type: application/sparql-results+json
 Content-Length: 44
 
 {  "head": { "link": [] }, "boolean": false}
-GET /m/web/257057211188?n=6206629649&scw=1920&sch=1080&scp=24&r=http%3A%2F%2Fwww.bfmtv.com%2F&dom=www.bfmtv.com&t=cmspoll&bcp=1.0&v=4.0&cmsVI=1099217195113648130&cmsRK=10&cmsST=5&cmsPO=17436&cmsOP=17376&cmsPS=5&cmsPV=LNX%2011%2C2%2C202%2C378&cmsMV=4.0&cmsPL=flash&cmsEV=polling&cmsME=&cmsDU=0&cmsSN=BFMTV%20LIVE&cmsS1=BFMTV%20LIVE&cmsS2=&cmsS3=BFMTV&cmsS4=1157784025001&cmsS5=&cmsGR=&cmsSD=- HTTP/1.1
-Host: prof.estat.com
-User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0
-Accept: image/png,image/*;q=0.8,*/*;q=0.5
-Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Referer: http://www.bfmtv.com/mediaplayer/live-video/
-Cookie: e=ViTS18CoALwAAL9kXyMAABEE
-Connection: keep-alive
-
-HTTP/1.1 200 OK
-Date: Mon, 23 Nov 2015 12:11:07 GMT
-Server: Apache
-p3p: policyref="/w3c/p3p.xml",CP="NOI DSP COR CURa DEVa PSAa STP UNI COM OUR NAV INT"
-Last-Modified: Mon, 14 Feb 2000 17:43:24 GMT
-Content-Length: 45
-Cache-Control: max-age=1
-Expires: Mon, 23 Nov 2015 12:11:08 GMT
-Connection: close
-Content-Type: image/gif
-
-GIF89a  Ä  Ê∆ï   !˘    ,       Ñè©X ;

@@ -1,125 +1,3 @@
-GET /m/web/257057211188?n=8040169775&scw=1920&sch=1080&scp=24&r=http%3A%2F%2Fwww.bfmtv.com%2F&dom=www.bfmtv.com&t=cmspoll&bcp=1.0&v=4.0&cmsVI=1099217195113648130&cmsRK=12&cmsST=5&cmsPO=17556&cmsOP=17496&cmsPS=5&cmsPV=LNX%2011%2C2%2C202%2C378&cmsMV=4.0&cmsPL=flash&cmsEV=polling&cmsME=&cmsDU=0&cmsSN=BFMTV%20LIVE&cmsS1=BFMTV%20LIVE&cmsS2=&cmsS3=BFMTV&cmsS4=1157784025001&cmsS5=&cmsGR=&cmsSD=- HTTP/1.1
-Host: prof.estat.com
-User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:30.0) Gecko/20100101 Firefox/30.0
-Accept: image/png,image/*;q=0.8,*/*;q=0.5
-Accept-Language: fr,fr-fr;q=0.8,en-us;q=0.5,en;q=0.3
-Accept-Encoding: gzip, deflate
-Referer: http://www.bfmtv.com/mediaplayer/live-video/
-Cookie: e=ViTS18CoALwAAL9kXyMAABEE
-Connection: keep-alive
-
-HTTP/1.1 200 OK
-Date: Mon, 23 Nov 2015 12:13:07 GMT
-Server: Apache
-p3p: policyref="/w3c/p3p.xml",CP="NOI DSP COR CURa DEVa PSAa STP UNI COM OUR NAV INT"
-Last-Modified: Mon, 14 Feb 2000 17:43:24 GMT
-Content-Length: 45
-Cache-Control: max-age=1
-Expires: Mon, 23 Nov 2015 12:13:08 GMT
-Connection: close
-Content-Type: image/gif
-
-GIF89a\00\00\80\00\00\E6ƕ\00\00\00!\F9\00\00\00\00,\00\00\00\00\00\00\00\84\8F\A9X\00;
-\00\AD\00\00\A9\E7\FD\EC|\B2\C4lJ\A5\99\F9qxiݞ\96Q\C6^J\E7R\83\FF V\00\00.\C0+\C0/\C0
-\C0	\C0\C0\C0\C0\C0\003\002\00E\009\008\00\88\00\00/\00A\005\00\84\00
-\00\00\00\00R\00\00\00\00\00\00play.google.com\FF\00\00\00
-\00\00\00\00\00\00\00\00\00#\00\00\00\00\00\00\00\00\00
-\00\00
-\00\B1\00\00\AD\DCiNƹ\88X\D4o]\99\DD$
-\98/\C8|\95Cr~\v\E8ٝ\9C\94j\00\00.\C0+\C0/\C0
-\C0	\C0\C0\C0\C0\C0\003\002\00E\009\008\00\88\00\00/\00A\005\00\84\00
-\00\00\00\00V\00\00\00\00\00\00play.google.com\FF\00\00\00
-\00\00\00\00\00\00\00\00\00#\00\003t\00\00\00\00\00\00\00\00\00
-\00\00\00k\00\00gVS\DBw\98\D8 \A4\8B\E1\E0>\86B\C7#\C9FV\B8ZIF\F88\F1\C5\00\C0+\00\00?\FF\00\00\00\00\00\00\00#\00\003t\00(h2h2-15h2-14spdy/3.1spdy/3http/1.1\00\00\00t\00p\00m\00\EF0\82\EB0\82Ӡ3$@\D6}\E7:0
-	*\86H\86\F7
-\000I10	UUS10U
-
-Google Inc1%0#UGoogle Internet Authority G20
-151112185154Z
-160210000000Z0f10	UUS10U
-California10U
-Mountain View10U
-
-Google Inc10U*.google.com0Y0*\86H\CE=*\86H\CE=B\00\F8\B1\F4P\818\82,1n\A8-\95r淸\95e\ED\AD\F2\D6'\9E\F8\9EGs\86/\F6\E9D2\FD\FDi
-\00\E9\CCu
-\A1\96\93udd\C53\ABV^c)n\81\A3\82\830\820U%0++0\82BU\8290\825\82*.google.com\82
-*.android.com\82*.appengine.google.com\82*.cloud.google.com\82*.google-analytics.com\82*.google.ca\82*.google.cl\82*.google.co.in\82*.google.co.jp\82*.google.co.uk\82*.google.com.ar\82*.google.com.au\82*.google.com.br\82*.google.com.co\82*.google.com.mx\82*.google.com.tr\82*.google.com.vn\82*.google.de\82*.google.es\82*.google.fr\82*.google.hu\82*.google.it\82*.google.nl\82*.google.pl\82*.google.pt\82*.googleadapis.com\82*.googleapis.cn\82*.googlecommerce.com\82*.googlevideo.com\82*.gstatic.cn\82
-*.gstatic.com\82
-*.gvt1.com\82
-*.gvt2.com\82*.metric.gstatic.com\82*.urchin.com\82*.url.google.com\82*.youtube-nocookie.com\82
-*.youtube.com\82*.youtubeeducation.com\82*.ytimg.com\82android.clients.google.com\82android.com\82g.co\82goo.gl\82google-analytics.com\82
-google.com\82googlecommerce.com\82
-urchin.com\82youtu.be\82youtube.com\82youtubeeducation.com0U\800h+\0Z0++0\86http://pki.google.com/GIAG2.crt0++0\86http://clients1.google.com/ocsp0U\A7\BB\C3\CES\CD\F4l\93\AD>\E1L\B5\EF\82xg0U\FF0\000U#0\80J\DD\BC\F6h\B5v\F5\81\B6\BBb\BAZ\81/0!U 00
-+\D6y0g\8100U)0'0%\A0#\A0!\86http://pki.google.com/GIAG2.crl0
-	*\86H\86\F7
-\00\82\00\8AQ\A7\A38b\B9ܮ\BF~T+\BE\D1j*˚\00\CB\FC6\9D;\85\9CÆ\C8\F3Z\\B2\ECDE\B2\C2֤qo\B7\9E
-'\EC\A1\CBv\A7j\FD\BCc\83\B0\93\A4gt!\FE\A0\85L\AEE\FD\82\BB\E4\94\FA\E0\E2\D0p\D6\DFe\A0HsT\AB.\D2\E1v\D2sy\DD\E4C\AA\EB\97IWs\82\A3\BFB=%\F7\9Dk\BDX["\bh_\F9\A3\E3\00&\D0\9F\9Eh\B6\91!\83\A8\D4ғ\91\C1ډv\F1\9C\D7/\FB\FEM\B9\CE;\81|\E5騪\D9O\BB\EAEx\C5\EE\81=\D3,\CEa^\C5\C2\F0\BAGu\DDc\BE\C9\E0\F0!=\B9\D0\F4X]\D2\FB\B4"l\C1.q\B9>\8C\F0\CF\C3p@rDm楪}\F5\E1\FBR_k_H@\C1\84\DD}\8E\C0\86\B8\C2\EDk\E9B\00\F40\82\F00\82ؠ:\830
-	*\86H\86\F7
-\000B10	UUS10U
-
-GeoTrust Inc.10UGeoTrust Global CA0
-130405151556Z
-161231235959Z0I10	UUS10U
-
-Google Inc1%0#UGoogle Internet Authority G20\82"0
-	*\86H\86\F7
-\00\82\000\82
-\82\00\9C*w\\D8P\91:\A3\82\E0\D8PH\BC\89?\F1p\88F~\E0\8F\C5\F1\89\CE!\EEZ\FEa
-\B72D\89\A0tSOU\A4΂b\95\EE\EBY_\C6\E1\80\C4^\94?\BC[H8\F4S\F7$\E6\FB\91\E9\C4\CF\F4S
-\F4J\FC\9FT\DE}\BE\A0ko\87\C0\D0P(0@\DAsQl\FF:<\A77\8E\BDK\EB}$\DE\E6\F9\FC1q\FB\94\D5`\F3.J\AFB\D2\CB\EA\C4j\B2\CCS\DDK\8B\C8a͝\A8>c+\845ie\84\C8\C5F"\F8S\95\BE\E3\80J\C6*캗 \C79\99\A0\F0az\95%\8CNRu\E2\B6\ED\CA\FC\CE"j\B3N\CFF\97\97~\C0\B1\DE{\AFE3Ϻ>q\B7\DE\F4%%\C2
-5\89\9D\9D\FBy\897ů\8Eri\00\A3\81\E70\81\E40U#0\80\C0z\98h\8D\89\FB\ABd}\AA}e\B8\CA\CCN0UJ\DD\BC\F6h\B5v\F5\81\B6\BBb\BAZ\81/0U\FF0.+"0 0+0\86http://g.symcd.com0U\FF0\FF\0005U.0,0*\A0(\A0&\86$http://g.symcb.com/crls/gtglobal.crl0U 00
-+\D6y0
-	*\86H\86\F7
-\00\82\00\AA\FA\A9 \CDjg\83\ED^\D4~\DE\C4\E0%\00\C5$\FB\A9\C8-m~ޝ\82e,\81c4f>\E9R\C2\B4\CB/\F7_\99:j\9CPz\85\8C}\D1*H\84\D3	l|\C2\CD5\9F\F3\82\EER\DEh_\E4\00\8A \96\F7)\8D\9AM˨ކ\C8
-oV\87}?\DC\FAy}!\F9\C8:/Qv\8C\C7A\92q\8F%\CE7\F8JL\00#\EF\C45\AE\E0#\80s|M4.\C8n\90\D6\99\84sp\F2\EDU\EE\EAg\EE2\EB,\DDg?\F6\8B\C2p\DE[\00\E6\BB\D36"ll\B05Bl\90	=\93\E9d	"\85\9F\C2s!\D3\E6_\80䍅":s\B1`\8E\AEh\E2\F4>\97\E7`	h6\DE:\D6\E2C\95[7\81\92\81\BB\8D׭RdW\96\D9^4~\C85\D8\00\810\82}0\82\E6\A0\BB\E60
-	*\86H\86\F7
-\000N10	UUS10U
-Equifax1-0+U$Equifax Secure Certificate Authority0
-020521040000Z
-180821040000Z0B10	UUS10U
-
-GeoTrust Inc.10UGeoTrust Global CA0\82"0
-	*\86H\86\F7
-\00\82\000\82
-\82\00\DA\CCc0\FD\F4#V~[\DF<l8\E4q\B7x\91Լ\A1\D8L\F8\A8C\B6\E9M!\88\DAX/f9)\BDx\8B\9D8\E8\B7j~q\A4\E6\C4`\A6\B0\EF\80\E4\89(\9E%\D6\ED\83󭦑ǘ\C9B5\9D\AD\98F\92.O\CA\F1\87C\C1\95W-P\EF\89-\80zW\AD\F2\EE_k\D2\00\8D\B9\F85\D9\C0F\A3{rȑ\BF\C9U+\CDЗ>\9C&d\CC\DF΃q\CAN\E6\D4\D5{\A9\CDU\DE\C8\EC\D2^8S\E5\O\8C-\FEP#6\FCf\E6ˎ\A49\00\B7\959\91\FE8.\D1\9A\F6M>o\AF,\8F`9\E2\FA6S9\D4^&+\DB=\A8\BD2\EB(Rq\E5\AB3=\E18\BB6\84b\9Cy\EA0\F4_\C0+\E8qk\E4\F9\00\A3\81\F00\81\ED0U#0\80H\E6h\F9+Ҳ\95\D7G\D8# O3\98\90\9F\D40U\C0z\98h\8D\89\FB\ABd}\AA}e\B8\CA\CCN0U\FF0\FF0U\FF0:U3010/\A0-\A0+\86)http://crl.geotrust.com/crls/secureca.crl0NU G0E0CU \000;09+-https://www.geotrust.com/resources/repository0
-	*\86H\86\F7
-\00\81\81\00v\E1nNK\860\B2\81\CF\F0\C7\C7q~f\EE\C2\ED\D4;\FF\F0\F0\C8N\D6C8\B0\B90}\D0U\83\A2j\CB6\9C\E8Hf\A3m\B8\D4G\FE\8BZ\s\FC\AE\D928\AB\974\AA\96\D2\EB\A3I\B6\BB\E5\91\EF\836\EBVo\CAڼsc\90\E4{>"\CB=\ED_8t\9C\E3PN\A1\AF\98\EEa\F2\84?\00\93\00\00\8F\00A\B8\C6\C2r\A6\EFVE6\D7̠y\B4ǐr@{do\FCB_,\87\D4"rv\87\A2\C5N\A1@\A3!\BD\8F\B7bARztbM/uux\87fR\B5\00F0D z\BE\E5U3\00\B6\8FR\96\BA]z\DAk;W\F5潓h߫T\BD\87{\99\B2 d\91\B5\9F\F1\A9\F2y\D9ݯ}\9C~B\8ARQQ\E8ʄ\85͚I \BD\ECM\00\00\00\00
-\00F\00\00BA)\814Ň\F2x\D4XNKv\F4\B2\EF\8F:x\A8/]\8E4t\D9U\A9\B6m\F9\FEM\9A\00\F3\AAC^S\81\85n-\CA\D9;{wKU~U\9E\8B\F3v|\D1\00\00L\00\00\00\00\00\00\00\00\CB\FES\CA\DD\EDk͖A\E1e\D3\FDB
-=z׹&\90\C5w\9ACi\FBO\E6\E1R,\F9g.@R\85\932'w\9B\9D}\9Ea\84\B4\92\86\9CLM\A0M&\00Id\00<\00\00\00\00\00\00\00\F0\9F\B2
-\9C\ACVHY\F6:\C9.[\ED\97\E9\ED%]\FBG\8B\89\A5R\9F
-ACu\ED匎\90\E0\F3\84\9F\D6R\C6\F6l
-\00\00\00\00\00\00\00\BE\F7|V:\8F\8Bz7\82\84Ңo6\D1FO<\FFT~\D75\8AX\85\FD9\FD\8D\BC
-\AF28=V\F3ڠ\E8Ϸo){\C8\E9\FF\82_\A5F\9E	ƹ\C1\F2\D2\EA\92]\00\D0\A1\82Y\A9	\8FRPF}\92W傗\E6\DA\8C\\AFWcY\C3_d\FF
-0\95\F5\AD\86k\C19\FE\BF\BAp\9A\FFXH
-_\93\AA\C4H\D6W\DE/\C1\A6\84\FA\9C|\CF>\89F\984U\AF\91\E8̓؃\C6w\BA\AAXѲ\96\FF\8DN[\86kL\BC﷡i渔\DA[\FCi\85 \ED]^\8E\A0\FA!iR\C0
-h\83\C0\FEB\F61\D3]\97\F6S\A3\AE\EB\F9\92\AAS\C1\98f\A1Le\C4M\98\91\EA,\92;\86i\E8u^\92\B9n+\A2]\FDX\8B\¸\83(\E1/\97z\DD\87U^\B7\EA\8D\C7\C3(і\C1}2K\BFw\92Q\EC~z?\8AQ1d7\85.*\C1\A7\BB\A5\9AX\E9]\8A\EB,V\FE\89\A36H\CB\F2+\C9\C1L\C0\92q::\97\91\9Ez'\85_J;ي%$\B7\C4\F1\E5G@\89z\CA\FB\CAYZ\92\82.\ED\B7\94\8AV\9E:\DA\B7j\CE#\C6\EA\A57PI\D2\C2\C4\C0\9Dߞ\98\8C\B1;K\A0\86\DD8\D8\CC\B2\FB\FBY\BA%W\EA\DCp1>rǏX\B6X8\BF
-\FDg%\8C\D4gr]\93\80\977\86\E3c\92ӄ\A8R^\FC\B8geP\FDz\99M\EF\A7\F2\C9N\A8Z)\F6J\F5\80|\A0MR\B4\9A~y\A06'22\CD\FFp\B9\90\97$\CCBd\B1]\A1Lh\D2\E2dt\CDvL\97\D3\E4̼
-\D6.\E4\DB@\E8\C0\A9V\AF?t^,e\99\F2\EC\F3\A3\B8\FBz\A61`o\F3T=\CAx46\AB/t˳c:\93*\A1\DD+\B7#Y$sD#O\88?\C9ܢ\F6\B2i\8A2I\983\98\D1s\CD|x\D6\EEL\BD\F4\E9_+\A0\BB+W\BE:\AA\EBt\A0\FF\98sGH\82\BC\84q\F3A\BA\C7R\BC\A3\B5\8F\E6\B9\C2\E2\9E"\D0ܙX\F6i\FE'Q\8E@ssT$\BEsK\F1t\CA
-p\FB\B6S(\F0\A6w\C5"\A6\A01\DAo\83\C8\E9\80C\A9lu\A3\D0\81\8A1_\A8\AA\aaS\AF\00|\B6\F5\F4\B9X&1\A4Kq$\93ެ\DC\D8ܤ\B1
-C(U\B8\E7Ĵ\A3xIw/Z\DB\FF\9C\CB03\B1H\DAy\9D\BE}\80\9A-\D2v\84\AF6\D92\A0\85?I\E0n\j\D0gGf\EA}Y\D1\A7U\CDmf\98\CAR\BDLr\C1\00\ACeõh\DD\D3]\AC\C5\CA\E6\EA\EF\F0N\A1\B8\80m\B6'\BC\F3\8F逰v7\9F\EF?1M\AE\C8\C8&?\CCzz_\8A\86\FF\C9G\97\AB9AQ\E3s\F5}\D5+\D3\F7D\BDԧӳ(U%\AF\CCD\E8\A9~ \A4ϩ\FE\9C\9CK\B6\B6X\B7`\A3O\9E
-c\AD@\B7\B1\CD:\F8\D3\E9ۮ\EB\9B.\E4\C5<\82\F2
-|<\BEf!\BD\B4\BD\F3\ED\92\FA\FBTKn\E6\E2\C4\C1\FA\F5ӻ\8D[R\A1<\BFr\AF<\EC\C5ښWsHk\B7\C5о\8C\F6e\EA2{2\89I\E5\F7\E1\AF\C5	k\F2=\81U\8C\A2\9E=\FA\B2\FF\9E\836i\C6\C7\D7w7\96\95)"\91\A73Px\BF\92\E5\DF:\A5v\F3\AE\C4ɘV\F3)\FD\E3\9Bk\E6\BE\A7$\FBD8\8F{\C2~\B03\F2iw\8DQ\DE\D6F\93\EAAX\A6\D6T\B0h\BA\B1a@\F9Vq\F8\B3[b\93\D1\AF\9A\F0\95WT\8F\00\CB\CAZ\A3<G-\\82\B6b\A9\8C\97\DB\F5\CC\F0\8F]eI\A9\DDh;\80~4l
-	\DD~:\F8k\CE%\F8\C7\DDJ\DCG%-\82\89\DD4\BA\DF\F0\94Y\9D\FA\E3:*,F\E3\AC\D3\DA\FC@qddq\E4$\C3\F8\8B?\94ubj\E1/QC\FF\81\E7\E0\D0|\96FA\AC\9D\B4Zq\A6K\94uI\86\D5eX\E9b\A4\BE\EDvqh\85\FC\DD\DE}\D2\E3֢t:\B1\C8\E9\91;Z?\CF6\E6m&\C17\8B\D0߬\EC7\DA\F5\FCb\E1Iuy\A1\DE̓\A8\86$&\A0Z\E1N\ED}\FC\B2UVQ\BAz9\B4\A2\BC\C2J\FE88e\F72\CB0\F4\E6hH}\F5\B0\B2\F7\9AM\C1+N\00|\CF\F5\AE\B7 
-\CD\DF~\AA\BC$ED\F8\D7I\EBՕB\8B#ҿ\A4 
-Hnn19y\D2Ǧ@}\F6\A7k3\8B\AB\D5]\95\84\8B\EDQe\A9\DE\EF\B67\A1\A9\D5\F8\00\86\EF\A8\CD'0%$\C6	\BF\DB\C7\F9!~B\B8\EE\C3\E8\E80\80Trwnv	o\A7\941\B4\C6E\C2j`\E04\F4}\95Qw\F0\98\E8\D2cz	\FEH\86\D8nD\85\CB\F8$\87\88{g\94kYg\BA\A8\92\9B$\96۬\A2y\AF\E5n{Z\E1\F6ݿc-B\92Q\F5\C4&SB\83\EEn\E8*\9F\E6\9FxGS.}^\EA\BAO\8EG!\94I_*rj\C0
-\D3e\BF\91D\FBNg\A90\8A@9\A0\E5E\A5\89\EBn\8D\E1_Ħ\B0\EFG\B68^?ڍ\F4\E4\F9\8A.nvL\E8\C3\FB\F2+\94\E6\DD3O0lXj2\A6s."\EE\96\C2<{\E0\FD\D4h\AE\B5_#\FE\8D\C82w\82\C6[5\88_\BBoBl\BC\EB\FD\80\A9\8E\AAl\8F|E=pKi\F5\BA\98B"\AEi\97X\C3M\A2\EF.\A3\90\A8;\81<\B6\C4\F4R\D8\E6\EC\C7\DER/B\9D\A5\84`\F9\D33\85\F2&<>0t)\F8\98\ACVg\91\A5~\E9\ACq\F3n'JղP:\88n<\DBK\88\F9\F5)\BEz[\F4\E2\A2v\ED\A8d\87\C8ɭ?>\E7/\CE\E7ғ\90\87Ӱ\C2\88s\92\C4'\F2R\93eѡ1y\AB\C6\F1&\D3\D8Izְ\93SVبp\F3JDl\81Ox\BD\BD\A72\81\86#\91\B9\D0!\D2\A6\B8\C1@?Ub\9A+\F6\86&fk\B2\F7
-l\FF몞\A2\9BP\BF\B4\A2\8AZ<Q\94sg+3\86\B9Ĉ\BFpd\D6E\DC\FFod޳t\EF\87\DC\E6\86\BF\D4\^\AB\CAd74kTMJ4\E4\8C\EEjF\A2DA(\9BZ\E7J\FC\D9\D4[y~\86O\F2\EE\E4
-\DE\D7XTtƦ%\B2\A0E\BF\FE\A8\B2\8C+\E0/\93\B6v\C5|'\E5jl\C4˽\81\AA\CBԬ3e[95ݫDPs\C4@\EAL:]\A3Yױ\9A\8A\F0\A7\A2\AB\C3m\8D
-3\FDi`1\96c\\C7y\CB'\BC\F04\B20\F1\B8\AA=,Cc\BA7\82A\D55G6\8B;+'\A3~H\80\E5\F7\C294\C5ʣ\F9p\83^x\A6\EB\FC\AB[a\F9\88\AB\FC\C6I\005\E6\93\C8)Ž\83\B1\AF\F3YŢU\EEG\DA<\87|\C7\AEshY\F7\EEb\AC}\D1\FAh\9E\C2\00 W_\E9`3L\92\F4\8D\E9\F5i\83m{L\F0\E9K\DA݇*\BE*	wg@\EDt\F1\A2\A4F\97\90[l_\81	%\E7P\C7I\D6
-\87f\B4rg\B2\F1\CC\CC͛\B6#GW\82M\81\84\9FZ\FD\E5V\A2\C2}W\E7b\8AN\92\D4D\CFn\DB\F6\AC\AA4\D4ݛ\F4\A63\D1MH\B8"_\CAZ\EAuV\B7
-\F92}Kdx\E0^\A3\90 \AFƻ4.| \F1s\F7(㨏hY]\F6\91\FD\89J\E0sl>,*\D9\D0Z\AB\BA?\C6\F4\F4\E9\FCx_b\\BE^Ԥ\FC\AB\B6M\BD\B4{\95I\F6\B0\FE`\EB\C5\84\F8\A0\80\F6Li\C3\\AD	Ez\C0\CFp\D7$\C4&[\B3\EAP\A6\E8\BA\C9BOݹ\888\AD\C8\F5ZN\BF\F3>͹\996:\C1\E9\D63+_fq\82\E4-Yf\C1
-]S\82D\A3PHs\EA
-\BD\F5N\97-Q\8A\98\91g\93\F4\94:\93\8F\E9\F9l\AD\80P`Ea+H\80\A9\D0\EA\A8"\FE\C2\F0\B0\AE\F0\C0ʅ{z\80\BB\82\86z\B5\94=\E6d\D2s\A3\ACןq=\84]\F5\97\F0A\F9U\CF!\B7d\BD\F0\p\98\C9
-\90\92\9D7\D1^\87\91\83\D2\E6\E0\CB\EA\97A4{GǴ#\F2I\F5\DF\E50i\ECl\C1\B0\AE"\DCp\AA\EC\C0\C9\DF\00\00\00\00\00\00\00\B2\F5\EF\B1RT\FFZ!\E9?\D4H\9F\FE
-\B1^\8A\B4\D2\ED}Z\D3\A3O\D4\E1\C4\8C\91\A9\D8(!8\ADr\A531( \AF\B2cz\D0p0\8D\CE;\DC/3\E6\94\E0,xx\95\8ES|!U+ģT\E6\F0
-P	i\\\9D\D7\DD^\CFِ,$4\DB$dT$\8B\FC\D1b\96\E2{2\B1\A7/\A6!n\DA\F0\BF&\CADm{'K(OvQ}\88J\99C~\9E\85Wn\B9gfo\C4\EAge\93;\D0\E2fGɄ\AB\F7ʵ*\B7\94T
-\DAX\\D6i\C0\C7+O|4x\C0\A7\F1\F6Pu\F4ve<<\FA\BC/\D2\90l\E6f6\A4\E3\A9\FF\B7\F5\8B\D34`\E3Wk#\8A\A3\90\C9\F1{\A5\82Y,#	\B2D\BC\F0\AD\F8Y\C3٦n\C4\F1\D9H\E9ŷi:\96\C8ا>A\BA(\C6Yh u.=3\C2s\FA\F3Z\DCTA+\DBS\F7(\CC7\87	:\BF\F89Z\F0ԭ\F6\AC\BA\E4	A4CD\82\9AkL\9A\C4˥\FDȤ\AD/\D0)Tu\BA\C4Zזv\A33\9B\90@T\96\D8\C6\9D\D7l\DA6˳zE\C8\FF~\DC$\A8[đn\B5\AF\DBZ1!c\E6±\A0\96\B2\80\E43V\\E8\CFm\F0\BE2D=\F2T1&\A9;\91\B9>\F2ϨM@\82\BE\93\9A\B6\FA^\BCXE\BB\A1yYÏ\ED\C5Es\C9\F5\AB\C5V\A3\E8\82T\F3\F5b@\F5\B7\BE䁨A\E9\B6+u\FBEl\A2\90?\C9y)AJ\00\FA\BF&\E5\EF\C1Q\EB\90\F1\FE\C6\C4J«\E4e8\C6\D6\E2\933jr\83aͩ\B4Q\BC\89'r\D0\DA\D7W\905\9Cc\C6b\F4!\E9Re\AEFPKgȜ`+\D7\C0`Ղ\FA\F2)m\C5\C3\B3Q\DFx\A7;b\D6\E5\D7\E3\E2\83|\BD\B8
-m\DD^\83\FEPϟ\AF\F8\CBΪ\8CLRѕ\AB/O\99\C0$\A4\B0Q\F3:?\BF*(\E1\E4\A0iQ\9FAR0\A2;
-B\8A\BB\9B\FD.\A5\D9tD\F1U\BE\A4\A3\B6U\8E*\C9\EC\BAܰ=dq\E3)\\D4d!\C4\F8`\C8`\97j?\ADi{h$\EF\D8'\8B\C7]\AAWȮ\CAA\F9\EC\D1\F7K\CB\D9fCs\8Am-\F29ll.\99S\BBM1\AF\C8N\8E\F1y\F8\00\BE\00\00\BA\00\89\C0\00\B4\EA\C1fg0
-[\99\E9\8A\F7PI\D9\D8\F7>헋[\F9u\DE\EEv\E4\A1|\B1p\F2\DA}\9AU\86\B5\84\C8H\F4\A1\8D\EC}\8Fa)\9F\ACfz*\92>&\D7L,Z\87Ȅ\C7Dp
-\FFpף\AE:e\A9\A3\A2\BA\DD\E6\BDǍ5\AAw8A\DD\FBV/Wf\C1\F7m[\D9\EE-\DB^ߵo;QJK<\880\8C\A7d;˕\DD͚\96\96\94uݒ]ύ'\E7^\BF\D1lt\AA\B6k\BFm\DBK\ED,u\85K\8Dixֆ͇\00\00(\00\00\00\00\00\00\00\00\CFFվ
-\9E\A2Lu\FE9<A i\C0\B9\F6\80\8D,\86\D0o\A1\DE\AAdS\004\00\00\00\00\00\00\00mA\B7˛\F3\00\C5v]\8C\9F\A9\9F\AD\F2e\EEB
-\BBw\94d(\EE\E7?\B9|]\FE%0`do\BE\00(\00\00\00\00\00\00\007\F3\82\EB\F62\D6hQg,\D6S\D3\E2\95\EF\D0%n\F0\A5\A21Ά\E0\D86\00\00\00\00\00\00\00\CE\D3\ECr}\F5\9D\9F+\AC\00(\BCg\ACM\A7[ts\CA\F49*M-q\D3\DB[Y\D7\D4M\DEt\9DK\B1\DEkPPH\9B\B1~r\87\FFj\F6k\F1I1\82\BB\E8\A1!\FFk\FBݢ\8B\E0/)\BC^\E3Й!?ޢd\AC\CDP\F0I˓hu:\E8I&\9D\FE\D2x\E8t\B9\C7V\AE,a!\9F2i\B1\836\AF\B4\C3\C8\C2^\89O$\AFH)dBط\D4X\D1b\AA\A8\85\CAe\FC(\B3\E6\9A\CBܫ!\E4\EF*\FA\8F2b\9C*<W\F6YZH\C84-\E0L\F6Y\D8)\8A \DA^߬\B8^,\9CG\81(겍..0\FC\85yc\BF\F6֡\DC\C9˻\E4\90񆮘qg\B5\C7C\87\EB\9Bj\FC`\BE\FD1G+\C5P\B7O\A9<P\A6\E2.I\88\80\FE3r\B4.f*\FD8\00Z\00\00\00\00\00\00\00e,oK\F9Mn%1\9DXea\8Dؕ\A6\B95k\F7[zյ\C2=ܒ\F17\\00\93\83\96q\BCސZ|\97\EC\83\FDܩ(\C5\F6\EAAw\9C;\D4\F7g\C2?KRxї\F3\AC1dMʭ\F8l\00$\00\00\00\00\00\00\00\ED\B4\F1\F3׍\DD\E6h\AC\E8\BA\F6Ռ\F7N\E3\C6\E8w\F8\E79у
 POST /sparql/ HTTP/1.1
 Content-Type: application/x-www-form-urlencoded; charset=utf-8
 Accept: application/x-binary-rdf-results-table;q=0.8

@@ -12,8 +12,8 @@ import org.jdom2.JDOMException;
  * Class Main for launchng program with algo options
  *
  * @author Nassopoulos Georges
- * @version 0.9
- * @since 2016-01-13
+ * @version 1.0
+ * @since 2016-03-19
  */
 public class Main {
 
@@ -23,29 +23,20 @@ public class Main {
     private static LoadFiles load;
 
     //** ****FETA loading traces in DB (monetDB or couchDB)********
-    //load  queries and answers in DB (for "monetDB" or "couchDB")
+    //load  queries and answers in DB
     private static boolean loadDB;
-    //setting the DB name (for "monetDB" or "couchDB")
-    private static boolean setCouchDB;
-    //enabling "monetDB" storage for FETA, by default its "couchDB"
-    public static boolean setMonetDB;
-    //reset DB (for "monetDB" or "couchDB")
-    private static boolean resetDB;
-    //database name string, formed in combination with "collectionName" and "engineName"
+    //setting the DB name
     public static String nameDB;
-    //seting  "capture.log" path
+    //enabling "couchdDB" DBMS for FETA
+    public static boolean setCouchDB;
+    //enabling "monetDB" DBMS for FETA, by default its "couchDB"
+    public static boolean setMonetDB;
+    //reset DB 
+    private static boolean resetDB;
+    //seting  captured trace's path
     private static String logPath;
-    //count the number of different SELECTs, identified during loading
-    public static int cntSELECTS;
-    //count the number of different queries (ASKs and SELECTs), identified during loading
-    public static int cntall;
-    //** ****FETA loading traces in DB (monetDB or couchDB)********
 
     //** ****FETA deduction basic features and utils********
-    //setEngine name string, as it is passed as argument by user, when "setEngine" is enabled
-    public static String engineName;
-    //collection string name (e.g. CD for Cross Domain), used to name the database
-    public static String collectionName;
     //integer window value, defining the DB slice used as FETA input, 
     //from the first to last captured subquery
     public static int windowSlice;
@@ -55,9 +46,12 @@ public class Main {
     //enabling simple execution of FETA approach, stopping just after "Common join Condition"
     public static boolean simpleExecution;
     //enabling inverse mapping from IRIs/Literals to variables,
-    //necessairy for "FedX" query engine traces
+    //necessairy for "FedX" query engine's traces
     public static boolean inverseMapping;
-    //** ****FETA deduction basic features and utils********
+    // minimum threshold, in prder to validate a matching during inverse mapping
+    public static double inverseThresh;
+    //
+    public static boolean inverseBestMap;
 
     //**FETA deduction extra features and utils********
     //enabling usage option menu
@@ -65,12 +59,16 @@ public class Main {
     //verbose option for more detailed output
     public static boolean verbose;
     public static boolean verbose2;
-    //disabling concurrent execution traces' statistics for precision/Recall
-    public static boolean single;
-    //
-    public static double inverseThresh;
+    //disabling concurrent execution traces'of motivation example statistics for precision/Recall
+    public static boolean testConcExam;
     //
     public static boolean traceGen;
+
+    //**FETA deduction extra features and utils********
+    //setEngine name string, as it is passed as argument by user, when "setEngine" is enabled
+    public static String engineName;
+    //collection string name (e.g. CD for Cross Domain), used to name the database
+    public static String collectionName;
 
     /**
      * This method inits all program's options, objects and paths to be used
@@ -81,26 +79,24 @@ public class Main {
         verbose2 = false;
         loadDB = false;
         resetDB = false;
-        setCouchDB = false;
-        setMonetDB = true;
-        cntSELECTS = 0;
-        cntall = 0;
-        single = true;
+        setCouchDB = true;
+        setMonetDB = false;
+        testConcExam = true;
 
         logPath = "/home/nassopoulos-g/capture.log";
-
-        nameDB = "mydatabasefedxcd1";
-        engineName = "ANAPSID";
-        collectionName = "CD";
+        nameDB = "mydatabasefedxlsquery7";
+        engineName = "FedX";
+        collectionName = "LS";
         collectionName = collectionName + engineName;
 
-        inverseMapping = false;
+        inverseMapping = true;
+        inverseBestMap = false;
         simpleExecution = false;
         help = false;
         windowSlice = 1000000000;
-        windowJoin = 1000000;
+        windowJoin = 72;
         inverseThresh = 0.01;
-        traceGen=true;
+        traceGen = false;
     }
 
     /**
@@ -114,7 +110,7 @@ public class Main {
         System.out.println("         --nameDB or -n: for setting DB name");
         System.out.println("         --systemDB or -s <systemDB_to_use>: for setting \"couchDB\" or \"monetDB\" system (by default \"couchDB\" )");
         System.out.println("         --inverseMap or -i <inverse_mapping_threshold>: for enabling inverse mapping in \"NestedLoopDetection\" heuristic, necessary for FedX, "
-                + "and setting the threshold to validate a matching");
+                + "and setting the minimum threshold to validate a matching");
         System.out.println("         --sameConcept or -c <path_to_endpoints_addresses>: enabling \"SameConcept/SameAs\" and passing Endpoints IP Addresses as argument");
         System.out.println("         --setWinSlice or -ws <window_in_seconds>: for setting the maximum temporal distance between first and last subquery, "
                 + "defining DB slice (by default 1000000 seconds)");
@@ -135,6 +131,7 @@ public class Main {
 
             System.out.println("User defined parameters of FETA: ");
         }
+
         for (int i = 0; i < args.length; i++) {
 
             switch (args[i]) {
@@ -186,13 +183,19 @@ public class Main {
                 case "-s":
                     if (args[i + 1].startsWith("-")) {
 
-                        System.out.println("Please give the storage system used as DB(\"couchDB\" or \"monetDB\"): ");
+                        System.out.println("Please give the storage system used as DB (\"couchDB\" or \"monetDB\"): ");
                         System.exit(-1);
                     } else if (args[i + 1].equalsIgnoreCase("couchDB")) {
                         setCouchDB = true;
                     } else if (args[i + 1].equalsIgnoreCase("monetDB")) {
+
                         setMonetDB = true;
+                    } else {
+
+                        System.out.println("Please give the storage system used as DB (\"couchDB\" or \"monetDB\"): ");
+                        System.exit(-1);
                     }
+
                     i++;
                     break;
                 case "--setWinJoin":
@@ -218,6 +221,13 @@ public class Main {
                 case "--inverseMap":
                 case "-i":
                     inverseMapping = true;
+                    inverseThresh = Double.parseDouble(args[i + 1]);
+                    if (args[i + 1].startsWith("-")) {
+
+                        System.out.println("Please give a valid inverse mapping threshold in double format, between 0 and 1: ");
+                        System.exit(-1);
+                    }
+                    i++;
                     break;
                 case "--onlyGraphCon":
                 case "-og":
@@ -234,6 +244,9 @@ public class Main {
         }
     }
 
+    /**
+     * Show general info about user defined arguments, before launching FETA
+     */
     public static void showGeneralInfo() {
 
         System.out.println("************************General information********************");
@@ -248,11 +261,7 @@ public class Main {
 
         System.out.println("\t Database name: \"" + nameDB + "\"");
 
-        if (loadDB) {
-
-            System.out.println("\t Number of queries (SELECTs and ASKs): " + cntall);
-            System.out.println("\t Number of SELECTs: " + cntSELECTS);
-        } else {
+        if (!loadDB) {
 
             System.out.println("\t Window deduction, defining FETA's input DB slice: " + windowSlice + " seconds");
             System.out.println("\t Window Tjoin (gap), defining maximum joinable "
@@ -286,14 +295,14 @@ public class Main {
 
         initVariables();
         getParameteres(args);
-        
-        if(setMonetDB){
+
+        if (setMonetDB) {
             try {
-                 
-                  String command = "monetdbd start myMONETDB/";
-                  Process perkele = Runtime.getRuntime().exec(command);
+
+                Process p = Runtime.getRuntime().exec(new String[]{"bash", "-c", "monetdbd start $HOME/myMONETDB/"});
             } catch (IOException e) {
-                
+
+                System.out.println(e);
             }
         }
 
@@ -312,7 +321,7 @@ public class Main {
             } else {
 
                 myDB = new CouchDBManag();
-                load = new LoadFiles(myDB.getDocList(), myDB);
+                load = new LoadFiles(myDB);
                 myDB.openSession("localhost", 5984);
                 //myDB.openSession2("127.0.0.1", 5984, "nassopoulos", "20CouchdbLina14");
             }
@@ -348,6 +357,7 @@ public class Main {
 
                 if (setMonetDB) {
 
+                    myMDB.openSession("jdbc:monetdb://localhost/demo", "feta", "feta");
                     deduction = new Deduction(null, myMDB);
                 } else {
 

@@ -8982,110 +8982,3 @@ Content-Length: 217
 
 { "head": { "link": [], "vars": ["y_1", "y_0", "y_3", "y_2", "y_5", "y_4", "y_12", "y_6", "y_7", "y_11", "y_8", "y_10", "y_9", "y_14", "y_13"] },
   "results": { "distinct": false, "ordered": true, "bindings": [ ] } }
- Ï  Ë¥aeœŽêÙêm{%Ûç§{½~ËÀ™”¥1uÃU“ç mSIÏw:âÛñ·gçžÛê¬ó†)å#˜·KxCÝr .À+À/À
-À	ÀÀÀÀÀ 3 2 E 9 8 ˆ  / A 5 „ 
-    T      pbs.twimg.comÿ   
-         #  3t            W  Sq®?{ï…DäŸÂoûÝÉ^ø²ÛyºË;,-ã†ñ9 À/  +ÿ      #     3t http/1.1http/1.0d ` ] ®0‚ª0‚’ [‰¹&äß©ì	©ur‰M0	*†H†÷ 0f10	UUS10U
-DigiCert Inc10Uwww.digicert.com1%0#UDigiCert High Assurance CA-30150210000000Z160217120000Z0w10	UUS10USan Francisco10U
-California10U
-Twitter, Inc.10Unone10U*.twimg.com0‚"0	*†H†÷ ‚ 0‚
-‚ ¢z+áïù&x°B9>g >,X¢å“ˆB™÷zN3¿¤Ö•NÏðGœçé3BFBˆØ÷¾QhŸ´™½+/‰g8ŠœA¡í[¼ùqZ&¾n‘<½¼g›»Æû®j`7µ;’YêSm2Ÿ0 à&º½	BÑ¦­êª	Iù¬òM:ˆ#ÿF19E•Žk#¸pÁøäPbJ²ºÄŽõ^ˆ¯ÄÛ/@mïd®Zäìt0¬!vƒFwäÝ°}–ù\iøðÄ«waµP²ÀŸÝ©Q#yU¶<Ï°$XŽIë”g=cëã^°E©!7ùï‘qå5 *S õÝ½<J+ £‚A0‚=0U#0€Pês‰Û)ûžå ÔÞy™Hƒ÷0Uw82(cÈæ¾-ðã·ÿ0îÝ8Š0‚˜U‚0‚‹‚*.twimg.com‚	twimg.com‚si0.twimg.com‚gu.twimg.com‚g2.twimg.com‚p.twimg.com‚o.twimg.com‚si1.twimg.com‚si2.twimg.com‚si3.twimg.com‚si4.twimg.com‚si5.twimg.com‚pbs.twimg.com‚jp.twimg.com‚abs.twimg.com‚hca.twimg.com‚ea.twimg.com‚widgets.twimg.com‚cdn.syndication.twimg.com‚dnt.twimg.com‚g.twimg.com‚ton.twimg.com‚v.twimg.com‚vmtc.twimg.com‚tailfeather.twimg.com‚ma.twimg.com‚video.twimg.com‚pbs-ec.twimg.com‚v.cdn.vine.co‚mtc.cdn.vine.co‚cdn.api.twitter.com‚platform.twitter.com‚preview.cdn.twitter.com‚cdn-dev.api.twitter.com‚widgets.platform.twitter.com‚status.twitter.com‚cdn.syndication.twitter.com‚cdn.digits.com0Uÿ 0U%0++0aUZ0X0* ( &†$http://crl3.digicert.com/ca3-g29.crl0* ( &†$http://crl4.digicert.com/ca3-g29.crl0BU ;0907	`†H†ýl0*0(+https://www.digicert.com/CPS0{+o0m0$+0†http://ocsp.digicert.com0E+0†9http://cacerts.digicert.com/DigiCertHighAssuranceCA-3.crt0Uÿ0 0	*†H†÷ ‚ j'ÚlT"á#Gw5 	öÜ;Ä äæ	èùÉÙ‘Ö½²ŒªæbíËÝÉËÒ\ùrÚ$h¯ê×áÖ¯0Æa qj.=;#šO¾ÖñUÃŽÓ€‡;ô;Ñj+ØÕØ*L'oÚ‹EiÝwê‰:6üu Þ@ÏÑäOk@ámío	»¦Â°§'6xZ~¯»èåï4[u:
-4Sõ,—b,&u£˜BüdÍJ¢µ5¥• 3ßÞî+9i§{Ø$iöÏã>2MGCÈíÃÖ\a·YøŸ'ìI³T9)t;g¯^+÷Oš…p(>8½±9É6oÄ›ŒïÙ@ãž1 \0‚X0‚@ 
-_M[‘ÒïÔŒ?;0	*†H†÷ 0l10	UUS10U
-DigiCert Inc10Uwww.digicert.com1+0)U"DigiCert High Assurance EV Root CA0080402120000Z220403000000Z0f10	UUS10U
-DigiCert Inc10Uwww.digicert.com1%0#UDigiCert High Assurance CA-30‚"0	*†H†÷ ‚ 0‚
-‚ ¿a
-)^þ47Qøû"ía¾pLPc&u¹Aˆ—¶ð »`àBè)‡6Š(e¨ï1tm6—/(FfÇ*y&z™ÕŽÃmO ^­¼=‘ÂY{^6lÀSÏ 2>dXiÇîœBQ ùDî$ÎzíŒ½¨óôz1i§æ]Àšl~	žçRDJ:#ä›¶¯¨œ´[ŸÔK­’ŒÎµ*ª7´Â¸Ø\Œøÿ#½5^Ô|>~ƒ‘–˜Ã²ãÈeë©{] ,Ìü<ÙmíÌúKCŒÉÔ¸¥a²@¶(ß¹ø_þÓ²Éï=´K|L™6ž=ëì§h^ßgn^û £‚ú0‚ö0Uÿ†0‚ÆU ‚½0‚¹0‚µ`†H†ýl 0‚¤0:+.http://www.digicert.com/ssl-cps-repository.htm0‚d+0‚V‚R A n y   u s e   o f   t h i s   C e r t i f i c a t e   c o n s t i t u t e s   a c c e p t a n c e   o f   t h e   D i g i C e r t   C P / C P S   a n d   t h e   R e l y i n g   P a r t y   A g r e e m e n t   w h i c h   l i m i t   l i a b i l i t y   a n d   a r e   i n c o r p o r a t e d   h e r e i n   b y   r e f e r e n c e .0Uÿ0ÿ 04+(0&0$+0†http://ocsp.digicert.com0U‡0„0@ > <†:http://crl3.digicert.com/DigiCertHighAssuranceEVRootCA.crl0@ > <†:http://crl4.digicert.com/DigiCertHighAssuranceEVRootCA.crl0U#0€±>Ãiø¿GÔ˜&ïcd+Ã0UPês‰Û)ûžå ÔÞy™Hƒ÷0	*†H†÷ ‚ â¥HžlÛS8ï¦*¬âCíš¼>Žuðý."Y¬Àaâçúé™Í‡	uT(¿F`Ü¾Q,’ó‘|1pâ7¹Á[¨½£ ûý­XjÅÇ$™HGF1’ï´_N4Ç¿1Áø±„†ÐœªßŠVÎ:é®—t]×qšBt_ÞC|ÞéUíi Ëàzaa3ÑMùî 9Å%5·+Ä²Ýñ¥·$Ä&(ywõ/ðWº|ÔáüÍZ0W~†GÝ1×ü¢Â¿0|]$ªèù®_jtÂÎk³FØ!¾)ÔŽ^ÖBJç2o¤±kQƒX¾?mÇûÚ!ËjN
-ð­„Ê]”³Zv÷a J0‚F0‚. 'uŠ0	*†H†÷ 0Z10	UIE10U
-	Baltimore10U
-CyberTrust1"0 UBaltimore CyberTrust Root0120725175828Z190725175744Z0l10	UUS10U
-DigiCert Inc10Uwww.digicert.com1+0)U"DigiCert High Assurance EV Root CA0‚"0	*†H†÷ ‚ 0‚
-‚ ÆÌåsæûÔ»å--2¦ßå?ÉÍ%I¶q*ÃÕ”4g¢
-°_i¦@±Ä·²Ð˜¤©AY:ÓÜ”Ö<Ût8¤JÌM%‚÷J¥S8îóImq‘~c¶«¦_Ã¤„øObQ¾øÅìÛ8’ãå‘Ä(AUûËZ‰~qè5¿Mr	=¾:8P[w1³Ç$Eš§¬m Z·ºëQ
-˜AA"Nea‡AP¦y\‰ÞJWÕ.æ]S,~˜Í¤hsÐ4\¡qÓZ|UÛ^dá7‡0Vå´)€ñy9ˆ¢|'f·ˆ·xòÊ
-¨8«
-dÂ¿f]•„Á¡%‡]P ÌA»nQ8¸KË £‚ 0ý0Uÿ0ÿ0SU L0J0H	+±> 0;09+-http://cybertrust.omniroot.com/repository.cfm0Uÿ0U#0€åY0‚GXÌ¬úT6†{:µMð0BU;0907 5 3†1http://cdp1.public-trust.com/CRL/Omniroot2025.crl0U±>Ãiø¿GÔ˜&ïcd+Ã0	*†H†÷ ‚ vVX6˜´Ù¥Ë0u®±Ö€—Ìî8rh9°>F¶Äò¬ÑÒáfæ…¤UwË.YÝ¥Kß/3»Î`W':¡MIoUvmÕ×Â [*›ùK÷!Ýî\W 5:ñŒFËöFÎjÕÄlþn˜¿¤œ½Ž‰,¾qCÌ6*dV—“¥G½J?ŒuÈž°ð%˜w!Àv§Qz$%}5þÁ	Å;™¨Í)°:‰õêç*åâ$Nh©§ÝÒK¡Ño½,à»|ú¡<eÏ:RKÓ z
-Uø­CT'NSsÈ£–‰ÐáyÆ	xÕõ½±³Å¦K¯IÈ—œO|pi\-¸Ðß2R¹ÞóÃèƒ"ß Û ×0‚Ó
-  ‚Ì0‚È	+0‚¹0‚µ0ž¢Pês‰Û)ûžå ÔÞy™Hƒ÷20151202043800Z0s0q0I0	+ íH­ÝË{ â„*©´	ñ¬04Ï–Pês‰Û)ûžå ÔÞy™Hƒ÷[‰¹&äß©ì	©ur‰M€ 20151202043800Z 20151209035300Z0	*†H†÷ ‚ ŠD"ôÖøŸ9ˆ¡K¾¬Dw“B³gsçÓ’·áÇ¹ûû÷×·ºìMÛW)rH’W~n³Ä©†¼Ìí©"¾ì*çj«Ø'ý@ UÌÃé+þ®}ôQcÌ&Ì¼jñ¤*hÃ¾$‹v€TOçåZ<ªŸðâaÍ†Ë”fJI½®ˆtGº—6”2!–)êûµCy#I‹qF:&Â üÌd€A£Û…è‰·4u^«ÝV€h£¨ÓÚ5
-†c´ÀI™u¹àÜ’lõ—‚Ùî;>3‰Ø¦gÄ‚Ÿà$Áxí$ÖÄ«ÌêŽUIÃ-¨4‹ÉP}_A«5J©}$Cy@M I A1ùˆ™Eû–ŽÒŸùO•Ä]a‡ÑQV®7 YÝ‚Ö¢gÛ®JÈÀ°-©<GwJÊT¹Ê9-3FÌ¬à²‘ FîÌôÙöõa RÎ^=Yê~ZD3¨,)qX¨<¥×ÅE¾--G„Œ*^„ZÂ‡£¡¼ðÕ1Æ"á{g3ƒZålo6ª!‡}WÃ|qZ£CIC¢#H.Ô1XcÙ÷%?„åÐÉ*aÜ5A¦äœŸ¢Í(\ôEÑêìe…Ú áñêDãÊZkïŒhÐàŒjxI„?³a½*âÎÏö-sõê-‡õÍL€w×o|fáD‰m¿»zæ¼rEüxDŠBäËÉŠGBðã—r¹ÌÏŽK\_?|˜`5íô‚S+Áï~Û þTw¯<Öêµ´ðæb¢¿#ÓÕœ„ø    
- Ï  Ë½i4ƒ:$2›‘{+üŽ~y¸#K’œ`½PO ’ mSIÏw:âÛñ·gçžÛê¬ó†)å#˜·KxCÝr .À+À/À
-À	ÀÀÀÀÀ 3 2 E 9 8 ˆ  / A 5 „ 
-    T      pbs.twimg.comÿ   
-         #  3t            W  S`<ôÔ«‰ÙÃëu©N~â|´Xx-PFJ¬N À/  +ÿ      #     3t http/1.1http/1.0d ` ] ®0‚ª0‚’ [‰¹&äß©ì	©ur‰M0	*†H†÷ 0f10	UUS10U
-DigiCert Inc10Uwww.digicert.com1%0#UDigiCert High Assurance CA-30150210000000Z160217120000Z0w10	UUS10USan Francisco10U
-California10U
-Twitter, Inc.10Unone10U*.twimg.com0‚"0	*†H†÷ ‚ 0‚
-‚ ¢z+áïù&x°B9>g >,X¢å“ˆB™÷zN3¿¤Ö•NÏðGœçé3BFBˆØ÷¾QhŸ´™½+/‰g8ŠœA¡í[¼ùqZ&¾n‘<½¼g›»Æû®j`7µ;’YêSm2Ÿ0 à&º½	BÑ¦­êª	Iù¬òM:ˆ#ÿF19E•Žk#¸pÁøäPbJ²ºÄŽõ^ˆ¯ÄÛ/@mïd®Zäìt0¬!vƒFwäÝ°}–ù\iøðÄ«waµP²ÀŸÝ©Q#yU¶<Ï°$XŽIë”g=cëã^°E©!7ùï‘qå5 *S õÝ½<J+ £‚A0‚=0U#0€Pês‰Û)ûžå ÔÞy™Hƒ÷0Uw82(cÈæ¾-ðã·ÿ0îÝ8Š0‚˜U‚0‚‹‚*.twimg.com‚	twimg.com‚si0.twimg.com‚gu.twimg.com‚g2.twimg.com‚p.twimg.com‚o.twimg.com‚si1.twimg.com‚si2.twimg.com‚si3.twimg.com‚si4.twimg.com‚si5.twimg.com‚pbs.twimg.com‚jp.twimg.com‚abs.twimg.com‚hca.twimg.com‚ea.twimg.com‚widgets.twimg.com‚cdn.syndication.twimg.com‚dnt.twimg.com‚g.twimg.com‚ton.twimg.com‚v.twimg.com‚vmtc.twimg.com‚tailfeather.twimg.com‚ma.twimg.com‚video.twimg.com‚pbs-ec.twimg.com‚v.cdn.vine.co‚mtc.cdn.vine.co‚cdn.api.twitter.com‚platform.twitter.com‚preview.cdn.twitter.com‚cdn-dev.api.twitter.com‚widgets.platform.twitter.com‚status.twitter.com‚cdn.syndication.twitter.com‚cdn.digits.com0Uÿ 0U%0++0aUZ0X0* ( &†$http://crl3.digicert.com/ca3-g29.crl0* ( &†$http://crl4.digicert.com/ca3-g29.crl0BU ;0907	`†H†ýl0*0(+https://www.digicert.com/CPS0{+o0m0$+0†http://ocsp.digicert.com0E+0†9http://cacerts.digicert.com/DigiCertHighAssuranceCA-3.crt0Uÿ0 0	*†H†÷ ‚ j'ÚlT"á#Gw5 	öÜ;Ä äæ	èùÉÙ‘Ö½²ŒªæbíËÝÉËÒ\ùrÚ$h¯ê×áÖ¯0Æa qj.=;#šO¾ÖñUÃŽÓ€‡;ô;Ñj+ØÕØ*L'oÚ‹EiÝwê‰:6üu Þ@ÏÑäOk@ámío	»¦Â°§'6xZ~¯»èåï4[u:
-4Sõ,—b,&u£˜BüdÍJ¢µ5¥• 3ßÞî+9i§{Ø$iöÏã>2MGCÈíÃÖ\a·YøŸ'ìI³T9)t;g¯^+÷Oš…p(>8½±9É6oÄ›ŒïÙ@ãž1 \0‚X0‚@ 
-_M[‘ÒïÔŒ?;0	*†H†÷ 0l10	UUS10U
-DigiCert Inc10Uwww.digicert.com1+0)U"DigiCert High Assurance EV Root CA0080402120000Z220403000000Z0f10	UUS10U
-DigiCert Inc10Uwww.digicert.com1%0#UDigiCert High Assurance CA-30‚"0	*†H†÷ ‚ 0‚
-‚ ¿a
-)^þ47Qøû"ía¾pLPc&u¹Aˆ—¶ð »`àBè)‡6Š(e¨ï1tm6—/(FfÇ*y&z™ÕŽÃmO ^­¼=‘ÂY{^6lÀSÏ 2>dXiÇîœBQ ùDî$ÎzíŒ½¨óôz1i§æ]Àšl~	žçRDJ:#ä›¶¯¨œ´[ŸÔK­’ŒÎµ*ª7´Â¸Ø\Œøÿ#½5^Ô|>~ƒ‘–˜Ã²ãÈeë©{] ,Ìü<ÙmíÌúKCŒÉÔ¸¥a²@¶(ß¹ø_þÓ²Éï=´K|L™6ž=ëì§h^ßgn^û £‚ú0‚ö0Uÿ†0‚ÆU ‚½0‚¹0‚µ`†H†ýl 0‚¤0:+.http://www.digicert.com/ssl-cps-repository.htm0‚d+0‚V‚R A n y   u s e   o f   t h i s   C e r t i f i c a t e   c o n s t i t u t e s   a c c e p t a n c e   o f   t h e   D i g i C e r t   C P / C P S   a n d   t h e   R e l y i n g   P a r t y   A g r e e m e n t   w h i c h   l i m i t   l i a b i l i t y   a n d   a r e   i n c o r p o r a t e d   h e r e i n   b y   r e f e r e n c e .0Uÿ0ÿ 04+(0&0$+0†http://ocsp.digicert.com0U‡0„0@ > <†:http://crl3.digicert.com/DigiCertHighAssuranceEVRootCA.crl0@ > <†:http://crl4.digicert.com/DigiCertHighAssuranceEVRootCA.crl0U#0€±>Ãiø¿GÔ˜&ïcd+Ã0UPês‰Û)ûžå ÔÞy™Hƒ÷0	*†H†÷ ‚ â¥HžlÛS8ï¦*¬âCíš¼>Žuðý."Y¬Àaâçúé™Í‡	uT(¿F`Ü¾Q,’ó‘|1pâ7¹Á[¨½£ ûý­XjÅÇ$™HGF1’ï´_N4Ç¿1Áø±„†ÐœªßŠVÎ:é®—t]×qšBt_ÞC|ÞéUíi Ëàzaa3ÑMùî 9Å%5·+Ä²Ýñ¥·$Ä&(ywõ/ðWº|ÔáüÍZ0W~†GÝ1×ü¢Â¿0|]$ªèù®_jtÂÎk³FØ!¾)ÔŽ^ÖBJç2o¤±kQƒX¾?mÇûÚ!ËjN
-ð­„Ê]”³Zv÷a J0‚F0‚. 'uŠ0	*†H†÷ 0Z10	UIE10U
-	Baltimore10U
-CyberTrust1"0 UBaltimore CyberTrust Root0120725175828Z190725175744Z0l10	UUS10U
-DigiCert Inc10Uwww.digicert.com1+0)U"DigiCert High Assurance EV Root CA0‚"0	*†H†÷ ‚ 0‚
-‚ ÆÌåsæûÔ»å--2¦ßå?ÉÍ%I¶q*ÃÕ”4g¢
-°_i¦@±Ä·²Ð˜¤©AY:ÓÜ”Ö<Ût8¤JÌM%‚÷J¥S8îóImq‘~c¶«¦_Ã¤„øObQ¾øÅìÛ8’ãå‘Ä(AUûËZ‰~qè5¿Mr	=¾:8P[w1³Ç$Eš§¬m Z·ºëQ
-˜AA"Nea‡AP¦y\‰ÞJWÕ.æ]S,~˜Í¤hsÐ4\¡qÓZ|UÛ^dá7‡0Vå´)€ñy9ˆ¢|'f·ˆ·xòÊ
-¨8«
-dÂ¿f]•„Á¡%‡]P ÌA»nQ8¸KË £‚ 0ý0Uÿ0ÿ0SU L0J0H	+±> 0;09+-http://cybertrust.omniroot.com/repository.cfm0Uÿ0U#0€åY0‚GXÌ¬úT6†{:µMð0BU;0907 5 3†1http://cdp1.public-trust.com/CRL/Omniroot2025.crl0U±>Ãiø¿GÔ˜&ïcd+Ã0	*†H†÷ ‚ vVX6˜´Ù¥Ë0u®±Ö€—Ìî8rh9°>F¶Äò¬ÑÒáfæ…¤UwË.YÝ¥Kß/3»Î`W':¡MIoUvmÕ×Â [*›ùK÷!Ýî\W 5:ñŒFËöFÎjÕÄlþn˜¿¤œ½Ž‰,¾qCÌ6*dV—“¥G½J?ŒuÈž°ð%˜w!Àv§Qz$%}5þÁ	Å;™¨Í)°:‰õêç*åâ$Nh©§ÝÒK¡Ño½,à»|ú¡<eÏ:RKÓ z
-Uø­CT'NSsÈ£–‰ÐáyÆ	xÕõ½±³Å¦K¯IÈ—œO|pi\-¸Ðß2R¹ÞóÃèƒ"ß Û ×0‚Ó
-  ‚Ì0‚È	+0‚¹0‚µ0ž¢Pês‰Û)ûžå ÔÞy™Hƒ÷20151201223800Z0s0q0I0	+ íH­ÝË{ â„*©´	ñ¬04Ï–Pês‰Û)ûžå ÔÞy™Hƒ÷[‰¹&äß©ì	©ur‰M€ 20151201223800Z 20151208215300Z0	*†H†÷ ‚ KîÃœ8Úõ>ÑàDÒ¢éeªÙÿ{\ÝþÍ`Dq}¦_Ré‡ÃîOXzOVQß”q!8¥—Åo6¡èFc/®|é5¨ëk¦¬rÏTÐØ£“lzR0§Ú©5­„¸>I:mÄ\©›þÐR¦Â8]¢óïUÍÈ´Ûœ™.¥É¤Ó™S†ÊÒ?æšñ¨¿nëjoÎ^Rhzc…ZU¨3ZêÔÚVü1Åœ—Y“…óZqM”º0ý4úŒrµñ’;iæÎ¾ôêêˆnV"Öc/!Ó1¢šô†WÐ]ÕøåÃ¿@ódÆëW8·©­ÀWNëð¹=áfqæ­/M I A‡x×’zeÏü‘«8Ñ€óÓŸF(20‰j×§~¿ ªD'b^‹I6ÈàqÐ
-xÉ¿r§Êð|¾h\æÚ 0•ÔRén5ßá?MÃ×ÖšÎ°èšNÇø=¡Ñû¥ðSR–¯Ý]–L	…œ;G8„ìÓü[ÿ…Ø4@hWÍsÏÙ*ë—)V$CÍ[ÑùaÀYä$)ÿ¥Š¦SêÖ`wÍÒ‹×ªD:¢n¤´¡•ÔlkËS*ËÓ†]WÍf=>Ñ¡Ïú¯³Ñ¦@pQ”6lyN5>@|5†b\¸Åøc-cÅŒ™l^htøg\
-ÃÆøÊéþÂÚ õYcRM­™M¡Š…±¿ÓÙ«©5ÝÀ€]×júÄ¤kÕ)SB{Eñø©â5ÚÂ‡SÜi‘Æy£fÃ„}þNÅ ŠÈ×moƒr    
- Ï  ËD3Sç,J§MFÞÔVVÝNvMJeuòw5÷Nov mSIÏw:âÛñ·gçžÛê¬ó†)å#˜·KxCÝr .À+À/À
-À	ÀÀÀÀÀ 3 2 E 9 8 ˆ  / A 5 „ 
-    T      pbs.twimg.comÿ   
-         #  3t            W  S'‚Ô» (	E±ð ‡'ó¥pÚùh?‡ð3|¥züä× À/  +ÿ      #     3t http/1.1http/1.0d ` ] ®0‚ª0‚’ [‰¹&äß©ì	©ur‰M0	*†H†÷ 0f10	UUS10U
-DigiCert Inc10Uwww.digicert.com1%0#UDigiCert High Assurance CA-30150210000000Z160217120000Z0w10	UUS10USan Francisco10U
-California10U
-Twitter, Inc.10Unone10U*.twimg.com0‚"0	*†H†÷ ‚ 0‚
-‚ ¢z+áïù&x°B9>g >,X¢å“ˆB™÷zN3¿¤Ö•NÏðGœçé3BFBˆØ÷¾QhŸ´™½+/‰g8ŠœA¡í[¼ùqZ&¾n‘<½¼g›»Æû®j`7µ;’YêSm2Ÿ0 à&º½	BÑ¦­êª	Iù¬òM:ˆ#ÿF19E•Žk#¸pÁøäPbJ²ºÄŽõ^ˆ¯ÄÛ/@mïd®Zäìt0¬!vƒFwäÝ°}–ù\iøðÄ«waµP²ÀŸÝ©Q#yU¶<Ï°$XŽIë”g=cëã^°E©!7ùï‘qå5 *S õÝ½<J+ £‚A0‚=0U#0€Pês‰Û)ûžå ÔÞy™Hƒ÷0Uw82(cÈæ¾-ðã·ÿ0îÝ8Š0‚˜U‚0‚‹‚*.twimg.com‚	twimg.com‚si0.twimg.com‚gu.twimg.com‚g2.twimg.com‚p.twimg.com‚o.twimg.com‚si1.twimg.com‚si2.twimg.com‚si3.twimg.com‚si4.twimg.com‚si5.twimg.com‚pbs.twimg.com‚jp.twimg.com‚abs.twimg.com‚hca.twimg.com‚ea.twimg.com‚widgets.twimg.com‚cdn.syndication.twimg.com‚dnt.twimg.com‚g.twimg.com‚ton.twimg.com‚v.twimg.com‚vmtc.twimg.com‚tailfeather.twimg.com‚ma.twimg.com‚video.twimg.com‚pbs-ec.twimg.com‚v.cdn.vine.co‚mtc.cdn.vine.co‚cdn.api.twitter.com‚platform.twitter.com‚preview.cdn.twitter.com‚cdn-dev.api.twitter.com‚widgets.platform.twitter.com‚status.twitter.com‚cdn.syndication.twitter.com‚cdn.digits.com0Uÿ 0U%0++0aUZ0X0* ( &†$http://crl3.digicert.com/ca3-g29.crl0* ( &†$http://crl4.digicert.com/ca3-g29.crl0BU ;0907	`†H†ýl0*0(+https://www.digicert.com/CPS0{+o0m0$+0†http://ocsp.digicert.com0E+0†9http://cacerts.digicert.com/DigiCertHighAssuranceCA-3.crt0Uÿ0 0	*†H†÷ ‚ j'ÚlT"á#Gw5 	öÜ;Ä äæ	èùÉÙ‘Ö½²ŒªæbíËÝÉËÒ\ùrÚ$h¯ê×áÖ¯0Æa qj.=;#šO¾ÖñUÃŽÓ€‡;ô;Ñj+ØÕØ*L'oÚ‹EiÝwê‰:6üu Þ@ÏÑäOk@ámío	»¦Â°§'6xZ~¯»èåï4[u:
-4Sõ,—b,&u£˜BüdÍJ¢µ5¥• 3ßÞî+9i§{Ø$iöÏã>2MGCÈíÃÖ\a·YøŸ'ìI³T9)t;g¯^+÷Oš…p(>8½±9É6oÄ›ŒïÙ@ãž1 \0‚X0‚@ 
-_M[‘ÒïÔŒ?;0	*†H†÷ 0l10	UUS10U
-DigiCert Inc10Uwww.digicert.com1+0)U"DigiCert High Assurance EV Root CA0080402120000Z220403000000Z0f10	UUS10U
-DigiCert Inc10Uwww.digicert.com1%0#UDigiCert High Assurance CA-30‚"0	*†H†÷ ‚ 0‚
-‚ ¿a
-)^þ47Qøû"ía¾pLPc&u¹Aˆ—¶ð »`àBè)‡6Š(e¨ï1tm6—/(FfÇ*y&z™ÕŽÃmO ^­¼=‘ÂY{^6lÀSÏ 2>dXiÇîœBQ ùDî$ÎzíŒ½¨óôz1i§æ]Àšl~	žçRDJ:#ä›¶¯¨œ´[ŸÔK­’ŒÎµ*ª7´Â¸Ø\Œøÿ#½5^Ô|>~ƒ‘–˜Ã²ãÈeë©{] ,Ìü<ÙmíÌúKCŒÉÔ¸¥a²@¶(ß¹ø_þÓ²Éï=´K|L™6ž=ëì§h^ßgn^û £‚ú0‚ö0Uÿ†0‚ÆU ‚½0‚¹0‚µ`†H†ýl 0‚¤0:+.http://www.digicert.com/ssl-cps-repository.htm0‚d+0‚V‚R A n y   u s e   o f   t h i s   C e r t i f i c a t e   c o n s t i t u t e s   a c c e p t a n c e   o f   t h e   D i g i C e r t   C P / C P S   a n d   t h e   R e l y i n g   P a r t y   A g r e e m e n t   w h i c h   l i m i t   l i a b i l i t y   a n d   a r e   i n c o r p o r a t e d   h e r e i n   b y   r e f e r e n c e .0Uÿ0ÿ 04+(0&0$+0†http://ocsp.digicert.com0U‡0„0@ > <†:http://crl3.digicert.com/DigiCertHighAssuranceEVRootCA.crl0@ > <†:http://crl4.digicert.com/DigiCertHighAssuranceEVRootCA.crl0U#0€±>Ãiø¿GÔ˜&ïcd+Ã0UPês‰Û)ûžå ÔÞy™Hƒ÷0	*†H†÷ ‚ â¥HžlÛS8ï¦*¬âCíš¼>Žuðý."Y¬Àaâçúé™Í‡	uT(¿F`Ü¾Q,’ó‘|1pâ7¹Á[¨½£ ûý­XjÅÇ$™HGF1’ï´_N4Ç¿1Áø±„†ÐœªßŠVÎ:é®—t]×qšBt_ÞC|ÞéUíi Ëàzaa3ÑMùî 9Å%5·+Ä²Ýñ¥·$Ä&(ywõ/ðWº|ÔáüÍZ0W~†GÝ1×ü¢Â¿0|]$ªèù®_jtÂÎk³FØ!¾)ÔŽ^ÖBJç2o¤±kQƒX¾?mÇûÚ!ËjN
-ð­„Ê]”³Zv÷a J0‚F0‚. 'uŠ0	*†H†÷ 0Z10	UIE10U
-	Baltimore10U
-CyberTrust1"0 UBaltimore CyberTrust Root0120725175828Z190725175744Z0l10	UUS10U
-DigiCert Inc10Uwww.digicert.com1+0)U"DigiCert High Assurance EV Root CA0‚"0	*†H†÷ ‚ 0‚
-‚ ÆÌåsæûÔ»å--2¦ßå?ÉÍ%I¶q*ÃÕ”4g¢
-°_i¦@±Ä·²Ð˜¤©AY:ÓÜ”Ö<Ût8¤JÌM%‚÷J¥S8îóImq‘~c¶«¦_Ã¤„øObQ¾øÅìÛ8’ãå‘Ä(AUûËZ‰~qè5¿Mr	=¾:8P[w1³Ç$Eš§¬m Z·ºëQ
-˜AA"Nea‡AP¦y\‰ÞJWÕ.æ]S,~˜Í¤hsÐ4\¡qÓZ|UÛ^dá7‡0Vå´)€ñy9ˆ¢|'f·ˆ·xòÊ
-¨8«
-dÂ¿f]•„Á¡%‡]P ÌA»nQ8¸KË £‚ 0ý0Uÿ0ÿ0SU L0J0H	+±> 0;09+-http://cybertrust.omniroot.com/repository.cfm0Uÿ0U#0€åY0‚GXÌ¬úT6†{:µMð0BU;0907 5 3†1http://cdp1.public-trust.com/CRL/Omniroot2025.crl0U±>Ãiø¿GÔ˜&ïcd+Ã0	*†H†÷ ‚ vVX6˜´Ù¥Ë0u®±Ö€—Ìî8rh9°>F¶Äò¬ÑÒáfæ…¤UwË.YÝ¥Kß/3»Î`W':¡MIoUvmÕ×Â [*›ùK÷!Ýî\W 5:ñŒFËöFÎjÕÄlþn˜¿¤œ½Ž‰,¾qCÌ6*dV—“¥G½J?ŒuÈž°ð%˜w!Àv§Qz$%}5þÁ	Å;™¨Í)°:‰õêç*åâ$Nh©§ÝÒK¡Ño½,à»|ú¡<eÏ:RKÓ z
-Uø­CT'NSsÈ£–‰ÐáyÆ	xÕõ½±³Å¦K¯IÈ—œO|pi\-¸Ðß2R¹ÞóÃèƒ"ß Û ×0‚Ó
-  ‚Ì0‚È	+0‚¹0‚µ0ž¢Pês‰Û)ûžå ÔÞy™Hƒ÷20151202043800Z0s0q0I0	+ íH­ÝË{ â„*©´	ñ¬04Ï–Pês‰Û)ûžå ÔÞy™Hƒ÷[‰¹&äß©ì	©ur‰M€ 20151202043800Z 20151209035300Z0	*†H†÷ ‚ ŠD"ôÖøŸ9ˆ¡K¾¬Dw“B³gsçÓ’·áÇ¹ûû÷×·ºìMÛW)rH’W~n³Ä©†¼Ìí©"¾ì*çj«Ø'ý@ UÌÃé+þ®}ôQcÌ&Ì¼jñ¤*hÃ¾$‹v€TOçåZ<ªŸðâaÍ†Ë”fJI½®ˆtGº—6”2!–)êûµCy#I‹qF:&Â üÌd€A£Û…è‰·4u^«ÝV€h£¨ÓÚ5
-†c´ÀI™u¹àÜ’lõ—‚Ùî;>3‰Ø¦gÄ‚Ÿà$Áxí$ÖÄ«ÌêŽUIÃ-¨4‹ÉP}_A«5J©}$Cy@M I A?BRD§q¤ÀÌ`é
-~[	ÕC¶ä‚Bü€æ!ÎðSQ‚Áã«—y9OJQ…“ì»YÑâã>wÇIh7­¡$Æ imî­@¼B}È+»«Î?A7VrO°w1°Dm¼¥²v¿ó¨kãÁ}O¨ÚP¡1)þ¸!cçÕp —´“ÕºŽ°JfŒÈ1·¸¥"nìV¦Ð8ŽºŒòDgªña˜Žî…J?ÐÍ‡^”Ù ‰I”&9½Í×ôñåz_@ÑZ-m9$ÉHÃzÑªÁðôû¬¿ü" ˆç˜Ñ.xí­<¶È ´/AIÑc,ë÷f¦ŠƒX3G9WËUBsl÷	m€W:“YŒÍ¿rýÑÂ¯–x¶¿Iš„w²”¨1>ô„®í„Ïd#*úÓ/Œa?+ÒÓ’´î&Õ4ùÆãß;g    
- F  BA:1“p%›æ(ºeíó€n´~MeÆ€sÈ.˜ ð3¥¶L>ë¯ïr:“Ûkˆa1@ì’hƒqpd>H®•Í«  L        ó‚\ÞÒ¹„,šÞA Rð–ë®AOù3˜	1_Šœ»€áåò)Ã± NØêô^á…æMÁ"°ÔCkÙüª%‘6Æ{¾ º  ¶  , °æ¦¥¸k™YN\\ÁšUDÑæ,J%géèM–wöÉ/£Ž»°öéÕúŸÞoÅÔïàúxIëx Æþº,þ€Ó«_¦šr´o”Q[Åq'Ì>W’…`uÂSüÑ”–éð!µÐëÎÐS0¯Ñ~^&›g^n:©²÷ÇÅ§a*j™^yŒ­œ7§ÜWg“°xØ(&àH8“&k*÷d$Prn©%H@q¹#Ÿ  (Ô|³žR[³ÎG}cíjï/nHFŒy°Ï2ŽÚ`¿ ¯¬B
-        ~ÏAX]`è•lNê†¨·R Ô|³ž %q#Õ:ÐbÞ:º€á­±k
-  ü²`)gª¤wóUÀÞ¹XGªÜ°8Ÿ(„ÄÙ¾Ü ª¹˜·.}8ÐeI¼õäI“]	æ«oóÁ6d
-@5 *À
-À	ÀÀÀÀÀ 3 2 E 9 8 ˆ  / A 5 „ 
-   ‰      chatroll.comÿ   
-         # °ãoy‚|èLFWøMXmê5QîÓMÍ~|º…ÒèØÒ?Æç‡,_v€5ZïM¾>–ÉUç‚®e†i—Ë¶~ÓO6qAFo`AÈ¯ù>ƒ3÷…`9€õzÓnÕÂ–Á#ý-ØZIBÈ’º² 	Ô,Òp7Ét—¥Öã;ú;n¥Ö-3bJEÁ7)ê<XdõÓsÃÅ¼Øi±%~ç¤*ßÇJ‡J"{Ü¼š3t        ‹G ˜                                                                                                                                                         ^  Z¥¹*DÓ”—ªìEìPÿ`÷ß¥âX¶%ýT=âZÒå‚g ª¹˜·.}8ÐeI¼õäI“]	æ«oóÁ6d
-@5À  ÿ  3t 	http/1.1  @¨9bB^\µÏ oØ¥`ˆT:"—V5Íöýpç2C@&%+sÌP"ž³·^ÞzOY™GØ'ôWKãC5à‘LÝÌ
- ½  ¹¸ÉÉÌ¾À-Í:¨(&œÒX¤Çó‚[ÖÎbú…Ûb;­  .À+À/À
-À	ÀÀÀÀÀ 3 2 E 9 8 ˆ  / A 5 „ 
-    b       oauth.googleusercontent.comÿ   
-         #  3t            X  TV^îÚó;Ñ4ÆeÁÏD«n$—õ¯FƒwãÑ53.Û À+  ,ÿ       #  3t h2spdy/3.1http/1.1      ‘0‚0‚u aAð#=º
-0	*†H†÷ 0I10	UUS10U
-
-Google Inc1%0#UGoogle Internet Authority G20151126000417Z160223000000Z0q10	UUS10U
-California10UMountain View10U
-
-Google Inc1 0U*.googleusercontent.com0Y0*†HÎ=*†HÎ=B l_§>š©âÄ@•}OnåÑ:Aîp	sy¹Q‹•£WJÒD´x’cö’Ëº²©â&Û³ìš,)¡Ø—öãêÒÃ£‚0‚0U%0++0‚ÙU‚Ð0‚Ì‚*.googleusercontent.com‚*.blogspot.com‚*.bp.blogspot.com‚"*.commondatastorage.googleapis.com‚)*.content-storage-download.googleapis.com‚'*.content-storage-upload.googleapis.com‚ *.content-storage.googleapis.com‚*.doubleclickusercontent.com‚*.ggpht.com‚*.googledrive.com‚*.googlesyndication.com‚*.googleweblight.com‚*.safenup.googleusercontent.com‚*.sandbox.googleusercontent.com‚!*.storage-download.googleapis.com‚*.storage-upload.googleapis.com‚*.storage.googleapis.com‚blogspot.com‚bp.blogspot.com‚ commondatastorage.googleapis.com‚doubleclickusercontent.com‚	ggpht.com‚googledrive.com‚googleusercontent.com‚googleweblight.com‚+static.panoramio.com.storage.googleapis.com‚storage.googleapis.com0U€0h+\0Z0++0†http://pki.google.com/GIAG2.crt0++0†http://clients1.google.com/ocsp0UÊaç ˆo:‚)ª	¿b©Ci 0Uÿ0 0U#0€JÝ¼öhµvõ¶»bºZ/0!U 00
-+Öy0g00U)0'0% # !†http://pki.google.com/GIAG2.crl0	*†H†÷ ‚ 	lÌõêŠÉ¤ÁlÎA?@±¨Xár3ñ©ÄëùL7²òf¼éÝL)›8Yÿ¡KD5Âïo¡1“ñ¡Ì½o÷µ nu7ø({zÞÑ(åøŒ~'b½åãÁI}b•{õ‰¥µa „®>¿†r0åi¸¡’êpðˆ„¸¾EÂ*‰àbWZeÇüˆ?1øxuiÙ˜–×IîzûR;nc!ì}56-Ê½A3â‰ô6—{ÅúÌ»=®ˆÌØWÌÓÊÛ¥J$$ð¹Þ)ürâ’HWÌÚräû_š@«xÈ;eË{}„lÞ8òLÂlfæ^“Uˆ7V„_¯Â²yþ] ô0‚ð0‚Ø :ƒ0	*†H†÷ 0B10	UUS10U
-GeoTrust Inc.10UGeoTrust Global CA0130405151556Z161231235959Z0I10	UUS10U
-
-Google Inc1%0#UGoogle Internet Authority G20‚"0	*†H†÷ ‚ 0‚
-‚ œ*w\ØP‘:£‚àØPH¼‰?ñpˆF~àÅñ‰Î!îZþa·2D‰ tSOU¤Î‚b•îëY_Æá€Ä^”?¼[H8ôS÷$æû‘éÄÏôSôJüŸTÞ}¾ ko‡ÀÐP(0@ÚsQlÿ:<§7Ž½Kë}$Þæùü1qû”Õ`ó.J¯BÒËêÄj²ÌSÝK‹ÈaÍ¨>c+„5ie„ÈÅF"øS•¾ã€JÆ*ìº— Ç9™ ðaz•%ŒNRuâ¶íÊüÎ"j³NÏF——~À±Þ{¯E3Ïº>q·Þô%%Â5‰ûy‰7Å¯Žri £ç0ä0U#0€Àz˜h‰û«d}ª}e¸ÊÌN0UJÝ¼öhµvõ¶»bºZ/0Uÿ0.+"0 0+0†http://g.symcd.com0Uÿ0ÿ 05U.0,0* ( &†$http://g.symcb.com/crls/gtglobal.crl0U 00
-+Öy0	*†H†÷ ‚ ªú© Íjgƒí^Ô~ÞÄà% Å$û©È-m~Þ‚e,c4f>éRÂ´Ë/÷_™:jœPz…Œ}Ñ*H„Ó	l|ÂÍ5Ÿó‚îRÞh_ä Š –÷)šMË¨Þ†ÈoV‡}?Üúy}!ùÈ:/QvŒÇA’q%Î7øJL #ïÄ5®à#€s|M4.ÈnÖ™„spòíUîêgî2ë,Ýg?ö‹ÂpÞ[ æ»Ó6"ll°5Bl	=“éd	"…ŸÂs!Óæ_€ä…":s±`Ž®hâô>—ç`	h6Þ:ÖâC•[7’»×­RdW–Ù^4~È5Ø 0‚}0‚æ »æ0	*†H†÷ 0N10	UUS10U
-Equifax1-0+U$Equifax Secure Certificate Authority0020521040000Z180821040000Z0B10	UUS10U
-GeoTrust Inc.10UGeoTrust Global CA0‚"0	*†H†÷ ‚ 0‚
-‚ ÚÌc0ýô#V~[ß<l8äq·x‘Ô¼¡ØLø¨C¶éM!ˆÚX/f9)½x‹8è·j~q¤æÄ`¦°ï€ä‰(ž%Öíƒó­¦‘Ç˜ÉB5­˜F’.OÊñ‡CÁ•W-Pï‰-€zW­òî_kÒ ¹ø5ÙÀF£{rÈ‘¿ÉU+ÍÐ—>œ&dÌßÎƒqÊNæÔÕ{©ÍUÞÈìÒ^8Så\OŒ-þP#6üfæËŽ¤9 ·•9‘þ8.ÑšöM>o¯,`9âú6S9Ô^&+Û=¨½2ë(Rqå«3=á8»6„bœyê0ô_À+èqkäù £ð0í0U#0€Hæhù+Ò²•×GØ# O3˜ŸÔ0UÀz˜h‰û«d}ª}e¸ÊÌN0Uÿ0ÿ0Uÿ0:U3010/ - +†)http://crl.geotrust.com/crls/secureca.crl0NU G0E0CU  0;09+-https://www.geotrust.com/resources/repository0	*†H†÷  vánNK†0²ÏðÇÇq~fîÂíÔ;ÿððÈNÖC8°¹0}ÐUƒ¢jË6œèHf£m¸ÔGþ‹Z\sü®Ù28«—4ª–Òë£I¶»å‘ïƒ6ëVoÊÚ¼scä{>"Ë=í_8tœãPN¡¯˜îaò„? ”   Aå~é`p¤â³$¾¾=šx=¦u²ïQ~yÏ!í{‘5ø7Èàeª$JéÓSÈà8ù1ÏËê—óSÊ¶œ4{ðº G0E B	7*2§¯$V±ÁŸ ¡QÛ…±u1k$Tè~Á­qªN! ù–Qt^¢¯sëÞÏ–Ø!,FçtRhõùïüùF©YŸ    

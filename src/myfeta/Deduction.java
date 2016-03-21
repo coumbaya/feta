@@ -3,37 +3,34 @@ package myfeta;
 import com.fourspaces.couchdb.Document;
 import com.google.gson.Gson;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.sql.SQLException;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
+import org.jdom2.JDOMException;
+
 import static myfeta.Main.collectionName;
+import static myfeta.Main.setCouchDB;
 import static myfeta.Main.setMonetDB;
 import static myfeta.Main.simpleExecution;
-import static myfeta.Main.single;
-import static myfeta.Main.traceGen;
-import static myfeta.Main.windowJoin;
-import org.jdom2.JDOMException;
+import static myfeta.Main.testConcExam;
 
 /**
  * Class for FETA deduction (Phases: "LogClean", "GraphConstruction",
  * "NestedLoopDetection", "SameConcept/SameAs and "NotNullJoin" heuristics
  *
  * @author Nassopoulos Georges
- * @version 0.9
- * @since 2016-01-13
+ * @version 1.0
+ * @since 2016-03-19
  */
 public class Deduction {
 
@@ -48,11 +45,11 @@ public class Deduction {
     public static Document docAnswers;
     // set of deduced graphs, where each node is a LogClean query's ID
     public static List<List<Integer>> dedGraphSelect;
-
     //
     public static HashMap<String, String> mapEndpointToName;
 
     //******************************Hash Maps concerning Log Clean queries******************************//
+    
     // map each LogClean query to its original entry timestamp in HH:MM:SS format
     public static HashMap<Integer, String> mapLogClQueryToTimestamp;
     // map each LogClean query ID to all answer entries IDs
@@ -67,39 +64,29 @@ public class Deduction {
     public static HashMap<Integer, List<String>> mapLogClQueryToProjVars;
 
     //******************************Hash Maps concerning Answer entry id's******************************//
+    
     // map each answer id entry with its associated entry information tuple
     public static Map<Integer, List<String>> mapAnsIDtoEntry;
-    // map each answer id with to its new timestamp in HH:MM:SS format
-    public static HashMap<Integer, String> mapAnsIDToTimestamp;
     // map each answer id entry to its timestamp in seconds
     public static HashMap<Integer, Integer> mapAnsIDToTimeSecs;
     // map each answer entry to all its SELECT query entities
     public static Map<Integer, List<String>> mapAnsIDToQueryEnts;
     // map each answer entry to all its SELECT query's projected variables
     public static Map<Integer, List<String>> mapAnsIDToQueryProjVars;
-    // map each answer entry to its SELECT query's different predicates
-    public static Map<Integer, List<String>> mapAnsIDToPredicates;
     // map each answer entry to its respective LogClean query 
     public static HashMap<Integer, String> mapAnsIDToLogClQuery;
-
     //
     public static HashMap<String, List<String>> mapAnsEntryToListValues;
     //
     public static HashMap<String, List<String>> mapAnsEntryToAllSignatures;
     //
     public static HashMap<String, List<String>> mapAnsSingatureToAllValues;
-    //
-    public static HashMap<List<String>, List<String>> mapTPtoAnswersSourcesInverse;
 
     public static HashMap<List<String>, Integer> mapDTPtoCANCELofEG;
-    // map 
-    public static List<List<String>> listAnswerEntriesTotimestamp;
-    //
-    public static HashMap<List<String>, List<String>> mapGroundTruthHashMaps;
 
-    /**
-     * *****************************GroundTRUTH******************************
-     */
+    //*****************************GroundTRUTH******************************//
+    
+    public static HashMap<List<String>, List<String>> mapGroundTruthHashMaps;
     public static Map<List<List<String>>, Integer> mapGroundTruthPairs;
     public static Map<List<List<String>>, Integer> mapTruePositivePairs;
     public static Map<List<String>, Integer> mapGroundTruthTPs;
@@ -129,14 +116,11 @@ public class Deduction {
         myDedGonstruct = new DeductionGraphConstruction(listDocument, db);
         myDedInverseMap = new DeductionNestedLoop();
         myDedNotNull = new DeductionNotNullJoin();
-
-        listAnswerEntriesTotimestamp = new LinkedList<>();
         dedGraphSelect = new LinkedList<>();
 
         mapAnsIDtoEntry = new TreeMap<>();
         mapAnsIDToLogClQuery = new HashMap<>();
         mapAnsIDToQueryEnts = new TreeMap<>();
-        mapAnsIDToPredicates = new TreeMap<>();
         mapAnsIDToTimeSecs = new HashMap<>();
         mapAnsEntryToListValues = new HashMap<>();
         mapLogClQueryToAnsEntry = new HashMap<>();
@@ -145,8 +129,6 @@ public class Deduction {
         mapLogClQueryToAllTPEnts = new HashMap<>();
         mapLogClQueryToTimestamp = new HashMap<>();
         mapLogClQueryToProjVars = new HashMap<>();
-        mapAnsIDToTimestamp = new HashMap<>();
-        mapTPtoAnswersSourcesInverse = new HashMap<>();
         mapAnsIDToQueryProjVars = new HashMap<>();
 
         mapGroundTruthPairs = new HashMap<>();
@@ -167,26 +149,19 @@ public class Deduction {
         mapGroundTruthHashMaps = new HashMap<>();
     }
 
-
-
     public Deduction() {
 
         docAnswers = null;
-
-        listAnswerEntriesTotimestamp = new LinkedList<>();
         dedGraphSelect = new LinkedList<>();
 
         mapAnsIDToTimeSecs = new HashMap<>();
         mapAnsIDToQueryEnts = new TreeMap<>();
-        mapAnsIDToPredicates = new TreeMap<>();
         mapAnsEntryToListValues = new HashMap<>();
         mapLogClQueryToTimestamp = new HashMap<>();
         mapLogClQueryToDedGraph = new HashMap<>();
         mapLogClQueryToAllTPEnts = new HashMap<>();
         mapLogClQueryToTimeSecs = new HashMap<>();
         mapLogClQueryToProjVars = new HashMap<>();
-        mapAnsIDToTimestamp = new HashMap<>();
-        mapTPtoAnswersSourcesInverse = new HashMap<>();
         mapAnsIDToQueryProjVars = new HashMap<>();
 
         mapGroundTruthPairs = new HashMap<>();
@@ -217,25 +192,23 @@ public class Deduction {
         mapAnsSingatureToAllValues = new HashMap<>();
         mapGroundTruthHashMaps = new HashMap<>();
     }
-    
-        public Deduction(List<Document> listDocument, MonetDBManag db) throws ParserConfigurationException {
+
+    public Deduction(List<Document> listDocument, MonetDBManag db) throws ParserConfigurationException {
 
         myMDB = db;
         docAnswers = null;
+        dedGraphSelect = new LinkedList<>();
+
         mapAnsIDToLogClQuery = new HashMap<>();
         myDedCLean = new DeductionLogClean(listDocument, db);
         myDedGonstruct = new DeductionGraphConstruction(listDocument, db);
         myDedInverseMap = new DeductionNestedLoop();
         myDedNotNull = new DeductionNotNullJoin();
         myDedSameConcp = new DeductionSameConceptOrAs();
-
-        listAnswerEntriesTotimestamp = new LinkedList<>();
-        dedGraphSelect = new LinkedList<>();
-
+        
         mapAnsIDtoEntry = new TreeMap<>();
         mapAnsIDToTimeSecs = new HashMap<>();
         mapAnsIDToQueryEnts = new TreeMap<>();
-        mapAnsIDToPredicates = new TreeMap<>();
         mapAnsEntryToListValues = new HashMap<>();
         mapLogClQueryToAnsEntry = new HashMap<>();
         mapLogClQueryToDedGraph = new HashMap<>();
@@ -243,8 +216,6 @@ public class Deduction {
         mapLogClQueryToAllTPEnts = new HashMap<>();
         mapLogClQueryToTimestamp = new HashMap<>();
         mapLogClQueryToProjVars = new HashMap<>();
-        mapAnsIDToTimestamp = new HashMap<>();
-        mapTPtoAnswersSourcesInverse = new HashMap<>();
         mapAnsIDToQueryProjVars = new HashMap<>();
 
         mapGroundTruthPairs = new HashMap<>();
@@ -274,18 +245,11 @@ public class Deduction {
      */
     public void initDeduction(String myDataBase) {
 
-        if (setMonetDB) {
-            try {
-
-                myMDB.openSession("jdbc:monetdb://localhost/demo", "feta", "feta");
-            } catch (SQLException | InstantiationException | IllegalAccessException ex) {
-
-                Logger.getLogger(Deduction.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        } else {
+        if (!setMonetDB && setCouchDB) {
 
             myDB.getDatabase(myDataBase);
         }
+
     }
 
     /**
@@ -346,14 +310,13 @@ public class Deduction {
         System.out.println("-----------------------------------------------------------------------------------------------------------------");
         System.out.println();
 
-        if (!single) {
+        if (!testConcExam) {
 
             getGroundTruthPairs();
             getGroundTruthTPs();
             getGroundTruthHashMaps();
         }
 
-      
         //Apply "LogClean" heuristic
         myDedCLean.LogClean(deductionWindow);
 
@@ -373,19 +336,14 @@ public class Deduction {
             System.out.println("[START] ---> SameConcept/Same As and NotNullJoin heuristics");
 
             //Apply "NotNullJoin" heuristic
-            myDedNotNull.notNullJoin(deductionWindow);
+            myDedNotNull.notNullJoin();
 
             finishTime = System.nanoTime();
             System.out.println("[FINISH] ---> SameConcept/Same As and NotNullJoin heuristics (Elapsed time: " + (startTime - finishTime) / 1000000000 + " seconds)");
 
-        } else {
-
-            genGNUInputCommonJoin(deductionWindow);
         }
 
     }
-    
-   
 
     public void matchEndpointToName() {
 
@@ -414,6 +372,8 @@ public class Deduction {
      * Load to RAM all Answer traces, in order to minimize interaction with DB
      *
      * @throws java.sql.SQLException
+     * @throws java.io.IOException
+     * @throws java.net.URISyntaxException
      */
     public void loadAnsInRAM() throws SQLException, IOException, URISyntaxException {
 
@@ -421,35 +381,20 @@ public class Deduction {
 
             myMDB.setAnswerStringToMaps();
         } else {
+            // myDB.addDocument("endpointsAnswersMXANAPSID");
 
-            myDB.addDocument("endpointsAnswers" + collectionName);
+           myDB.addDocument("endpointsAnswers" + collectionName);
             docAnswers = myDB.getDocument("endpointsAnswers" + collectionName);
-           
+
             myDB.setAnswerStringToMaps();
         }
     }
 
     /**
-     * Save number of deduced graphs, when deduction stops at
-     * "CommonJoinCondition" heuristic
      *
-     * @param windowGap
+     * @throws FileNotFoundException
      * @throws IOException
      */
-    public void genGNUInputCommonJoin(int windowGap) throws IOException {
-
-        int gnuplot = -1;
-        try (FileWriter fileWritter = new FileWriter("gnuplot.txt", true);
-                BufferedWriter bufferWritter = new BufferedWriter(fileWritter)) {
-
-            gnuplot = dedGraphSelect.size();
-
-            bufferWritter.write(windowJoin + " " + gnuplot + "\n");
-        }
-
-        gnuplot = 0;
-    }
-
     public void getGroundTruthPairs() throws FileNotFoundException, IOException {
 
         String fileName = "groundTruthPairs.txt";
@@ -475,6 +420,8 @@ public class Deduction {
                 outerTP = new LinkedList<>();
                 innerTP = new LinkedList<>();
                 int i = 0;
+
+                //BUUUUUUUUUUUUG
                 for (String str : array) {
 
                     String[] array2 = s.split(" ");
@@ -496,14 +443,8 @@ public class Deduction {
                     }
                 }
 
-                tmpPair = new LinkedList<>();
-                tmpPair.add(innerTP);
-                tmpPair.add(outerTP);
-
-                tmpPair2 = new LinkedList<>();
-                tmpPair2.add(outerTP);
-                tmpPair2.add(innerTP);
-
+               tmpPair = Arrays.asList(innerTP, outerTP);
+               tmpPair2 = Arrays.asList(outerTP,innerTP);
                 mapGroundTruthPairs.put(tmpPair, 1);
                 cntPairs++;
                 System.out.println("\t Join pair no[" + cntPairs + "]: " + tmpPair);
@@ -526,6 +467,11 @@ public class Deduction {
         System.out.println("*******FINISH: Ground Truth joinedpairs********");
     }
 
+    /**
+     *
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
     public void getGroundTruthTPs() throws FileNotFoundException, IOException {
 
         String fileName = "groundTruthTPs.txt";
@@ -578,9 +524,7 @@ public class Deduction {
 
         System.out.println("*******FINISH: Ground Truth tps********");
     }
-    
-    
-    
+
     /**
      * Load from a text file in JSON format, all previously produced random
      * timestamps of every Answer entry

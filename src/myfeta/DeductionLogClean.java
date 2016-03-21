@@ -8,9 +8,9 @@ import java.util.LinkedList;
 import java.util.List;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.TransformerException;
-import static myfeta.Deduction.listAnswerEntriesTotimestamp;
+import org.jdom2.JDOMException;
+
 import static myfeta.Deduction.mapAnsIDToLogClQuery;
-import static myfeta.Deduction.mapAnsIDToPredicates;
 import static myfeta.Deduction.mapAnsIDToQueryEnts;
 import static myfeta.Deduction.mapAnsIDToQueryProjVars;
 import static myfeta.Deduction.mapAnsIDToTimeSecs;
@@ -22,24 +22,21 @@ import static myfeta.Deduction.mapLogClQueryToTimeSecs;
 import static myfeta.Deduction.mapLogClQueryToTimestamp;
 import static myfeta.Main.nameDB;
 import static myfeta.Main.setMonetDB;
-import org.jdom2.JDOMException;
 
 /**
  * Class for "LogClean" heuristic, filtering exactly the same subqueries or
  * merging same subqueries sent to the same or different endpoints
  *
  * @author Nassopoulos Georges
- * @version 0.9
- * @since 2016-01-13
+ * @version 1.0
+ * @since 2016-03-19
  */
 public class DeductionLogClean {
 
     CouchDBManag myDB;
     MonetDBManag myMDB;
     BasicUtilis myBasUtils;
-    Deduction myDeduction;
     DeductionUtils myDedUtils;
-        MonetDBManag myMonet;
 
     // all distinct queries which are captured, after "Log CLean" phase
     public static List<String> queries;
@@ -48,7 +45,7 @@ public class DeductionLogClean {
     // map each LogClean query to its source endpoints
     public static HashMap<Integer, List<String>> mapQuerytoSrcEndps;
     // map each candidate triple pattern with FILTER options of UNION queries 
-    public static HashMap<List<String>, List<String>> mapCTPtoFILTERUNION;
+    public static HashMap<List<String>, List<String>> mapCTPtoFILTERwithBoundJ;
     //capture the IP Address
     public static String engineIPAddress = "";
     //capture the first timestamp of the slice DB used as input, and print it in "verbose2"
@@ -66,10 +63,9 @@ public class DeductionLogClean {
         mapQueryToID = new HashMap<>();
         mapQuerytoSrcEndps = new HashMap<>();
         mapQuerytoSrcEndps = new HashMap<>();
-        mapCTPtoFILTERUNION = new HashMap<>();
+        mapCTPtoFILTERwithBoundJ = new HashMap<>();
         queries = new LinkedList<>();
         epochTimeCurrent = "";
-         myMonet = new MonetDBManag();
     }
 
     public DeductionLogClean(List<Document> listDocument, CouchDBManag db) throws ParserConfigurationException {
@@ -79,10 +75,9 @@ public class DeductionLogClean {
         myDedUtils = new DeductionUtils();
         mapQueryToID = new HashMap<>();
         mapQuerytoSrcEndps = new HashMap<>();
-        mapCTPtoFILTERUNION = new HashMap<>();
+        mapCTPtoFILTERwithBoundJ = new HashMap<>();
         queries = new LinkedList<>();
         epochTimeCurrent = "";
-        myMonet = new MonetDBManag();
     }
 
     public DeductionLogClean() throws ParserConfigurationException {
@@ -91,10 +86,9 @@ public class DeductionLogClean {
         myDedUtils = new DeductionUtils();
         mapQueryToID = new HashMap<>();
         mapQuerytoSrcEndps = new HashMap<>();
-        mapCTPtoFILTERUNION = new HashMap<>();
+        mapCTPtoFILTERwithBoundJ = new HashMap<>();
         queries = new LinkedList<>();
         epochTimeCurrent = "";
-         myMonet = new MonetDBManag();
     }
 
     /**
@@ -128,10 +122,6 @@ public class DeductionLogClean {
         List<String> entryInfo = null;
         String epochTime = "";
 
-        if (setMonetDB) {
-
-            myMonet.openSession("jdbc:monetdb://localhost/demo", "feta", "feta");
-        }
         System.out.println("[START] ---> LogClean heuristic");
         System.out.println();
         startTime = System.nanoTime();
@@ -139,7 +129,7 @@ public class DeductionLogClean {
         // Scan all entries of the database traces, for MonetDB or CouchDB
         if (setMonetDB) {
 
-            monetSize = myMDB.getTableSize("tableQrsAndAns"+nameDB);
+            monetSize = myMDB.getTableSize("tableQrsAndAns" + nameDB);
 
             for (int i = 1; i < monetSize; i++) {
 
@@ -231,19 +221,18 @@ public class DeductionLogClean {
         int indxQuery = 0;
         int timeInSec = 0;
         List<String> queryUnities = null;
-        List<String> queryPredicates = null;
 
         if (!setMonetDB) {
 
             IpAddress = entryInfo.get(0);
             Port = entryInfo.get(1);
-            Query = entryInfo.get(2);
+            Query = entryInfo.get(2).replaceAll(("\r\n"), " ");
             Time = entryInfo.get(3);
         } else {
 
             IpAddress = entryInfo.get(2);
             Port = entryInfo.get(1);
-            Query = entryInfo.get(4);
+            Query = entryInfo.get(4).replaceAll(("\r\n"), " ");
             Time = entryInfo.get(3);
         }
 
@@ -286,22 +275,16 @@ public class DeductionLogClean {
 
         if (Query.contains("UNION") && Query.contains("FILTER") && Query.contains("_0")) {
 
-            myDedUtils.setCTPtoFILTERUNIONvals(Query, queryUnities);
+            myDedUtils.setCTPtoFilterBoundVals(Query, queryUnities);
         }
 
-        queryPredicates = myBasUtils.getQueryPredicates(queryUnities);
         mapAnsIDToTimeSecs.put(AnsEntryID, timeInSec);
-        mapAnsIDToPredicates.put(AnsEntryID, queryPredicates);
         mapAnsIDToQueryEnts.put(AnsEntryID, queryUnities);
         mapAnsIDToQueryProjVars.put(AnsEntryID, myBasUtils.getProjVars(Query));
 
         //If its the first time we capture this query
         if (mapQueryToID.get(Query) == null) {
 
-            List<String> tmpList = new LinkedList<>();
-            tmpList.add(Integer.toString(AnsEntryID));
-            tmpList.add(Time);
-            listAnswerEntriesTotimestamp.add(tmpList);
             int querySize = queries.size();
             queries.add(Query);
             mapLogClQueryToProjVars.put(querySize, myBasUtils.getProjVars(Query));
@@ -326,17 +309,9 @@ public class DeductionLogClean {
             // else, this current entry's reception endpoint has not been identified yet 
             if (flagPortExist == false) {
 
-                List<String> tmpList = new LinkedList<>();
-                tmpList.add(Integer.toString(AnsEntryID));
-                tmpList.add(Time);
-                listAnswerEntriesTotimestamp.add(tmpList);
                 flagPortExist = true;
             }
 
-            List<String> tmpList = new LinkedList<>();
-            tmpList.add(Integer.toString(AnsEntryID));
-            tmpList.add(Time);
-            listAnswerEntriesTotimestamp.add(tmpList);
 
             if (!myBasUtils.elemInListContained(mapQuerytoSrcEndps.get(indxQuery), Port)) {
 

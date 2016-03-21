@@ -15,14 +15,16 @@ import net.sf.json.JSONObject;
 import static myfeta.Deduction.mapAnsIDtoEntry;
 import static myfeta.Main.verbose;
 import static myfeta.Deduction.docAnswers;
+import static myfeta.Deduction.mapEndpointToName;
+import static myfeta.Main.engineName;
 import static myfeta.Main.traceGen;
 
 /**
- * Class for interacting with DB (CouchDB)
+ * Class for interacting with CouchDB
  *
  * @author Nassopoulos Georges
- * @version 0.9
- * @since 2016-01-13
+ * @version 1.0
+ * @since 2016-03-19
  */
 public class CouchDBManag {
 
@@ -30,15 +32,10 @@ public class CouchDBManag {
     private Session dbSession;
 
     BasicUtilis myBasUtils;
-    DeductionUtils myDecUtils;
-    
-     FileWriter writerCapt;
 
-
+    FileWriter writerCapt;
     // List of Documents stored in database, ("queryLog" or "endpointsAnswers")
     public static List<Document> myListDocs;
-    // Document "endpointsAnswer", called by 2 functions
-    public Document docsDist;
     // Current Document of "querLogs" with log of entries in virtuoso.log
     private Document myDoc;
     // Current entry id for "myDoc" or "myDoc2": we start from 2 as we have 2
@@ -50,10 +47,11 @@ public class CouchDBManag {
     public CouchDBManag() throws IOException {
 
         myListDocs = new LinkedList<>();
-        myDecUtils = new DeductionUtils();
         myBasUtils = new BasicUtilis();
-        if(traceGen){
-           writerCapt = new FileWriter("capture.txt");
+
+        if (traceGen) {
+
+            writerCapt = new FileWriter("capture.log");
         }
     }
 
@@ -154,7 +152,8 @@ public class CouchDBManag {
      */
     public Document getDocument(String currDoc) {
 
-        return myListDocs.get(indexOfDocument(currDoc));
+    //  return myListDocs.get(indexOfDocument("endpointsAnswersCDANAPSID"));
+       return myListDocs.get(indexOfDocument(currDoc));
     }
 
     /**
@@ -277,7 +276,7 @@ public class CouchDBManag {
             Entry.add(5, entryClient.get("ClientTCPport").toString());
 
         } catch (Exception ex) {
-            System.out.println(ex);
+           // System.out.println(ex);
         }
 
         return Entry;
@@ -297,7 +296,6 @@ public class CouchDBManag {
 
         Entry = mapAnsIDtoEntry.get(idEntry);
 
-        //BUUUUUUUUUUUUUUUUUUUUUUUUGGGGGGGGGGGGGGGG
         if (Entry.size() == 6) {
 
             entryInformation.add(Entry.get(2));
@@ -322,24 +320,26 @@ public class CouchDBManag {
     /**
      * Parse every answer string, and match all answer entities (IRIs/Literals)
      * to the corresponding hashMaps
+     *
+     * @throws java.io.IOException
+     * @throws java.net.URISyntaxException
      */
     public void setAnswerStringToMaps() throws IOException, URISyntaxException {
-        
-       
+
         List<String> entryInformation = null;
-        String Answer = "", ClientIpAddress = "", requestQuery = "", receptTime = "", endpoint = "";
+        String Answer = "", requestQuery = "";
         for (Object key : docAnswers.keySet()) {
-            
+
             try {
                 if (key.toString().contains("_")) {
                     continue;
                 }
 
                 entryInformation = getAnswerEntry(key.toString());
-                 if(traceGen){
-            
-                     addEntryInTrace(entryInformation);
-                } 
+                if (traceGen) {
+
+                    addEntryInTrace(entryInformation);
+                }
                 mapAnsIDtoEntry.put(Integer.parseInt(key.toString()), entryInformation);
 
                 if (!entryInformation.isEmpty()) {
@@ -348,9 +348,6 @@ public class CouchDBManag {
                     if (!entryInformation.isEmpty()) {
 
                         Answer = entryInformation.get(0);
-                        endpoint = entryInformation.get(1);
-                        ClientIpAddress = entryInformation.get(2);
-                        receptTime = entryInformation.get(3);
                         requestQuery = entryInformation.get(4);
                         myBasUtils.setVarsToAnswEntities(Integer.parseInt(key.toString()), requestQuery, Answer);
                     }
@@ -359,30 +356,53 @@ public class CouchDBManag {
 
             } catch (NumberFormatException e) {
 
-                System.out.println(e);
+               // System.out.println(e);
             }
 
         }
     }
-    
-    public void addEntryInTrace(List<String> entryInformation) throws IOException, URISyntaxException{
-        
-        for(int i=0; i<entryInformation.size();i++){
-            
-            if(i==4){
-        URI uri = new URI("http", null, "localhost", 8900,
-                "/sparql/", "default-graph-uri=&query=" + entryInformation.get(i) + "&format=json&timeout=0&debug=on", null);
 
-       writerCapt.write( uri.toString());
-            }
-            
-            else{
+    public void addEntryInTrace(List<String> entryInformation) throws IOException, URISyntaxException {
                 
-           writerCapt.write(entryInformation.get(i));
-            }
+          if(engineName.contains("FedX")){
+            
+            writerCapt.write("POST /sparql/ HTTP/1.1\n");
+            writerCapt.write("Content-Type: application/x-www-form-urlencoded; charset=utf-8\n");
+            writerCapt.write("Accept: application/x-binary-rdf-results-table;q=0.8\n");
+            writerCapt.write("Accept: application/sparql-results+xml\n");
+            writerCapt.write("Accept: application/sparql-results+json;q=0.8\n");
+            writerCapt.write("Accept: text/tab-separated-values;q=0.8\n");
+            writerCapt.write("Accept: text/csv;q=0.8\n");
+            writerCapt.write("User-Agent: Jakarta Commons-HttpClient/3.1\n");
+            writerCapt.write("Host: 172.16.9.15:"+entryInformation.get(1)+"\n");
+            writerCapt.write("Content-Length: \n");
+            writerCapt.write("\n");
         }
 
-        System.out.print("****************");
+          
+                URI uri = new URI("http", null, "localhost", 8900,
+                        "/sparql/", "default-graph-uri=&query=" + entryInformation.get(4) + "&format=json&timeout=0&debug=on", null);
+
+                writerCapt.write("queryLn=SPARQL&query="+uri.toString().substring(uri.toString().indexOf("&query=")+7, uri.toString().indexOf("&format=json"))+"&infer=falseHTTP/1.1 200 OK\n");
+
+            
+                        
+          if(engineName.contains("FedX")){
+            
+            writerCapt.write("Server: Virtuoso/06.01.3127 (Linux) x86_64-unknown-linux-gnu\n");
+            writerCapt.write("Connection: Keep-Alive\n");
+            writerCapt.write("Date: Wed, 02 Dec 2015 "+entryInformation.get(3)+" GMT\n");
+            writerCapt.write("Accept-Ranges: bytes\n");
+            writerCapt.write("X-SPARQL-default-graph: http://localhost:"+entryInformation.get(1)+"/"+mapEndpointToName.get(entryInformation.get(1))+"\n");
+            writerCapt.write("Content-Type: application/sparql-results+json\n");
+            writerCapt.write("Content-Length: \n");
+            writerCapt.write("\n");
+            writerCapt.write("\n");
+        }
+      
+         writerCapt.write(entryInformation.get(0));
+         writerCapt.write("\n");
+
     }
 
 }

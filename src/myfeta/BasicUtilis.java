@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
 import static myfeta.Deduction.mapAnsEntryToAllSignatures;
 import static myfeta.Deduction.mapAnsEntryToListValues;
@@ -16,8 +15,8 @@ import static myfeta.Deduction.mapAnsSingatureToAllValues;
  * Class with basic help functions
  *
  * @author Nassopoulos Georges
- * @version 0.9
- * @since 2016-01-13
+ * @version 1.0
+ * @since 2016-03-19
  */
 public class BasicUtilis {
 
@@ -148,117 +147,34 @@ public class BasicUtilis {
         return false;
     }
 
-    public boolean listInListContain2(List<List<Integer>> listOfLists, List<Integer> searchList) {
-
-        int count = 0;
-
-        for (List<Integer> list : listOfLists) {
-
-            if (list.size() == searchList.size()) {
-
-                count = 0;
-                for (int i = 0; i < list.size(); i++) {
-
-                    if (list.get(i).equals(searchList.get(i))) {
-
-                        count++;
-                    }
-                }
-
-                if (count == list.size()) {
-
-                    return true;
-                }
-            }
-
-        }
-
-        return false;
-    }
-
+    
     /**
-     * Clone a list of strings into another one. This function is used in order
-     * to solve the problem of pointers when we affect a list to another
-     *
-     * @param input
-     * @return the cloned list
-     */
-    public List<String> cloneListElems(List<String> input) {
-
-        List<String> output = new LinkedList<>();
-
-        for (int i = 0; i < input.size(); i++) {
-            output.add(input.get(i));
-
-        }
-
-        return output;
-    }
-
-    public List<List<String>> cloneListOfList(List<List<String>> listSrc) {
-
-        List<List<String>> clone = new LinkedList<>();
-        List<String> temp = null;
-
-        for (int i = 0; i < listSrc.size(); i++) {
-
-            temp = new LinkedList<>();
-            for (int j = 0; j < listSrc.get(i).size(); j++) {
-
-                temp.add(listSrc.get(i).get(j));
-            }
-
-            clone.add(temp);
-        }
-
-        return clone;
-    }
-
-    public List<List<Integer>> cloneListOfList2(List<List<Integer>> listSrc) {
-
-        List<List<Integer>> clone = new LinkedList<>();
-        List<Integer> temp = null;
-
-        for (int i = 0; i < listSrc.size(); i++) {
-
-            temp = new LinkedList<>();
-            for (int j = 0; j < listSrc.get(i).size(); j++) {
-
-                temp.add(listSrc.get(i).get(j));
-            }
-
-            clone.add(temp);
-        }
-
-        return clone;
-    }
-
-    /**
-     * Get common elements of two lists of strings
+     * Compare two lists of strings, for finding their intersection values
      *
      * @param outerList outer list to be compared
      * @param innerList inner list to be compared
-     * @return common elements of these two lists
+     * @return intersection of the two lists
      */
-    public List<String> commonElements(List<String> outerList, List<String> innerList) {
+    public List<String> getListsIntersec(List<String> outerList, List<String> innerList) {
 
         List<String> matchedValuesOuter = new LinkedList<>();
         List<String> matchedValuesInner = new LinkedList<>();
 
         if (outerList.size() >= innerList.size()) {
-            matchedValuesOuter = outerList;
-            matchedValuesInner = innerList;
+            matchedValuesOuter = refineList(outerList);
+            matchedValuesInner = refineList(innerList);
 
         } else if (outerList.size() < innerList.size()) {
 
-            matchedValuesOuter = innerList;
-            matchedValuesInner = outerList;
+            matchedValuesOuter = refineList(innerList);
+            matchedValuesInner = refineList(outerList);
         }
 
         matchedValuesOuter.retainAll(matchedValuesInner);
+
         return matchedValuesOuter;
     }
-
+    
     /**
      * This is a particular function, to find commont elements of two candidate
      * triple patterns, in order to check if they can be merged to one CTP
@@ -334,23 +250,6 @@ public class BasicUtilis {
         }
     }
 
-    public void insertToMap(HashMap<String, List<Integer>> map, int valueMap, String keyMap) {
-
-        List<Integer> value = null;
-        List newList = null;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.add(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            value = map.get(keyMap);
-            value.add(valueMap);
-        }
-    }
-
     public void insertToMap(HashMap<String, List<String>> map, List<String> valueMap, String keyMap) {
 
         List<String> valueList = null;
@@ -419,50 +318,6 @@ public class BasicUtilis {
         }
     }
 
-    public void insertToMap(HashMap<List<String>, Integer> map, List<String> keyMap) {
-
-        int value = -1;
-
-        if (map.get(keyMap) == null) {
-
-            map.put(keyMap, 1);
-        } else {
-
-            value = map.get(keyMap);
-            value++;
-            map.put(keyMap, value);
-        }
-    }
-
-    public void insertToMap(HashMap<List<String>, List<List<Integer>>> map, List<Integer> valueMap, List<String> keyMap) {
-
-        List<List<Integer>> listOfLists = null;
-        List newList = null;
-        boolean flagSKip = false;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.add(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            listOfLists = map.get(keyMap);
-
-            for (int i = 0; i < listOfLists.size(); i++) {
-
-                if ((Objects.equals(listOfLists.get(i).get(0), valueMap.get(0)))
-                        && (Objects.equals(listOfLists.get(i).get(1), valueMap.get(1)))) {
-                    flagSKip = true;
-                }
-            }
-            if (!flagSKip) {
-
-                listOfLists.add(valueMap);
-            }
-        }
-    }
-
     public void insertToMap1(HashMap<List<String>, List<List<String>>> map, List<String> valueMap, List<String> keyMap) {
 
         List<List<String>> value = null;
@@ -497,95 +352,20 @@ public class BasicUtilis {
         }
     }
 
-    public void insertToMap2(HashMap<Integer, List<List<String>>> map, List<String> valueMap, int keyMap) {
+        public void insertToMap2(HashMap<Integer, List<Integer>> map,  List<Integer> valueMap, int keyMap) {
 
-        List<List<String>> listOfLists = null;
-        List newList = null;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.add(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            listOfLists = map.get(keyMap);
-            listOfLists.add(valueMap);
-        }
-    }
-
-    public void insertToMap2(HashMap<List<String>, List<List<Integer>>> map, List<String> keyMap, List<Integer> valueMap) {
-
-        List<List<Integer>> value = null;
-        List newList = null;
+        List<Integer> value = null;
+        List<Integer> newList = null;
 
         if (map.get(keyMap) == null) {
 
             newList = new LinkedList<>();
-            newList.add(valueMap);
+            newList.addAll(valueMap);
             map.put(keyMap, newList);
         } else {
 
             value = map.get(keyMap);
-            value.add(valueMap);
-        }
-    }
-
-    public void insertToMap2(HashMap<List<String>, String> map, List<String> keyMap, String valueMap) {
-
-        if (map.get(keyMap) == null) {
-
-            map.put(keyMap, valueMap);
-        } else {
-
-            map.put(keyMap, valueMap);
-        }
-    }
-
-    public void insertToMap3(HashMap<String, List<List<String>>> map, List<String> valueMap, String keyMap) {
-
-        List<List<String>> value = null;
-        List newList = null;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.add(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            value = map.get(keyMap);
-            value.add(valueMap);
-        }
-    }
-
-    public void insertToMap3(HashMap<Integer, List<List<Integer>>> map, List<Integer> valueMap, int keyMap) {
-
-        List<List<Integer>> listOfLists = null;
-        List newList = null;
-        boolean flagSKip = false;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.add(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            listOfLists = map.get(keyMap);
-            for (int i = 0; i < listOfLists.size(); i++) {
-
-                if ((Objects.equals(listOfLists.get(i).get(0), valueMap.get(0))) && (Objects.equals(listOfLists.get(i).get(1), valueMap.get(1)))) {
-
-                    flagSKip = true;
-                }
-
-            }
-
-            if (!flagSKip) {
-
-                listOfLists.add(valueMap);
-            }
+            value.addAll(valueMap);
         }
     }
 
@@ -603,23 +383,6 @@ public class BasicUtilis {
             newList = new LinkedList<>();
             newList.addAll(valueMap);
             map.put(keyMap, newList);
-        }
-    }
-
-    public void insertToMap4(HashMap<Integer, List<List<String>>> map, List<String> valueMap, int keyMap) {
-
-        List<List<String>> listOfLists = null;
-        List newList = null;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.add(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            listOfLists = map.get(keyMap);
-            listOfLists.add(valueMap);
         }
     }
 
@@ -654,74 +417,6 @@ public class BasicUtilis {
 
             value = map.get(keyMap);
             value.addAll(valueMap);
-        }
-    }
-
-    public void insertToMap5(HashMap<List<String>, List<List<Integer>>> map, List<Integer> valueMap, List<String> keyMap) {
-
-        List<List<Integer>> listOfLists = null;
-        List<List<Integer>> newList = null;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.add(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            listOfLists = map.get(keyMap);
-            listOfLists.add(valueMap);
-        }
-    }
-
-    public void insertToMap6(HashMap<List<String>, List<List<List<Integer>>>> map, List<List<Integer>> valueMap, List<String> keyMap) {
-
-        List<List<List<Integer>>> listOfListsOflists = null;
-        List<List<List<Integer>>> newList = null;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.add(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            listOfListsOflists = map.get(keyMap);
-            listOfListsOflists.add(valueMap);
-        }
-    }
-
-    public void insertToMap7(HashMap<List<String>, List<List<List<Integer>>>> map, List<List<List<Integer>>> valueMap, List<String> keyMap) {
-
-        List<List<List<Integer>>> listOfListsOflists = null;
-        List<List<List<Integer>>> newList = null;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.addAll(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            listOfListsOflists = map.get(keyMap);
-            listOfListsOflists.addAll(valueMap);
-        }
-    }
-
-    public void insertToMap8(HashMap<List<Integer>, List<List<List<Integer>>>> map, List<List<Integer>> valueMap, List<Integer> keyMap) {
-
-        List<List<List<Integer>>> listOfLists = null;
-        List<List<List<Integer>>> newList = null;
-
-        if (map.get(keyMap) == null) {
-
-            newList = new LinkedList<>();
-            newList.add(valueMap);
-            map.put(keyMap, newList);
-        } else {
-
-            listOfLists = map.get(keyMap);
-            listOfLists.add(valueMap);
         }
     }
 
@@ -770,8 +465,10 @@ public class BasicUtilis {
 
         String refinedQuery = query;
 
-        //remove new line character
-        refinedQuery = refinedQuery.replaceAll("\\n", "");
+        if (refinedQuery.contains("\r\n")) {
+
+            refinedQuery = refinedQuery.replaceAll(("\r\n"), " ");
+        }
 
         //Remove FILTER entities from query
         while (refinedQuery.contains("FILTER")) {
@@ -858,6 +555,14 @@ public class BasicUtilis {
                             if (valueVariable.indexOf(".") > 0) {
                                 valueVariable = valueVariable.substring(0, valueVariable.indexOf("."));
                             }
+                            
+                                 if(valueVariable.contains("mass")){
+                    int azraz=0;
+                }
+              if(valueVariable.contains("\n")){
+                    valueVariable=valueVariable.substring(0,valueVariable.indexOf("\n"));
+                    
+                }
                             queryUnities.add(valueVariable);
                         }
 
@@ -965,6 +670,13 @@ public class BasicUtilis {
         if (queryUnities.get(queryUnities.size() - 1).contains("LIMIT")) {
             queryUnities.remove(queryUnities.size() - 1);
         }
+        
+        for(int i=0; i<queryUnities.size();i++){
+        
+        }
+             
+                  
+               
 
         return queryUnities;
     }
@@ -1278,6 +990,7 @@ public class BasicUtilis {
 
                             listValues.add(tmpVar);
                         }
+
                         tmpAnsw = tmpAnsw.substring(indxStop + 1);
                         indxStop++;
                     }
@@ -1293,43 +1006,32 @@ public class BasicUtilis {
 
         return listValues;
     }
-    
+
     /**
-     * 
-     * @param inputList
-     * @return 
+     * Remove redundancy and short a list of elements
+     *
+     * @param inputList list to be sorted
+     * @return sorted list
      */
-    public List<String> sortAndRemoveRedundancy(List<String> inputList){
-        
-        //BUUUUUUUUUG create clone
-     //   List<String> sortedList= new LinkedList<>();
-        
-          HashSet hs = new HashSet();
-            hs.addAll(inputList);
-            inputList.clear();
-            inputList.addAll(hs);
-            Collections.sort(inputList);
-        return inputList;
-    }
-    
-        /**
-     * 
-     * @param inputList
-     * @return 
-     */
-    public List<Integer> sortAndRemoveRedundancy2(List<Integer> inputList){
-        
-        //BUUUUUUUUUG create clone
-     //   List<String> sortedList= new LinkedList<>();
-        
-          HashSet hs = new HashSet();
-            hs.addAll(inputList);
-            inputList.clear();
-            inputList.addAll(hs);
-            Collections.sort(inputList);
+    public List<String> sortAndRemoveRedundancy(List<String> inputList) {
+
+        HashSet hs = new HashSet();
+        hs.addAll(inputList);
+        inputList.clear();
+        inputList.addAll(hs);
+        Collections.sort(inputList);
         return inputList;
     }
 
+    public List<Integer> sortAndRemoveRedundancy2(List<Integer> inputList) {
+
+        HashSet hs = new HashSet();
+        hs.addAll(inputList);
+        inputList.clear();
+        inputList.addAll(hs);
+        Collections.sort(inputList);
+        return inputList;
+    }
 
     /**
      * Get all distinct IRIs or Literals, contained in answer of json format
@@ -1384,7 +1086,21 @@ public class BasicUtilis {
     }
 
     /**
-     * Match each string answer's variable to corresponding values
+     * Match each string answer's variable to corresponding values. Each list of
+     * values are matched to a variable in the form of a unique
+     * signature/string:
+     *
+     * \<mapping_variable\>_\<predicate_of_tp\>_\<position_in_tp\>
+     *
+     * where:
+     *
+     * (i) "\<mapping_variable\>_", is the variable to which values are bounded
+     *
+     * (ii) "\<predicate_of_tp\>", is the predicate of the triple pattern in
+     * which the variable appears
+     *
+     * (iii) "\<position_in_tp\>", is the posostion in which the variable
+     * appears (subject, predicate or object)
      *
      * @param key answer of entry log
      * @param requestQuery corresponding query of entry log
@@ -1392,16 +1108,14 @@ public class BasicUtilis {
      */
     public void setVarsToAnswEntities(int key, String requestQuery, String Answer) {
 
-        List<String> answerEntities = null;
-        List<String> matchQueryExtrVars = new LinkedList<>();
-        List<String> allTPs = new LinkedList<>();
-        List<String> motif = null;
-        HashMap<List<String>, List<String>> mapCurrQuerySignature = new HashMap<>();
         String newKey = "";
         String originalVarPosition = "";
         String newKeyDetailed = "";
-
-        matchQueryExtrVars = getAnswerVars(Answer);
+        List<String> answerEntities = null;
+        List<String> matchQueryExtrVars = getAnswerVars(Answer);
+        List<String> allTPs = new LinkedList<>();
+        List<String> signature = null;
+        HashMap<List<String>, List<String>> mapCurrQuerySignature = new HashMap<>();
 
         if (matchQueryExtrVars.isEmpty()) {
 
@@ -1412,30 +1126,34 @@ public class BasicUtilis {
 
             if (Answer.length() > 0 && Answer.contains("value")) {
 
+                //for all TPs in the query
                 allTPs = getQueryEntities(requestQuery, 4, false);
                 for (int i = 0; i < allTPs.size(); i += 3) {
 
-                    motif = new LinkedList<>();
+                    //find all different signature/strings
+                    signature = new LinkedList<>();
 
                     if (allTPs.get(i).contains("?")) {
-                        motif.add(allTPs.get(i));
+                        signature.add(allTPs.get(i));
                     }
-                    motif.add(allTPs.get(i + 1));
+                    signature.add(allTPs.get(i + 1));
                     if (allTPs.get(i + 2).contains("?")) {
-                        motif.add(allTPs.get(i + 2));
+                        signature.add(allTPs.get(i + 2));
                     }
 
-                    if (mapCurrQuerySignature.get(motif) == null) {
+                    if (mapCurrQuerySignature.get(signature) == null) {
 
-                        mapCurrQuerySignature.put(motif, null);
+                        mapCurrQuerySignature.put(signature, null);
                     }
 
                 }
 
+                //For all projected variables  (i.e., they return values) find
+                // to which signature type a trilpe pattern belong
+                //Note: a tp may have variables in both subject and predicate
                 for (int u = 0; u < matchQueryExtrVars.size(); u++) {
 
                     answerEntities = new LinkedList<>();
-
                     for (List<String> currMotiv : mapCurrQuerySignature.keySet()) {
 
                         if (elemInListEquals(currMotiv, "?" + matchQueryExtrVars.get(u))) {
@@ -1484,7 +1202,6 @@ public class BasicUtilis {
                     }
 
                     newKey = Integer.toString(key) + matchQueryExtrVars.get(u);
-
                     answerEntities = getDistAnsPerVar(Answer, matchQueryExtrVars.get(u));
 
                     if (newKey.contains("_")) {
@@ -1509,6 +1226,5 @@ public class BasicUtilis {
         }
 
     }
-    
 
 }

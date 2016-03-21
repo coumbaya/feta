@@ -22,33 +22,25 @@ import static myfeta.Main.windowJoin;
  * graph
  *
  * @author Nassopoulos Georges
- * @version 0.9
- * @since 2016-01-13
+ * @version 1.0
+ * @since 2016-03-19
  */
 public class DeductionGraphConstruction {
 
-    Deduction myDeduction;
-    DeductionLogClean myDedCLean;
-    DeductionUtils myDedUtils;
     BasicUtilis myBasUtils;
 
     public DeductionGraphConstruction(List<Document> listDocument, MonetDBManag db) throws ParserConfigurationException {
 
-        myDedCLean = new DeductionLogClean(listDocument, db);
-        myDedUtils = new DeductionUtils();
         myBasUtils = new BasicUtilis();
     }
 
     public DeductionGraphConstruction(List<Document> listDocument, CouchDBManag db) throws ParserConfigurationException {
 
-        myDedCLean = new DeductionLogClean(listDocument, db);
-        myDedUtils = new DeductionUtils();
         myBasUtils = new BasicUtilis();
     }
 
     public DeductionGraphConstruction() throws ParserConfigurationException {
 
-        myDedCLean = new DeductionLogClean();
     }
 
     /**
@@ -160,7 +152,7 @@ public class DeductionGraphConstruction {
      *
      * @param dedGraph list of all deduced graphs
      * @param queryID Log Clean query's id
-     * @return
+     * @return true if the query is added in an existing graph
      */
     public boolean checkIfCanAddInDedGraph(List<List<Integer>> dedGraph, int queryID) {
 
@@ -288,7 +280,7 @@ public class DeductionGraphConstruction {
 
                             //If their common point is a variable, this must be projected
                             if (query1Units.contains("?") && query2Units.contains("?")
-                                    && myDedUtils.compareListsForIntersection(mapLogClQueryToProjVars.get(outerQuery), mapLogClQueryToProjVars.get(innerQuery)).size() > 0) {
+                                    && myBasUtils.getListsIntersec(mapLogClQueryToProjVars.get(outerQuery), mapLogClQueryToProjVars.get(innerQuery)).size() > 0) {
 
                                 return true;
                             } //else if its a constant
@@ -311,7 +303,7 @@ public class DeductionGraphConstruction {
     /**
      * Print each graph's query ids
      *
-     * @param dedGraph
+     * @param dedGraph all deduced graphs to be printed
      */
     public void printGraph(List<List<Integer>> dedGraph) {
 
