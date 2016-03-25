@@ -1,22 +1,24 @@
 # FETA: experiments with FedBench
 
-In this Section we present, 1) precision/recall of triple patterns and joins, for queries executed in isolation and 2) precision/recall of joins, for queries executed in concurence. Both of experiments are done with Anapsid and FedX query engine, sent from the same IP Address host.
+In this Section we present, 1) precision/recall of triple patterns and joins, for queries executed in isolation and 2) precision/recall of joins, for queries executed in concurence. Both of experiments are made with the same IP Address host, using Anapsid and FedX query engines.
 
 **Summary**
 
 1. **Isolated execution**
-   * [Similarity jaccard](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#similarityjaccard)
-   * [Recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallofjoins)
+   * [Precision/recall of triple patterns](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisiontpsjaccard)
+   * [Precision/recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisionjoins)
 
 2. **Concurent execution**
    * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#crossdomain)
    * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
-   * [Non-similar queries](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#non-similar)
+   * [Mixed Queries (MX)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#non-similar)
 
 
-## SimilarityJaccard
+## Isolated execution
 
-## RecallOfJoins
+### RecallPrecisionTPs
+
+### RecallPrecisionJoins
 
 
 ## CrossDomain
