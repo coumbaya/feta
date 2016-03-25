@@ -1,6 +1,6 @@
 # FETA: experiments with FedBench
 
-In this Section we present FETA, first, similarity and recall of queries executed in isolation and, second, precision/recall of concurently executed set of queries, both with the same query engine IP Address.
+In this Section we present, 1) precision/recall of triple patterns and joins, for queries executed in isolation and 2) precision/recall of joins, for queries executed in concurence. Both of experiments are done with Anapsid and FedX query engine, sent from the same IP Address host.
 
 **Summary**
 
