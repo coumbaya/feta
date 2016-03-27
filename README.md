@@ -12,7 +12,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
    
         http://justniffer.sourceforge.net/
 
-      Justniffer is a network protocol analyzer that captures network traffic and produces logs in a customized way, 
+      Justniffer is a network protocol analyser that captures network traffic and produces logs in a customized way, 
       can emulate Apache web server log files, track response times and extract all "intercepted" files from the HTTP 
       traffic.
       
@@ -47,30 +47,30 @@ In order to execute FETA, you must run the command:
 
 The first step, is to load the captured trace into a database, of your DBMS choice:
 
-`--load or -l "path_to_capture"`: for loading a capture into the DB
+`--load or -l <path_to_capture>`: for loading a capture into the DB
 
-`--resetDB or -r`: for reseting an existing DB
+`--resetDB or -r`: for resetting an existing DB
 
-`--systemDB or -s "dbms_to_use"`: for setting "couchDB" or "monetDB" system (by default "couchDB")
+`--systemDB or -s <dbms_to_use>`: for setting "couchDB" or "monetDB" system (by default "couchDB")
 
-`--nameDB or -n "db_name"`: with the DB name
+`--nameDB or -n <db_name>`: with the DB name
 
 Then, you can launch FETA's deduction algorithm:
 
-`--inverseMap or -i "inverse_mapping_threshold"`: for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX, and setting the minimum threshold to validate a matching
+`--inverseMap or -i <inverse_mapping_threshold>`: for enabling inverse mapping in "NestedLoopDetection" heuristic, necessary for FedX, and setting the minimum threshold to validate a matching
 
-`--sameConcept or -c "path_to_endpoints_addresses"`: enabling "SameConcept/SameAs" heuristic and passing endpoints IP Addresses as argument
+`--sameConcept or -c <path_to_endpoints_addresses>`: enabling "SameConcept/SameAs" heuristic and passing endpoints IP Addresses as argument
 
-`--setWinSlice or -ws "window_in_seconds"`: for setting the maximum temporal distance between first and last subquery, defining the input DB slice (by default 1000000 seconds)
+`--setWinSlice or -ws <window_in_seconds>`: for setting the maximum temporal distance between first and last subquery, defining the input DB slice (by default 1000000 seconds)
 
-`--setWinJoin or -wj "window_in_seconds"`: for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 1000000 seconds)
+`--setWinJoin or -wj <window_in_seconds>`: for setting the maximum joinable window interval gap between two subqueries or triple patterns (by default 1000000 seconds)
 
 ## Testing FETA with FedBench queries' traces
 
 In order to test FETA's functionality, you can use traces of FedBench's Cross Domain (CD) and Life Science (LS) collections, captured by using either FedX or Anapsid. 
 
 1. In directory [**query_traces_isolated**](https://github.com/coumbaya/feta/tree/master/experiments_with_fedbench/query_traces_isolated) you find traces of queries executed in isolation.
-2. In directory [**query_traces_concurrency**](https://github.com/coumbaya/feta/tree/master/experiments_with_fedbench/query_traces_concurency) you find traces of queries of the same collection executed concurrently.
+2. In directory [**query_traces_concurrency**](https://github.com/coumbaya/feta/tree/master/experiments_with_fedbench/query_traces_concurency) you find traces of queries of the same collection executed in concurrence.
 
 
 FETA's experiment results  are available [here](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md)
