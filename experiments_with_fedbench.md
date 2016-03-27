@@ -16,7 +16,7 @@ In this Section we present, (1) precision/recall of deduced triple patterns and 
 
 ## Isolated execution
 
-First, we evaluate FETA by measuring precision/recall of both deduced triple patterns and joins, for queries executed in isolation comparing to those identified in original federated queries.
+First, we evaluate FETA by measuring precision/recall of both deduced triple patterns and joins, for queries executed in isolation comparing to those identified in original federated queries, for Cross Domain and Life Science collections.
 
 ### RecallPrecisionTPs
 
