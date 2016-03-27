@@ -41,43 +41,61 @@ Next, we evaluate FETA by measuring precision/recall of deduced joins, for queri
 
 Next, we present precision/recall of deduced joins, concerning the concurrent execution of all CD collection's queries (CD1 to CD7).
 
-**ANAPSID traces**
+**ANAPSID traces precision**
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/anapsid_precision_cd.PNG)
+
+**ANAPSID traces recall**
+
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/anapsid_recall_cd.PNG)
 
 
-**FedX traces**
+**FedX traces precision**
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/fedx_precision_cd.PNG)
+
+**FedX traces recall**
+
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/fedx_recall_cd.PNG)
 
 ### LifeScience
 
 Next, we present precision/recall of deduced joins, concerning the concurrent execution of all LS collection queries (LS1 to LS7).
 
-**ANAPSID traces**
+**Anapsid traces precision**
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/anapsid_precision_ls.PNG)
+
+**Anapsid traces recall**
+
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/anapsid_recall_ls.PNG)
 
 
-**FedX traces**
+**FedX traces precision**
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/fedx_precision_ls.PNG)
+
+**FedX traces recall**
+
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/fedx_recall_ls.PNG)
 
 ### MixedCollection
 
 Next, we present precision/recall of deduced joins, concerning the concurrent execution of a mixed collection. This set is composed of non similar queries from CD and LS collections, i.e. queries that have a null resultset for their common projected variables, namely: CD3, CD4, CD5, CD6, LS2 and LS3.
 
-**ANAPSID traces**
+**Anapsid traces precision**
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/anapsid_precision_mx.PNG)
+
+**Anapsid traces recall**
+
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/anapsid_recall_mx.PNG)
 
 
-**FedX traces**
+**FedX traces precision**
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/fedx_precision_mx.PNG)
+
+**FedX traces recall**
+
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/fedx_recall_mx.PNG)
