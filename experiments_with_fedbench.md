@@ -1,6 +1,6 @@
 # FETA: experiments with FedBench
 
-In this Section we present, (1) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (2) precision/recall of joins, for queries executed in concurence. Both of experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
+In this Section we present, (1) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (2) precision/recall of joins, for queries executed in concurrence. Both of experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
 
 **Summary**
 
@@ -8,7 +8,7 @@ In this Section we present, (1) precision/recall of deduced triple patterns and 
    * [Precision/recall of triple patterns](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisiontps)
    * [Precision/recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisionjoins)
 
-2. **Concurent execution**
+2. **Concurrent execution**
    * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#crossdomain)
    * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
    * [Mixed collection (MX)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#mixedcollection)
@@ -35,7 +35,7 @@ Next, we present precision/recall of deduced joins, for Anapsid and FedX traces.
 
 ## Concurrent execution
 
-Next, we evaluate FETA by measuring precision/recall of deduced joins, for queries executed in concurence comparing to those executed in isolation, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections. This experiment was made by varying the user-defined gap threshold, i.e. the maximum temporal distance between two queries to concider them possibly joinables, namely 1%, 10%, 25%, 50%, 75% and 100% of the duration of the input capture trace.
+Next, we evaluate FETA by measuring precision/recall of deduced joins, for queries executed in concurence comparing to those executed in isolation, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections. This experiment was made by varying the user-defined gap threshold, i.e. the maximum temporal distance between two queries to consider them possibly joinables, namely 1%, 10%, 25%, 50%, 75% and 100% of the duration of the input capture trace.
 
 ### CrossDomain
 
