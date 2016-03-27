@@ -35,7 +35,7 @@ Next, we present precision/recall of deduced joins, for Anapsid and FedX traces.
 
 ## Concurrent execution
 
-Next, we evaluate FETA by measuring precision/recall of deduced joins, for queries executed in concurence comparing to those executed in isolation, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections. This experiment was made by varying the user-defined gap threshold, i.e. the maximum temporal distance between two queries to concider them possibly joinable, namely 1%, 10%, 25%, 50%, 75% and 100% of the duration of the input capture trace.
+Next, we evaluate FETA by measuring precision/recall of deduced joins, for queries executed in concurence comparing to those executed in isolation, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections. This experiment was made by varying the user-defined gap threshold, i.e. the maximum temporal distance between two queries to concider them possibly joinables, namely 1%, 10%, 25%, 50%, 75% and 100% of the duration of the input capture trace.
 
 ### CrossDomain
 
