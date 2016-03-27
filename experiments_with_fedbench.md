@@ -85,7 +85,7 @@ Next, we present precision/recall of deduced joins, concerning the concurrent ex
 
 **Anapsid traces precision**
 
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/anapsid_precision_mx.PNG)
+We ommit this figure, as precision for this collection is always equal to 1.
 
 **Anapsid traces recall**
 
@@ -94,7 +94,7 @@ Next, we present precision/recall of deduced joins, concerning the concurrent ex
 
 **FedX traces precision**
 
-![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/fedx_precision_mx.PNG)
+We ommit this figure, as precision for this collection is always equal to 1.
 
 **FedX traces recall**
 
