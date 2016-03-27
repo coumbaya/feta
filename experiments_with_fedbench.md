@@ -20,14 +20,14 @@ First, we evaluate FETA by measuring precision/recall of both deduced triple pat
 
 ### RecallPrecisionTPs
 
-Next, we present precision/recall of deduced triple patterns.
+Next, we present precision/recall of deduced triple patterns, for Anapsid and FedX traces.
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/precision_triple_patterns_per_query.PNG)
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/recall_triple_patterns_per_query.PNG)
 
 ### RecallPrecisionJoins
 
-Next, we present precision/recall of deduced joins.
+Next, we present precision/recall of deduced joins, for Anapsid and FedX traces.
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/precision_joins_per_query.PNG)
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/recall_joins_per_query.PNG)
