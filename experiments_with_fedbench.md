@@ -29,11 +29,11 @@ Next we present execuiton times of queries executed in isolation, for Cross Doma
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
 | CD1           |0s          |0s     | LS1           |0s          |0s     |
 | CD2           |0s          |0s     | LS2           |0s          |0s     |
-| CD3           |0s          |0s     | LS3           |0s          |0s     |
-| CD4           |0s          |0s     | LS4           |0s          |0s     |
-| CD5           |0s          |0s     | LS5           |0s          |0s     |
-| CD6           |0s          |0s     | LS6           |0s          |0s     |
-| CD7           |0s          |0s     | LS7           |0s          |0s     |
+| CD3           |0s          |0s     | LS3           |4s          |10s    |
+| CD4           |0s          |0s     | LS4           |14s         |0s     |
+| CD5           |0s          |0s     | LS5           |1s          |2s     |
+| CD6           |33s         |0s     | LS6           |10s         |4m31s  |
+| CD7           |0s          |0s     | LS7           |1m38s       |2s     |
 
 ### ExecutionTimeConcurrent
 
