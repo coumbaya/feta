@@ -41,7 +41,7 @@ Next, we present execuiton times of queries executed in concurrence, for Cross D
 
 | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
-| CD mixage1    |43s         |2s     | LS mixage1    |4m14s       |0s     | MX mixage1    |54s         |17s    |
+| CD mixage1    |43s         |2s     | LS mixage1    |4m14s       |8m38s  | MX mixage1    |54s         |17s    |
 | CD mixage2    |44s         |2s     | LS mixage2    |3m5s        |0s     | MX mixage2    |47s         |17s    |
 | CD mixage3    |45s         |2s     | LS mixage3    |4m28s       |0s     | MX mixage3    |48s         |17s    |
 | CD mixage4    |42s         |2s     | LS mixage4    |3m5s        |9m59s  | MX mixage4    |48s         |15s    |
