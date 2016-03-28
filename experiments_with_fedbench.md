@@ -26,16 +26,16 @@ In order to evaluate FETA's performance we provide the execution times, for both
 Next we present execuiton times of queries executed in isolation, for Cross Domain (CD) and Life Science (LS) collections.
 
 
-| Query         | Anapsid       | FedX  || Query         | Anapsid       | FedX  |
-| ------------- |:-------------:| -----:|| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 || col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 || col 3 is      | right-aligned | $1600 |
-| zebra stripes | are neat      |    $1 || col 3 is      | right-aligned | $1600 |
-| col 3 is      | right-aligned | $1600 || col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 || col 3 is      | right-aligned | $1600 |
-| zebra stripes | are neat      |    $1 || col 3 is      | right-aligned | $1600 |
-| col 3 is      | right-aligned | $1600 || col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 || col 3 is      | right-aligned | $1600 |
+| Query         | Anapsid       | FedX  | Query         | Anapsid       | FedX  |
+| ------------- |:-------------:| -----:| ------------- |:-------------:| -----:|
+| col 3 is      | right-aligned | $1600 | col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 | col 3 is      | right-aligned | $1600 |
+| zebra stripes | are neat      |    $1 | col 3 is      | right-aligned | $1600 |
+| col 3 is      | right-aligned | $1600 | col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 | col 3 is      | right-aligned | $1600 |
+| zebra stripes | are neat      |    $1 | col 3 is      | right-aligned | $1600 |
+| col 3 is      | right-aligned | $1600 | col 3 is      | right-aligned | $1600 |
+| col 2 is      | centered      |   $12 | col 3 is      | right-aligned | $1600 |
 
 ### ExecutionTimeConcurrent
 
