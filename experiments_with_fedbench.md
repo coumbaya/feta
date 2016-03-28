@@ -4,7 +4,7 @@ In this Section we present, (1) execution time for all traces, in isolation and 
 
 **Summary**
 
-1. **Execution time**
+1.   [Isolated execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontime)
    * [Isolated execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeisolated)
    * [Concurrent execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeconcurrent)
 
@@ -17,7 +17,7 @@ In this Section we present, (1) execution time for all traces, in isolation and 
    * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
    * [Mixed collection (MX)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#mixedcollection)
 
-## Execution time
+## ExecutionTime
 
 In order to evaluate FETA's performance we provide the execution times, for both queries executed in isolation and in concurrence. Experiments were run on Ubuntu 14.04 LTS, with 8 CPUs and 32G RAM.
 
@@ -41,10 +41,10 @@ Next we present execuiton times of queries executed in concurrence, for Cross Do
 
 | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
-| CD mixage1    |43s         |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
-| CD mixage2    |44s         |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
-| CD mixage3    |45s         |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
-| CD mixage4    |42s         |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
+| CD mixage1    |43s         |2s     | LS mixage1    |4m14s       |0s     | MX mixage1    |54s         |17s    |
+| CD mixage2    |44s         |2s     | LS mixage2    |3m5s        |0s     | MX mixage2    |47s         |17s    |
+| CD mixage3    |45s         |2s     | LS mixage3    |4m28s       |0s     | MX mixage3    |48s         |17s    |
+| CD mixage4    |42s         |2s     | LS mixage4    |3m5s        |9m59s  | MX mixage4    |48s         |15s    |
 
 
 ## Isolated execution
