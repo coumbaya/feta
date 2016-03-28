@@ -17,7 +17,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       traffic.
       
       We use this tool, in order to capture both queries and their answers. You may create your own captures, when   
-      at the same time running queries with FedX or Anapsid query engines. To do so, you need to run the command:
+      at the same time running queries with either FedX or Anapsid query engines. To do so, you need to run the command:
       
       `$ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp"`
    
@@ -72,8 +72,10 @@ In order to test FETA's functionality, you can use traces of FedBench's Cross Do
 1. In directory [**query_traces_isolated**](https://github.com/coumbaya/feta/tree/master/experiments_with_fedbench/query_traces_isolated) you find traces of queries executed in isolation.
 2. In directory [**query_traces_concurrency**](https://github.com/coumbaya/feta/tree/master/experiments_with_fedbench/query_traces_concurency) you find traces of queries of the same collection executed in concurrence.
 
-
 FETA's experiment results, for fedbench queries' traces, are available [here](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md)
+
+You can simulate your own concurrent execution trace with our **traceMixer** programm, which is availble  [here](https://github.com/coumbaya/traceMixer)
+
 
 ## About and Contact
 
