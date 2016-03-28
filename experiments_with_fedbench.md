@@ -1,17 +1,27 @@
 # FETA: experiments with FedBench
 
-In this Section we present, (1) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (2) precision/recall of joins, for queries executed in concurrence. Both of experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
+In this Section we present, (1) execution time for all traces, in isolation and in concurrence (2) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (3) precision/recall of joins, for queries executed in concurrence. Both of experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
 
 **Summary**
 
-1. **Isolated execution**
+1. **Execution time**
+   * [Isolated execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeisolated)
+   * [Concurrent execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeconcurrent)
+
+2. **Isolated execution**
    * [Precision/recall of triple patterns](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisiontps)
    * [Precision/recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisionjoins)
 
-2. **Concurrent execution**
+3. **Concurrent execution**
    * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#crossdomain)
    * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
    * [Mixed collection (MX)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#mixedcollection)
+
+## Execution time
+
+### ExecutionTimeIsolated
+
+### ExecutionTimeConcurrent
 
 
 ## Isolated execution
