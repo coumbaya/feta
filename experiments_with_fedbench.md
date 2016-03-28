@@ -4,15 +4,15 @@ In this Section we present, (1) execution time for all traces, in isolation and 
 
 **Summary**
 
-1.   [Isolated execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontime)
-   * [Isolated execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeisolated)
-   * [Concurrent execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeconcurrent)
+1.   [**Execution time**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontime)
+   * [Isolated time execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeisolated)
+   * [Concurrent time execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeconcurrent)
 
-2. **Isolated execution**
+2. [**Isolated execution**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#isolatedexecution)
    * [Precision/recall of triple patterns](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisiontps)
    * [Precision/recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisionjoins)
 
-3. **Concurrent execution**
+3.  [**Concurrent execution**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#concurrentexecution)
    * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#crossdomain)
    * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
    * [Mixed collection (MX)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#mixedcollection)
@@ -47,7 +47,7 @@ Next we present execuiton times of queries executed in concurrence, for Cross Do
 | CD mixage4    |42s         |2s     | LS mixage4    |3m5s        |9m59s  | MX mixage4    |48s         |15s    |
 
 
-## Isolated execution
+## IsolatedExecution
 
 First, we evaluate FETA by measuring precision/recall of both deduced triple patterns and joins, for queries executed in isolation comparing to those identified in original federated queries, for Cross Domain and Life Science collections.
 
@@ -66,7 +66,7 @@ Next, we present precision/recall of deduced joins, for Anapsid and FedX traces.
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/recall_joins_per_query.PNG)
 
 
-## Concurrent execution
+## ConcurrentExecution
 
 Next, we evaluate FETA by measuring precision/recall of deduced joins, for queries executed in concurence comparing to those executed in isolation, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections. This experiment was made by varying the user-defined gap threshold, i.e. the maximum temporal distance between two queries to consider them possibly joinables, namely 1%, 10%, 25%, 50%, 75% and 100% of the duration of the input capture trace.
 
