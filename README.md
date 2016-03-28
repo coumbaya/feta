@@ -73,7 +73,7 @@ In order to test FETA's functionality, you can use traces of FedBench's Cross Do
 2. In directory [**query_traces_concurrency**](https://github.com/coumbaya/feta/tree/master/experiments_with_fedbench/query_traces_concurency) you find traces of queries of the same collection executed in concurrence.
 
 
-FETA's experiment results, for fedbench traces, are available [here](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md)
+FETA's experiment results, for fedbench queries' traces, are available [here](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md)
 
 ## About and Contact
 
