@@ -19,7 +19,7 @@ In this Section we present, (1) execution time for all traces, in isolation and 
 
 ## ExecutionTime
 
-In order to evaluate FETA's performance we provide the execution times, for both queries executed in isolation and in concurrence. Experiments were run on Ubuntu 14.04 LTS, with 8 CPUs and 32G RAM.
+In order to evaluate FETA's performance we provide the execution times, for both queries executed in isolation and in concurrence. Experiments were run on Ubuntu 14.04 LTS, with 8 CPUs and 32G RAM. 
 
 ### ExecutionTimeIsolated
 
