@@ -19,10 +19,15 @@ In this Section we present, (1) execution time for all traces, in isolation and 
 
 ## Execution time
 
+In order to evaluate FETA's performance we provide the execution times, for both queries executed in isolation and in concurrence, using the command `time` and by calculating the mean value of 10 executions. 
+
 ### ExecutionTimeIsolated
+
+Next we present execuiton times of queries executed in isolation, for Cross Domain and Life Science collections.
 
 ### ExecutionTimeConcurrent
 
+Next we present execuiton times of queries executed in concurrence, for Cross Domain and Life Science collections.
 
 ## Isolated execution
 
