@@ -1,6 +1,6 @@
 # FETA: experiments with FedBench
 
-In this Section we present, (1) execution time for all traces, in isolation and in concurrence (2) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (3) precision/recall of joins, for queries executed in concurrence. Both of experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
+In this Section we present, (1) execution time for all traces, in isolation and in concurrence (2) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (3) precision/recall of joins, for queries executed in concurrence. Both experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
 
 **Summary**
 
@@ -26,15 +26,15 @@ In order to evaluate FETA's performance we provide the execution times, for both
 Next we present execuiton times of queries executed in isolation, for Cross Domain (CD) and Life Science (LS) collections.
 
 
-| Query         | Anapsid       | FedX  | Query         | Anapsid       | FedX  |
-| ------------- |:-------------:| -----:| ------------- |:-------------:| -----:|
-| CD1           |0s             |0s     | LS1           | right-aligned |0s     |
-| CD2           |0s             |0s     | LS2           | right-aligned |0s     |
-| CD3           |0s             |0s     | LS3           | right-aligned |0s     |
-| CD4           |0s             |0s     | LS4           | right-aligned |0s     |
-| CD5           |0s             |0s     | LS5           | right-aligned |0s     |
-| CD6           |0s             |0s     | LS6           | right-aligned |0s     |
-| CD7           |0s             |0s     | LS7           | right-aligned |0s     |
+| Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
+| ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
+| CD1           |0s          |0s     | LS1           |0s          |0s     |
+| CD2           |0s          |0s     | LS2           |0s          |0s     |
+| CD3           |0s          |0s     | LS3           |0s          |0s     |
+| CD4           |0s          |0s     | LS4           |0s          |0s     |
+| CD5           |0s          |0s     | LS5           |0s          |0s     |
+| CD6           |0s          |0s     | LS6           |0s          |0s     |
+| CD7           |0s          |0s     | LS7           |0s          |0s     |
 
 ### ExecutionTimeConcurrent
 
