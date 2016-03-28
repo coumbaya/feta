@@ -1,6 +1,6 @@
 # FETA: experiments with FedBench
 
-In this Section we present, (1) execution time for all traces, in isolation and in concurrence (2) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (3) precision/recall of joins, for queries executed in concurrence. Both experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
+In this Section we present, (1) execution time for all traces, for queries executed in isolation and in concurrence (2) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (3) precision/recall of joins, for queries executed in concurrence. Both experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
 
 **Summary**
 
