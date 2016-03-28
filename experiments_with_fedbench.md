@@ -41,10 +41,10 @@ Next we present execuiton times of queries executed in concurrence, for Cross Do
 
 | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
-| CD mixage1    |0s          |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
-| CD mixage2    |0s          |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
-| CD mixage3    |0s          |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
-| CD mixage4    |0s          |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
+| CD mixage1    |43s         |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
+| CD mixage2    |44s         |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
+| CD mixage3    |45s         |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
+| CD mixage4    |42s         |0s     | LS mixage1    |0s          |0s     | MX mixage1    |0s          |0s     |
 
 
 ## Isolated execution
