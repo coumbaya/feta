@@ -23,7 +23,7 @@ In order to evaluate FETA's performance we provide the execution times, for both
 
 ### ExecutionTimeIsolated
 
-Next, we present execuiton times of queries executed in isolation, for Cross Domain (CD) and Life Science (LS) collections.
+Next, we present execution times of queries executed in isolation, for Cross Domain (CD) and Life Science (LS) collections.
 
 | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
@@ -37,7 +37,7 @@ Next, we present execuiton times of queries executed in isolation, for Cross Dom
 
 ### ExecutionTimeConcurrent
 
-Next, we present execuiton times of queries executed in concurrence, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections.
+Next, we present execution times of queries executed in concurrence, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections.
 
 | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
@@ -68,7 +68,7 @@ Next, we present precision/recall of deduced joins, for Anapsid and FedX traces.
 
 ## ConcurrentExecution
 
-Next, we evaluate FETA by measuring precision/recall of deduced joins, for queries executed in concurence comparing to those executed in isolation, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections. This experiment was made by varying the user-defined gap threshold, i.e. the maximum temporal distance between two queries to consider them possibly joinables, namely 1%, 10%, 25%, 50%, 75% and 100% of the duration of the input capture trace.
+Next, we evaluate FETA by measuring precision/recall of deduced joins, for queries executed in concurrence comparing to those executed in isolation, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections. This experiment was made by varying the user-defined gap threshold, i.e. the maximum temporal distance between two queries to consider them possibly joinables, namely 1%, 10%, 25%, 50%, 75% and 100% of the duration of the input capture trace.
 
 ### CrossDomain
 
@@ -118,7 +118,7 @@ Next, we present precision/recall of deduced joins, concerning the concurrent ex
 
 **Anapsid traces' precision**
 
-We ommit this figure, as precision for this collection is always equal to 1.
+We omit this figure, as precision for this collection is always equal to 1.
 
 **Anapsid traces' recall**
 
@@ -127,7 +127,7 @@ We ommit this figure, as precision for this collection is always equal to 1.
 
 **FedX traces' precision**
 
-We ommit this figure, as precision for this collection is always equal to 1.
+We omit this figure, as precision for this collection is always equal to 1.
 
 **FedX traces' recall**
 
