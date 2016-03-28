@@ -23,7 +23,7 @@ In order to evaluate FETA's performance we provide the execution times, for both
 
 ### ExecutionTimeIsolated
 
-Next we present execuiton times of queries executed in isolation, for Cross Domain (CD) and Life Science (LS) collections.
+Next, we present execuiton times of queries executed in isolation, for Cross Domain (CD) and Life Science (LS) collections.
 
 | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
@@ -37,7 +37,7 @@ Next we present execuiton times of queries executed in isolation, for Cross Doma
 
 ### ExecutionTimeConcurrent
 
-Next we present execuiton times of queries executed in concurrence, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections.
+Next, we present execuiton times of queries executed in concurrence, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections.
 
 | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
