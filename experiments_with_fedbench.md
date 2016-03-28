@@ -28,14 +28,13 @@ Next we present execuiton times of queries executed in isolation, for Cross Doma
 
 | Query         | Anapsid       | FedX  | Query         | Anapsid       | FedX  |
 | ------------- |:-------------:| -----:| ------------- |:-------------:| -----:|
-| col 3 is      | right-aligned | $1600 | col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 | col 3 is      | right-aligned | $1600 |
-| zebra stripes | are neat      |    $1 | col 3 is      | right-aligned | $1600 |
-| col 3 is      | right-aligned | $1600 | col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 | col 3 is      | right-aligned | $1600 |
-| zebra stripes | are neat      |    $1 | col 3 is      | right-aligned | $1600 |
-| col 3 is      | right-aligned | $1600 | col 3 is      | right-aligned | $1600 |
-| col 2 is      | centered      |   $12 | col 3 is      | right-aligned | $1600 |
+| CD1           |0s             |0s     | LS1           | right-aligned |0s     |
+| CD2           |0s             |0s     | LS2           | right-aligned |0s     |
+| CD3           |0s             |0s     | LS3           | right-aligned |0s     |
+| CD4           |0s             |0s     | LS4           | right-aligned |0s     |
+| CD5           |0s             |0s     | LS5           | right-aligned |0s     |
+| CD6           |0s             |0s     | LS6           | right-aligned |0s     |
+| CD7           |0s             |0s     | LS7           | right-aligned |0s     |
 
 ### ExecutionTimeConcurrent
 
