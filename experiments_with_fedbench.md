@@ -4,7 +4,7 @@ In this Section we present, (1) execution time of FETA analysis for all traces, 
 
 **Summary**
 
-1.   [**Execution time**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontime)
+1.   [**Execution time**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#execution%time)
    * [Isolated time execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeisolated)
    * [Concurrent time execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeconcurrent)
 
@@ -17,7 +17,7 @@ In this Section we present, (1) execution time of FETA analysis for all traces, 
    * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
    * [Mixed collection (MX)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#mixedcollection)
 
-## ExecutionTime
+## Execution Time
 
 In order to evaluate FETA's performance we provide the execution times of FETA analysis, for both queries executed in isolation and in concurrence. Experiments were run on Ubuntu 14.04 LTS, with 8 CPUs and 32G RAM. 
 
