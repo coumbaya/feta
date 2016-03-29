@@ -1,6 +1,6 @@
 # FETA: experiments with FedBench
 
-In this Section we present, (1) execution time for all traces, for queries executed in isolation and in concurrence (2) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (3) precision/recall of joins, for queries executed in concurrence. All experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
+In this Section we present, (1) execution time of FETA analysis for all traces, for queries executed in isolation and in concurrence (2) precision/recall of deduced triple patterns and joins, for queries executed in isolation and (3) precision/recall of joins, for queries executed in concurrence. All experiments are made with the same IP Address host, using either Anapsid or FedX query engines.
 
 **Summary**
 
@@ -19,11 +19,11 @@ In this Section we present, (1) execution time for all traces, for queries execu
 
 ## ExecutionTime
 
-In order to evaluate FETA's performance we provide the execution times, for both queries executed in isolation and in concurrence. Experiments were run on Ubuntu 14.04 LTS, with 8 CPUs and 32G RAM. 
+In order to evaluate FETA's performance we provide the execution times of FETA analysis, for both queries executed in isolation and in concurrence. Experiments were run on Ubuntu 14.04 LTS, with 8 CPUs and 32G RAM. 
 
 ### ExecutionTimeIsolated
 
-Next, we present execution times of queries executed in isolation, for Cross Domain (CD) and Life Science (LS) collections.
+Next, we present execution times of FETA analysis of queries executed in isolation, for Cross Domain (CD) and Life Science (LS) collections.
 
 | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
@@ -37,7 +37,7 @@ Next, we present execution times of queries executed in isolation, for Cross Dom
 
 ### ExecutionTimeConcurrent
 
-Next, we present execution times of queries executed in concurrence, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections.
+Next, we present execution times of FETA analysis of queries executed in concurrence, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections.
 
 | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  | Query         | Anapsid    | FedX  |
 | ------------- |:----------:|:-----:| ------------- |:----------:|:-----:| ------------- |:----------:|:-----:|
