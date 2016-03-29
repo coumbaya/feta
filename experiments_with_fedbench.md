@@ -4,7 +4,7 @@ In this Section we present, (1) execution time of FETA's analysis for all traces
 
 **Summary**
 
-1.   [**Execution time**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontime)
+1.   [**Execution time**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#execution-time)
    * [Isolated time execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeisolated)
    * [Concurrent time execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeconcurrent)
 
