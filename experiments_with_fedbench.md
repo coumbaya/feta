@@ -12,10 +12,10 @@ In this Section we present, (1) execution time of FETA's analysis for all traces
    * [Precision/recall of triple patterns](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#precision-and-recall-of-tps)
    * [Precision/recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#precision-and-recall-of-joins)
 
-3.  [**Concurrent execution**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#concurrentexecution)
-   * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#crossdomain)
-   * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
-   * [Mixed collection (MX)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#mixedcollection)
+3.  [**Concurrent execution**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#concurrent-execution)
+   * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#cross-domain)
+   * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#life-science)
+   * [Mixed collection (MX)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#mixed-collection)
 
 ## Execution analysis time
 
@@ -66,11 +66,11 @@ Next, we present precision/recall of deduced joins, for Anapsid and FedX traces.
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/recall_joins_per_query.PNG)
 
 
-## ConcurrentExecution
+## Concurrent execution
 
 Next, we evaluate FETA by measuring precision/recall of deduced joins, for queries executed in concurrence comparing to those executed in isolation, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections. This experiment was made by varying the user-defined gap threshold, i.e. the maximum temporal distance between two queries to consider them possibly joinables, namely 1%, 10%, 25%, 50%, 75% and 100% of the duration of the input capture trace.
 
-### CrossDomain
+### Cross domain
 
 Next, we present precision/recall of deduced joins, concerning the concurrent execution of all CD collection's queries (CD1 to CD7).
 
@@ -91,7 +91,7 @@ Next, we present precision/recall of deduced joins, concerning the concurrent ex
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/fedx_recall_cd.PNG)
 
-### LifeScience
+### Life science
 
 Next, we present precision/recall of deduced joins, concerning the concurrent execution of all LS collection queries (LS1 to LS7).
 
@@ -112,7 +112,7 @@ Next, we present precision/recall of deduced joins, concerning the concurrent ex
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/fedx_recall_ls.PNG)
 
-### MixedCollection
+### Mixed collection
 
 Next, we present precision/recall of deduced joins, concerning the concurrent execution of a mixed collection. This set is composed of non similar queries from CD and LS collections, i.e. queries that have a null resultset for their common projected variables, namely: CD3, CD4, CD5, CD6, LS2 and LS3.
 
