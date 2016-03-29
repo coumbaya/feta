@@ -4,24 +4,24 @@ In this Section we present, (1) execution time of FETA's analysis for all traces
 
 **Summary**
 
-1.   [**Execution time**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#execution-time)
-   * [Isolated time execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeisolated)
-   * [Concurrent time execution](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#executiontimeconcurrent)
+1.   [**Execution analysis time**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#execution-analysis-time)
+   * [Isolated analysis time](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#isolated-analysis-time)
+   * [Concurrent analysis time](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#concurrent-analysis-time)
 
-2. [**Isolated execution**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#isolatedexecution)
-   * [Precision/recall of triple patterns](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisiontps)
-   * [Precision/recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#recallprecisionjoins)
+2. [**Isolated execution**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#isolated-execution)
+   * [Precision/recall of triple patterns](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#precision-and-recall-of-tps)
+   * [Precision/recall of joins](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#precision-and-recall-of-joins)
 
 3.  [**Concurrent execution**](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#concurrentexecution)
    * [Cross Domain (CD)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#crossdomain)
    * [Life Science (LS)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#lifescience)
    * [Mixed collection (MX)](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md#mixedcollection)
 
-## Execution Time
+## Execution analysis time
 
 In order to evaluate FETA's performance we provide the execution times of FETA's analysis, for both queries executed in isolation and in concurrence. Experiments were run on Ubuntu 14.04 LTS, with 8 CPUs and 32G RAM. 
 
-### ExecutionTimeIsolated
+### Isolated analysis time
 
 Next, we present execution times of FETA analysis of queries executed in isolation, for Cross Domain (CD) and Life Science (LS) collections.
 
@@ -35,7 +35,7 @@ Next, we present execution times of FETA analysis of queries executed in isolati
 | CD6           |33s         |0s     | LS6           |10s         |4m31s  |
 | CD7           |0s          |0s     | LS7           |1m38s       |2s     |
 
-### ExecutionTimeConcurrent
+### Concurrent analysis time
 
 Next, we present execution times of FETA analysis of queries executed in concurrence, for Cross Domain (CD), Life Science (LS) and Mixed (MX) collections.
 
@@ -47,18 +47,18 @@ Next, we present execution times of FETA analysis of queries executed in concurr
 | CD mixage4    |42s         |2s     | LS mixage4    |3m5s        |9m59s  | MX mixage4    |48s         |15s    |
 
 
-## IsolatedExecution
+## Isolated execution
 
 First, we evaluate FETA by measuring precision/recall of both deduced triple patterns and joins, for queries executed in isolation comparing to those identified in original federated queries, for Cross Domain and Life Science collections.
 
-### RecallPrecisionTPs
+### Precision and recall of tps
 
 Next, we present precision/recall of deduced triple patterns, for Anapsid and FedX traces.
 
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/precision_triple_patterns_per_query.PNG)
 ![GitHub Logo](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench/execution_figures/recall_triple_patterns_per_query.PNG)
 
-### RecallPrecisionJoins
+### Precision and recall of joins
 
 Next, we present precision/recall of deduced joins, for Anapsid and FedX traces.
 
