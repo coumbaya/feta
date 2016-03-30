@@ -21,7 +21,7 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       
       `$ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp"`
       
-      **NB** In order to ensure capturing all queries and their answers, you must keep sniffing the TCP traffic even for some tens of seconds after the end of your federated queries. 
+      **NB**; In order to ensure capturing all queries and their answers, you must keep sniffing the TCP traffic even for some tens of seconds after the end of the execution of your federated queries. 
    
    2. CouchDB: A Database for the Web
    
