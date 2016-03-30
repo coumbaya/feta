@@ -6,7 +6,7 @@ A FEderated TrAcking System for the Linked Data
 
 ## Install FETA's dependencies
 
-FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to FETA, you need to execute installDepends.sh. This script will install:
+FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. In order to install packages and dependencies related to FETA, you need to execute **installDepends<os-system>.sh**. This script will install:
 
    1. justniffer :Network TCP Packet Sniffer
    
@@ -20,6 +20,8 @@ FETA is implemented in Java 1.7 and known to run on Debian GNU/Linux and OS X. I
       at the same time running queries with either FedX or Anapsid query engines. To do so, you need to run the command:
       
       `$ sudo justniffer -i eth0 -l "%request%request.timestamp%response%response.timestamp"`
+      
+      **NB** In order to ensure capturing all queries and their answers, you must keep sniffing the TCP traffic even for some tens of seconds after the end of your federated queries. 
    
    2. CouchDB: A Database for the Web
    
@@ -74,7 +76,7 @@ In order to test FETA's functionality, you can use traces of FedBench's Cross Do
 
 FETA's experiment results, for fedbench queries' traces, are available [here](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md)
 
-You can simulate your own concurrent execution trace with our **traceMixer** programm, which is availble  [here](https://github.com/coumbaya/traceMixer)
+You can simulate your own concurrent execution trace and generate your own suffle with our **traceMixer** programm, availble  [here](https://github.com/coumbaya/traceMixer)
 
 
 ## About and Contact
