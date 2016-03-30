@@ -76,7 +76,7 @@ In order to test FETA's functionality, you can use traces of FedBench's Cross Do
 
 FETA's experiment results, for fedbench queries' traces, are available [here](https://github.com/coumbaya/feta/blob/master/experiments_with_fedbench.md)
 
-You can simulate your own concurrent execution trace and generate your own suffle with our **traceMixer** programm, availble  [here](https://github.com/coumbaya/traceMixer)
+You can simulate your own concurrent execution trace and generate your suffle with our **traceMixer** programm, availble  [here](https://github.com/coumbaya/traceMixer)
 
 
 ## About and Contact
