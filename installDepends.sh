@@ -12,17 +12,39 @@ if [ "$database" = "1" ] || [ "$database" = "3" ]; then
         
 	echo "installation monetdb sql client"
 
+	codeName="$(lsb_release -c)"
+
 	sudo touch /etc/apt/sources.list.d/monetdb.list
-        echo "deb http://dev.monetdb.org/downloads/deb/ precise monetdb
-	      deb-src http://dev.monetdb.org/downloads/deb/ precise monetdb
-	      deb http://dev.monetdb.org/downloads/deb/ vivid monetdb
-	      deb http://dev.monetdb.org/downloads/deb/ trusty monetdb
-	      deb-src http://dev.monetdb.org/downloads/deb/ trusty monetdb
-	      deb-src http://dev.monetdb.org/downloads/deb/ vivid monetdb
-	      deb http://dev.monetdb.org/downloads/deb/ jessie monetdb
-	      deb-src http://dev.monetdb.org/downloads/deb/ jessie monetdb
-	      deb http://dev.monetdb.org/downloads/deb/ utopic monetdb
-	      deb-src http://dev.monetdb.org/downloads/deb/ utopic monetdb" > /etc/apt/sources.list.d/monetdb.list
+	if [[ $codeName == *"trusty"* ]]
+	then
+	       echo "deb http://dev.monetdb.org/downloads/deb/ trusty monetdb
+	      	     deb-src http://dev.monetdb.org/downloads/deb/ trusty monetdb" > /etc/apt/sources.list.d/monetdb.list
+	fi
+
+	elif [[ $codeName == *"precise"* ]]
+	then
+	       echo "deb http://dev.monetdb.org/downloads/deb/ precise monetdb
+	      	     deb-src http://dev.monetdb.org/downloads/deb/ precise monetdb" > /etc/apt/sources.list.d/monetdb.list
+	fi
+
+	elif [[ $codeName == *"vivid"* ]]
+	then
+	       echo "deb http://dev.monetdb.org/downloads/deb/ vivid monetdb
+	      	     deb-src http://dev.monetdb.org/downloads/deb/ vivid monetdb" > /etc/apt/sources.list.d/monetdb.list
+	fi
+
+	elif [[ $codeName == *"jessie"* ]]
+	then
+	       echo "deb http://dev.monetdb.org/downloads/deb/ jessie monetdb
+	      	     deb-src http://dev.monetdb.org/downloads/deb/ jessie monetdb" > /etc/apt/sources.list.d/monetdb.list
+	fi
+
+	elif [[ $codeName == *"utopic"* ]]
+	then
+	       echo "deb http://dev.monetdb.org/downloads/deb/ utopic monetdb
+	      	     deb-src http://dev.monetdb.org/downloads/deb/ utopic monetdb" > /etc/apt/sources.list.d/monetdb.list
+	fi
+
 	wget --output-document=- https://www.monetdb.org/downloads/MonetDB-GPG-KEY | sudo apt-key add -
 	sudo apt-get install monetdb5-sql monetdb-client
 
